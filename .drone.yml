@@ -1,0 +1,22 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build
+    image: beeblebrox.cg.uni-saarland.de/cg1/build-tools
+    pull: true
+    commands:
+      - mkdir build && cd build
+      - cmake -D CMAKE_BUILD_TYPE=Debug ..
+      - cmake --build . --target cgray
+
+  - name: test
+    image: beeblebrox.cg.uni-saarland.de/cg1/cgray-tests
+    pull: true
+
+node:
+  env: cguds-warrior
+
+image_pull_secrets:
+  - REGISTRY_AUTH_CREDENTIALS

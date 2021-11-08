@@ -1,6 +1,7 @@
 #include <core/color.h>
 #include <core/scalar.h>
 #include <core/float4.h>
+#include <algorithm> 
 
 namespace rt {
 
@@ -30,9 +31,19 @@ bool RGBColor::operator != (const RGBColor& x) const {
 }
 
 RGBColor RGBColor::clamp() const {
-    //float temp = sqrt((r * r) + (g * g) + (b * b));
-    float temp = r + g + b;
-    return RGBColor(r / temp, g / temp, b / temp);
+    
+    float red=r, blue=b, green=g;
+
+    if (r > 1.f) red = 1.f;
+    else if (r < 0.f)red = 0.f;
+
+    if (g > 1.f)green = 1.f;
+    else if (g < 0.f)green = 0.f;
+
+    if (b > 1.f)blue = 1.f;
+    else if (b < 0.f)blue = 0.f;
+
+    return RGBColor(red, green, blue);
 }
 
 RGBColor RGBColor::gamma(float gam) const {

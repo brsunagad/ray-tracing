@@ -1,0 +1,5 @@
+# ninja log v5
+1	41	6579824854347408	CMakeFiles/boo.dir/main.c.obj	7bf39a71564ff4cd
+4	43	6579824854367326	CMakeFiles/foo.dir/foo.c.obj	caceca1b4691e14c
+43	114	6579824854777331	foo.lib	999bc68d1c6fbda4
+114	501	6579824858547417	boo.exe	f96cc355eda62f1

@@ -5,11 +5,19 @@ namespace rt {
 
 OrthographicCamera::OrthographicCamera(const Point& center, const Vector& forward, const Vector& up, float scaleX, float scaleY)
 {
-    /* TODO */
+    this->center = center;
+    this->forward = forward;
+    this-> up = up;
+    this->scaleX = scaleX;
+    this->scaleY = scaleY;
+    this->w = -forward.normalize();
+    this->u = cross(up, w).normalize();
+    this->v = cross(w, u).normalize();
 }
 
 Ray OrthographicCamera::getPrimaryRay(float x, float y) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    
+    return Ray(center + scaleX * x * u + scaleY * y * v, -w) ;
 }
 
 }

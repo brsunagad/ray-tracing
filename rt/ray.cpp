@@ -8,13 +8,12 @@ Ray::Ray(const Point& o, const Vector& d)
 {
     this->o = o;
     this->d = d;
-    //assert(d != Vector::rep(0.0f));
+    assert(d != Vector::rep(0.0f));
 }
 
 Point Ray::getPoint(float distance) const {
-    /* TODO */ 
-    float ratio = distance / d.length();
-    return Point(d.x * ratio, d.y * ratio, d.z * ratio);
+
+    return Point(o + distance * d);
 }
 
 }

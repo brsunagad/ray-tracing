@@ -1,5 +1,5 @@
 #include <rt/cameras/perspective.h>
-
+#include <cmath>
 namespace rt {
 
 PerspectiveCamera::PerspectiveCamera(const Point& center, const Vector& forward, const Vector& up, float verticalOpeningAngle, float horizontalOpeningAngle)
@@ -16,10 +16,10 @@ PerspectiveCamera::PerspectiveCamera(const Point& center, const Vector& forward,
 
 Ray PerspectiveCamera::getPrimaryRay(float x, float y) const {
    
-    float sx = 2*tan(horizontalOpeningAngle/2);
-    float sy = 2*tan(verticalOpeningAngle/2);
+    float sx = forward.length() *tan(horizontalOpeningAngle/2);
+    float sy = forward.length()*tan(verticalOpeningAngle/2);
     //return Ray(center, (Point(x*sx*u.x , y*sy*u.y, -1) - center).normalize());
-    return Ray(center, (-w + u * sx * x + v * sy * y).normalize());
+    return Ray(center, (forward + u * sx * x + v * sy * y).normalize());
 }
 
 }

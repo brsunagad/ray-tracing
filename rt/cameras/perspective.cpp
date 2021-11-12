@@ -12,13 +12,13 @@ PerspectiveCamera::PerspectiveCamera(const Point& center, const Vector& forward,
     this->w = -forward.normalize();
     this->u = cross(up, w).normalize();
     this->v = cross(w, u).normalize();
+    this->sx = forward.length() * tan(horizontalOpeningAngle / 2);//calculate x-scale
+    this->sy = forward.length() * tan(verticalOpeningAngle / 2);//calculate y-scale
 }
 
 Ray PerspectiveCamera::getPrimaryRay(float x, float y) const {
    
-    float sx = forward.length() *tan(horizontalOpeningAngle/2);
-    float sy = forward.length()*tan(verticalOpeningAngle/2);
-    //return Ray(center, (Point(x*sx*u.x , y*sy*u.y, -1) - center).normalize());
+
     return Ray(center, (forward + u * sx * x + v * sy * y).normalize());
 }
 

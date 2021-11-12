@@ -9,6 +9,11 @@ namespace rt {
 
 class OrthographicCamera : public Camera {
 public:
+    Point center;
+    Vector u,v,w,up,forward;
+    float scaleX;
+    float scaleY;
+
     OrthographicCamera(
         const Point& center,
         const Vector& forward,

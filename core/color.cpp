@@ -1,6 +1,7 @@
 #include <core/color.h>
 #include <core/scalar.h>
 #include <core/float4.h>
+#include <algorithm> 
 
 namespace rt {
 
@@ -10,27 +11,39 @@ RGBColor::RGBColor(const Float4& f4)
 }
 
 RGBColor RGBColor::operator + (const RGBColor& c) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor(r + c.r, g + c.g, b + c.b);
 }
 
 RGBColor RGBColor::operator - (const RGBColor& c) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor(r - c.r, g - c.g, b - c.b);
 }
 
 RGBColor RGBColor::operator * (const RGBColor& c) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor(r * c.r, g * c.g, b * c.b);
 }
 
 bool RGBColor::operator == (const RGBColor& c) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return ((r == c.r) && (g == c.g) && (b == c.b));
 }
 
-bool RGBColor::operator != (const RGBColor& b) const {
-    /* TODO */ NOT_IMPLEMENTED;
+bool RGBColor::operator != (const RGBColor& x) const {
+    return (r != x.r) || (g != x.g) || (b == x.b);
 }
 
 RGBColor RGBColor::clamp() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    
+    float red=r, blue=b, green=g;
+
+    if (r > 1.f) red = 1.f;
+    else if (r < 0.f)red = 0.f;
+
+    if (g > 1.f)green = 1.f;
+    else if (g < 0.f)green = 0.f;
+
+    if (b > 1.f)blue = 1.f;
+    else if (b < 0.f)blue = 0.f;
+
+    return RGBColor(red, green, blue);
 }
 
 RGBColor RGBColor::gamma(float gam) const {
@@ -42,15 +55,15 @@ float RGBColor::luminance() const {
 }
 
 RGBColor operator * (float scalar, const RGBColor& c) {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor(scalar * c.r, scalar * c.g, scalar * c.b);
 }
 
 RGBColor operator * (const RGBColor& c, float scalar) {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor(scalar * c.r, scalar * c.g, scalar * c.b);
 }
 
 RGBColor operator / (const RGBColor& c, float scalar) {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor(c.r / scalar,  c.g / scalar, c.b / scalar);
 }
 
 }

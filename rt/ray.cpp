@@ -6,11 +6,14 @@ namespace rt {
 
 Ray::Ray(const Point& o, const Vector& d)
 {
+    this->o = o;
+    this->d = d;
     assert(d != Vector::rep(0.0f));
 }
 
 Point Ray::getPoint(float distance) const {
-    /* TODO */ NOT_IMPLEMENTED;
+
+    return Point(o + distance * d);
 }
 
 }

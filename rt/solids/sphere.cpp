@@ -4,7 +4,10 @@ namespace rt {
 
 Sphere::Sphere(const Point& center, float radius, CoordMapper* texMapper, Material* material)
 {
-    /* TODO */
+    this->center = center;
+    this->radius = radius;
+    this->material = material;
+    this->texMapper = texMapper;
 }
 
 BBox Sphere::getBounds() const {
@@ -12,7 +15,8 @@ BBox Sphere::getBounds() const {
 }
 
 Intersection Sphere::intersect(const Ray& ray, float previousBestDistance) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    float distance;
+    return Intersection::failure();
 }
 
 Solid::Sample Sphere::sample() const {
@@ -20,7 +24,7 @@ Solid::Sample Sphere::sample() const {
 }
 
 float Sphere::getArea() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return 4 * M_PI*radius*radius;
 }
 
 }

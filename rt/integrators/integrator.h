@@ -3,6 +3,7 @@
 
 #include <core/assert.h>
 #include <core/color.h>
+#include <rt/world.h>
 
 namespace rt {
 

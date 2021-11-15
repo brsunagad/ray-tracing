@@ -37,6 +37,9 @@ public:
 
 } // namespace rt
 
+#ifdef __APPLE__
+#undef assert
+#endif
 #ifndef NDEBUG
 #ifndef assert
 #define assert(cond) if(!(cond)) throw rt::Assert() << "Assertion failure at " << __FILE__ << ":" << __LINE__ << " -- " << #cond << " -- "

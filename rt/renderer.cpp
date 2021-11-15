@@ -12,9 +12,23 @@ Renderer::Renderer(Camera* cam, Integrator* integrator)
 {}
 
 void Renderer::render(Image& img) {
-    /* TODO */ NOT_IMPLEMENTED;
-}
+    img.clear(RGBColor(0, 0, 0));
 
+    for (uint i = 0; i < img.width(); i++) {
+        for (uint j = 0; j < img.height(); j++) {
+
+            // Normalized device coordinates [0, 1]
+            float ndcx = (i + 0.5) / img.width();
+            float ndcy = (j + 0.5) / img.height();
+
+            // Screen space coordinates [-1, 1]
+            float sscx = ndcx * 2 - 1;
+            float sscy = 1- ndcy * 2;
+
+            img(i,j)= integrator->getRadiance(cam->getPrimaryRay(sscx,sscy));
+        }
+    }
+}
 }
 
 rt::RGBColor a1computeColor(rt::uint x, rt::uint y, rt::uint width, rt::uint height);

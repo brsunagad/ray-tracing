@@ -24,6 +24,12 @@ public:
     Point local() const;
 
     operator bool() const; //this allows intersection object to be put directly in conditional statements. Becomes true iff there is an intersection
+
+    bool success = true;
+
+private:
+    Vector m_normal;
+    Point m_local;
 };
 
 }

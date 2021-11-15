@@ -4,27 +4,35 @@ namespace rt {
 
 Intersection::Intersection(float distance, const Ray& ray, const Solid* solid, const Vector& normal, const Point& local)
 {
-    /* TODO */
+    this->distance = distance;
+    this->ray = ray;
+    this->solid = solid;
+
+    this->m_normal = normal;
+    this->m_local = local;
 }
 
 Intersection::operator bool() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return success;
 }
 
 Intersection Intersection::failure() {
-    /* TODO */ NOT_IMPLEMENTED;
+    Intersection fail = Intersection();
+    fail.success = false;
+    return fail;
+
 }
 
 Point Intersection::hitPoint() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return m_local;
 }
 
 Vector Intersection::normal() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return m_normal;
 }
 
 Point Intersection::local() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return m_local;
 }
 
 }

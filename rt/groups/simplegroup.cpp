@@ -11,9 +11,10 @@ Intersection SimpleGroup::intersect( const Ray& ray, float previousBestDistance)
     Intersection temp;
     for(auto p : primitives) {
     	temp = p->intersect(ray, previousBestDistance);
-    	if (temp)
+    	if (temp){
             previousBestDistance = temp.distance;
     		result = temp;
+        }
 	}
 	return result;
 }

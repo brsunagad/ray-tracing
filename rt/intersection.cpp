@@ -24,7 +24,7 @@ Intersection Intersection::failure() {
 }
 
 Point Intersection::hitPoint() const {
-    return m_local;
+    return ray.o + distance * ray.d;
 }
 
 Vector Intersection::normal() const {

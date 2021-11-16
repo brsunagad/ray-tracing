@@ -15,8 +15,7 @@ BBox Sphere::getBounds() const {
 }
 
 Intersection Sphere::intersect(const Ray& ray, float previousBestDistance) const {
-    float distance;
-    return Intersection::failure();
+ 
 }
 
 Solid::Sample Sphere::sample() const {

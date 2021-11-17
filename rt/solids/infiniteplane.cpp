@@ -17,7 +17,7 @@ BBox InfinitePlane::getBounds() const {
 Intersection InfinitePlane::intersect(const Ray& ray, float previousBestDistance) const {
     float ddotn = dot(ray.d,normal);
     
-    if(ddotn == 0)
+    if(ddotn <= 1e-6 && ddotn >= -1e-6)
     	// if the ray is perpendicular to the normal, there would be none or infinite hitpoints
     	// both cases will return a failure.
         return Intersection::failure();

@@ -24,10 +24,10 @@ float AABox::getArea() const {
 
 Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const {
 
-	std::cout << "AABOX" << std::endl;
-	std::cout << "--> Ray vector = (" << ray.d.x << ", " << ray.d.y << ", " << ray.d.z << ")" << std::endl;
-	std::cout << "--> Ray Origin = (" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")" << std::endl;
-	std::cout << "--> Prev distance = " << previousBestDistance << std::endl;
+	// std::cout << "AABOX" << std::endl;
+	// std::cout << "--> Ray vector = (" << ray.d.x << ", " << ray.d.y << ", " << ray.d.z << ")" << std::endl;
+	// std::cout << "--> Ray Origin = (" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")" << std::endl;
+	// std::cout << "--> Prev distance = " << previousBestDistance << std::endl;
 
 	float xnear, xfar, ynear, yfar, znear, zfar;
 	float invdx = 1.0f/ray.d.x;
@@ -35,33 +35,46 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	float invdz = 1.0f/ray.d.z;
 
 	// if the ray goes in negative direction, far and near are changed
-    if (ray.d.x >= 0){
+    if (ray.d.x > 0){
     	xnear = (minCorner.x - ray.o.x)*invdx;
 	    xfar = (maxCorner.x - ray.o.x)*invdx;
-    } else {
+    } else if (ray.d.x < 0) {
     	xfar = (minCorner.x - ray.o.x)*invdx;
 	    xnear = (maxCorner.x - ray.o.x)*invdx;
+    } else {
+    	xfar = std::numeric_limits<float>::infinity();
+    	xnear = -std::numeric_limits<float>::infinity();
     }
-    if (ray.d.y >= 0){
+
+    if (ray.d.y > 0){
 	    ynear = (minCorner.y - ray.o.y)*invdy;
 	    yfar = (maxCorner.y - ray.o.y)*invdy;
-    } else {
+    } else if (ray.d.y < 0) {
 	    yfar = (minCorner.y - ray.o.y)*invdy;
 	    ynear = (maxCorner.y - ray.o.y)*invdy;
+    } else {
+    	yfar = std::numeric_limits<float>::infinity();
+    	ynear = -std::numeric_limits<float>::infinity();
     }
-    if (ray.d.z >= 0){
+
+    if (ray.d.z > 0){
  	    znear = (minCorner.z - ray.o.z)*invdz;
 	    zfar = (maxCorner.z - ray.o.z)*invdz;
-    } else {
+    } else if (ray.d.z < 0) {
     	zfar = (minCorner.z - ray.o.z)*invdz;
 	    znear = (maxCorner.z - ray.o.z)*invdz;
-    }    
+    } else {
+    	zfar = std::numeric_limits<float>::infinity();
+    	znear = -std::numeric_limits<float>::infinity();
+    }
 
     float maxNear = max(xnear,ynear,znear);
     float minfar = min(xfar,yfar,zfar);
 
     std::cout << "Nears: (" << xnear << ", " << ynear << ", " << znear << ")" << std::endl;
 	std::cout << "Fars: (" << xfar << ", " << yfar << ", " << zfar << ")" << std::endl;
+	std::cout << "Maxmins: (" << maxNear << ", " << minfar << std::endl;
+
 
     if (maxNear <= minfar && maxNear >= 0 && maxNear<previousBestDistance)
     {

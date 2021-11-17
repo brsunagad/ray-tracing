@@ -23,6 +23,12 @@ float AABox::getArea() const {
 }
 
 Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const {
+
+	std::cout << "AABOX" << std::endl;
+	std::cout << "--> Ray vector = (" << ray.d.x << ", " << ray.d.y << ", " << ray.d.z << ")" << std::endl;
+	std::cout << "--> Ray vector = (" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")" << std::endl;
+	std::cout << "--> Prev distance = " << previousBestDistance << std::endl;
+
 	float xnear, xfar, ynear, yfar, znear, zfar;
 	// if the ray goes in negative direction, far and near are changed
     if (ray.d.x >= 0){
@@ -50,24 +56,27 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
     float maxNear = max(xnear,ynear,znear);
     float minfar = min(xfar,yfar,zfar);
 
-    if (maxNear < minfar && maxNear >= 0 && maxNear<previousBestDistance)
+    std::cout << "Nears: (" << xnear << ", " << ynear << ", " << znear << ")" << std::endl;
+	std::cout << "Fars: (" << xfar << ", " << yfar << ", " << zfar << ")" << std::endl;
+
+    if (maxNear <= minfar && maxNear >= 0 && maxNear<previousBestDistance)
     {
     	// Decide which face of the BBox is intersecting
     	Vector normal;
 	    if(maxNear == xnear){
-	        if (xnear< xfar)
+	        if (xnear < xfar)
 	           normal = Vector(-1.0f, 0.f, 0.f);
 	        else 
 	           normal = Vector(1.0f, 0.f, 0.f);
 	    }
 	    else if(maxNear == ynear){
-	        if (ynear< yfar)
+	        if (ynear < yfar)
 	            normal = Vector(0.f, -1.0f, 0.f);
 	        else 
 	            normal = Vector(0.f, 1.0f, 0.f);
 	    }      
 	    else{
-	        if (znear< zfar)
+	        if (znear < zfar)
 	            normal = Vector(0.f, 0.f, 1.0f);
 	        else 
 	            normal = Vector(0.f, 0.f, -1.0f);

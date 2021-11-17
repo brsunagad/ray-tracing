@@ -38,42 +38,31 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
     if (ray.d.x > 0){
     	xnear = (minCorner.x - ray.o.x)*invdx;
 	    xfar = (maxCorner.x - ray.o.x)*invdx;
-    } else if (ray.d.x < 0) {
+    } else {
     	xfar = (minCorner.x - ray.o.x)*invdx;
 	    xnear = (maxCorner.x - ray.o.x)*invdx;
-    } else {
-    	xfar = std::numeric_limits<float>::infinity();
-    	xnear = -std::numeric_limits<float>::infinity();
     }
-
-    if (ray.d.y > 0){
+    if (ray.d.y >= 0){
 	    ynear = (minCorner.y - ray.o.y)*invdy;
 	    yfar = (maxCorner.y - ray.o.y)*invdy;
-    } else if (ray.d.y < 0) {
+    } else {
 	    yfar = (minCorner.y - ray.o.y)*invdy;
 	    ynear = (maxCorner.y - ray.o.y)*invdy;
-    } else {
-    	yfar = std::numeric_limits<float>::infinity();
-    	ynear = -std::numeric_limits<float>::infinity();
     }
-
-    if (ray.d.z > 0){
+    if (ray.d.z >= 0){
  	    znear = (minCorner.z - ray.o.z)*invdz;
 	    zfar = (maxCorner.z - ray.o.z)*invdz;
-    } else if (ray.d.z < 0) {
+    } else {
     	zfar = (minCorner.z - ray.o.z)*invdz;
 	    znear = (maxCorner.z - ray.o.z)*invdz;
-    } else {
-    	zfar = std::numeric_limits<float>::infinity();
-    	znear = -std::numeric_limits<float>::infinity();
     }
 
     float maxNear = max(xnear,ynear,znear);
     float minfar = min(xfar,yfar,zfar);
 
-    std::cout << "Nears: (" << xnear << ", " << ynear << ", " << znear << ")" << std::endl;
-	std::cout << "Fars: (" << xfar << ", " << yfar << ", " << zfar << ")" << std::endl;
-	std::cout << "Maxmins: (" << maxNear << ", " << minfar << std::endl;
+ //    std::cout << "Nears: (" << xnear << ", " << ynear << ", " << znear << ")" << std::endl;
+	// std::cout << "Fars: (" << xfar << ", " << yfar << ", " << zfar << ")" << std::endl;
+	// std::cout << "Maxmins: (" << maxNear << ", " << minfar << std::endl;
 
 
     if (maxNear <= minfar && maxNear >= 0 && maxNear<previousBestDistance)

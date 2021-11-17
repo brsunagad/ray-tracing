@@ -26,31 +26,35 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 
 	std::cout << "AABOX" << std::endl;
 	std::cout << "--> Ray vector = (" << ray.d.x << ", " << ray.d.y << ", " << ray.d.z << ")" << std::endl;
-	std::cout << "--> Ray vector = (" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")" << std::endl;
+	std::cout << "--> Ray Origin = (" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")" << std::endl;
 	std::cout << "--> Prev distance = " << previousBestDistance << std::endl;
 
 	float xnear, xfar, ynear, yfar, znear, zfar;
+	float invdx = 1.0f/ray.d.x;
+	float invdy = 1.0f/ray.d.y;
+	float invdz = 1.0f/ray.d.z;
+
 	// if the ray goes in negative direction, far and near are changed
     if (ray.d.x >= 0){
-    	xnear = (minCorner.x - ray.o.x)/ray.d.x;
-	    xfar = (maxCorner.x - ray.o.x)/ray.d.x;
+    	xnear = (minCorner.x - ray.o.x)*invdx;
+	    xfar = (maxCorner.x - ray.o.x)*invdx;
     } else {
-    	xfar = (minCorner.x - ray.o.x)/ray.d.x;
-	    xnear = (maxCorner.x - ray.o.x)/ray.d.x;
+    	xfar = (minCorner.x - ray.o.x)*invdx;
+	    xnear = (maxCorner.x - ray.o.x)*invdx;
     }
     if (ray.d.y >= 0){
-	    ynear = (minCorner.y - ray.o.y)/ray.d.y;
-	    yfar = (maxCorner.y - ray.o.y)/ray.d.y;
+	    ynear = (minCorner.y - ray.o.y)*invdy;
+	    yfar = (maxCorner.y - ray.o.y)*invdy;
     } else {
-	    yfar = (minCorner.y - ray.o.y)/ray.d.y;
-	    ynear = (maxCorner.y - ray.o.y)/ray.d.y;
+	    yfar = (minCorner.y - ray.o.y)*invdy;
+	    ynear = (maxCorner.y - ray.o.y)*invdy;
     }
     if (ray.d.z >= 0){
- 	    znear = (minCorner.z - ray.o.z)/ray.d.z;
-	    zfar = (maxCorner.z - ray.o.z)/ray.d.z;
+ 	    znear = (minCorner.z - ray.o.z)*invdz;
+	    zfar = (maxCorner.z - ray.o.z)*invdz;
     } else {
-    	zfar = (minCorner.z - ray.o.z)/ray.d.z;
-	    znear = (maxCorner.z - ray.o.z)/ray.d.z;
+    	zfar = (minCorner.z - ray.o.z)*invdz;
+	    znear = (maxCorner.z - ray.o.z)*invdz;
     }    
 
     float maxNear = max(xnear,ynear,znear);

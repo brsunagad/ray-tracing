@@ -1,5 +1,7 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <rt/solids/disc.h>
-#include <corecrt_math_defines.h>
+
 namespace rt {
 
 Disc::Disc(const Point& center, const Vector& normal, float radius, CoordMapper* texMapper, Material* material)

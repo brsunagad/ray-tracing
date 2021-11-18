@@ -1,5 +1,6 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <rt/solids/sphere.h>
-#include <corecrt_math_defines.h>
 
 namespace rt {
 

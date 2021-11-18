@@ -1,8 +1,8 @@
-# Install script for directory: D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo
+# Install script for directory: D:/GitRepositories/cg-ray-tracer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "D:/GitRepositories/cg-ray-tracer/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

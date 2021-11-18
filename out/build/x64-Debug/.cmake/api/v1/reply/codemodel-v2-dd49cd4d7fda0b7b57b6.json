@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "cgray::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-cgray-Debug-5ac94ff547c398a5ffd0.json",
+					"jsonFile" : "target-cgray-Debug-d22460fb54e898f79bda.json",
 					"name" : "cgray",
 					"projectIndex" : 0
 				}
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug",
-		"source" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo"
+		"build" : "D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug",
+		"source" : "D:/GitRepositories/cg-ray-tracer"
 	},
 	"version" : 
 	{

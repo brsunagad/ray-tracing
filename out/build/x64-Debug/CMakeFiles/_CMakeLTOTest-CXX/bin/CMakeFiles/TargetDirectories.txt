@@ -1,4 +1,4 @@
-D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
-D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
-D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
-D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir
+D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
+D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir

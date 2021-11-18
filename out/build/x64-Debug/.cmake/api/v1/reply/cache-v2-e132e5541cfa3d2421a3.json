@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug"
+			"value" : "D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug"
 		},
 		{
 			"name" : "CG1-raytracer_SOURCE_DIR",
@@ -23,7 +23,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo"
+			"value" : "D:/GitRepositories/cg-ray-tracer"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -63,7 +63,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug"
+			"value" : "d:/GitRepositories/cg-ray-tracer/out/build/x64-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -551,7 +551,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo"
+			"value" : "D:/GitRepositories/cg-ray-tracer"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -563,7 +563,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/install/x64-Debug"
+			"value" : "D:/GitRepositories/cg-ray-tracer/out/install/x64-Debug"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1103,7 +1103,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/MinGW/include"
+			"value" : "ZLIB_INCLUDE_DIR-NOTFOUND"
 		},
 		{
 			"name" : "ZLIB_LIBRARY_DEBUG",

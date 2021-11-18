@@ -1,5 +1,5 @@
 #include <rt/solids/disc.h>
-
+#include <corecrt_math_defines.h>
 namespace rt {
 
 Disc::Disc(const Point& center, const Vector& normal, float radius, CoordMapper* texMapper, Material* material)
@@ -16,7 +16,7 @@ BBox Disc::getBounds() const {
 Intersection Disc::intersect(const Ray& ray, float previousBestDistance) const {
     float rdotn = dot(ray.d,normal);
 
-    if (rdotn <= 1e-6 && rdotn >= -1e-6)
+    if (rdotn <= epsilon && rdotn >= -epsilon)
         return Intersection::failure();
 
     float distance = dot(center - ray.o, normal) / rdotn;

@@ -6,6 +6,10 @@
 namespace rt {
 
 class Triangle : public Solid {
+private:
+    Point v1, v2, v3;
+    Vector v1v2, v1v3, normal;
+
 public:
     Triangle() {}
     Triangle(Point vertices[3], CoordMapper* texMapper, Material* material);
@@ -15,6 +19,7 @@ public:
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;
     virtual Sample sample() const;
     virtual float getArea() const;
+
 };
 
 }

@@ -164,6 +164,9 @@
 			"path" : "assignment-01.cmake"
 		},
 		{
+			"path" : "assignment-02.cmake"
+		},
+		{
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CheckIPOSupported.cmake"
@@ -202,8 +205,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo/out/build/x64-Debug",
-		"source" : "D:/OneDrive - Universität des Saarlandes/CG/Assignments/Git Repo"
+		"build" : "D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug",
+		"source" : "D:/GitRepositories/cg-ray-tracer"
 	},
 	"version" : 
 	{

@@ -33,7 +33,7 @@ Solid::Sample Quad::sample() const {
 }
 
 float Quad::getArea() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return tri1->getArea()+tri2->getArea();
 }
 
 }

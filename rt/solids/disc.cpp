@@ -26,7 +26,7 @@ Intersection Disc::intersect(const Ray& ray, float previousBestDistance) const {
     float distToCenter = (intersectPoint - center).length();
 
     if (distToCenter < radius && distance >= 0 && distance < previousBestDistance) {
-        return Intersection(distance, ray, this, normal, center);
+        return Intersection(distance, ray, this, normal, ray.getPoint(distance));
     }
     else
         return Intersection::failure();

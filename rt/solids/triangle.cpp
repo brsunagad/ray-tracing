@@ -20,8 +20,7 @@ BBox Triangle::getBounds() const {
 }
 
 Intersection Triangle::intersect(const Ray& ray, float previousBestDistance) const {
-    //this implementation follows Möller-Trumbore algorithm https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection
-  /* TODO */
+    //this implementation follows Möller-Trumbore algorithm 
   
     Vector pvec = cross(ray.d, v1v3);
     float det = dot(v1v2, pvec);
@@ -38,13 +37,22 @@ Intersection Triangle::intersect(const Ray& ray, float previousBestDistance) con
     float v = invDet * dot(ray.d, qvec);
     if (v < 0.0 || u + v > 1.0)
         return Intersection::failure();
-    // At this stage we can compute t to find out where the intersection point is on the line.
+
     float t = invDet * dot(v1v3, qvec);
     if ((t > epsilon) && (t < previousBestDistance))
-        return Intersection(t, ray, this, normal, v1);//TODO v1 to be replaced with bary centric coordinates in future assignments
+        return Intersection(t, ray, this, normal, getBaryCentricCoordinates(ray.getPoint(t)));
     else
         return  Intersection::failure();
    
+}
+
+Point Triangle::getBaryCentricCoordinates(const Point& p) const {
+    Point temp;
+    temp.x = 0.5 * cross(v2 - p, v3 - p).length() / getArea();
+    temp.y = 0.5 * cross(v1 - p, v3 - p).length() / getArea();
+    temp.z = 0.5 * cross(v1 - p, v2 - p).length() / getArea();
+   
+    return temp;
 }
 
 

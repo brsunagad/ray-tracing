@@ -35,7 +35,7 @@ foreach(f ${ASSIGNMENT_FILES})
     list(APPEND ALL_ASSIGNMENT_SOURCES ${ASSIGNMENT_SOURCES})
 endforeach()
 
-add_executable(cgray ${ALL_ASSIGNMENT_SOURCES} main/main.cpp)
+add_executable(cgray ${ALL_ASSIGNMENT_SOURCES} main/main.cpp "rt/solids/quadric.cpp")
 # Compile with IPO in Release mode
 include(CheckIPOSupported)
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT IPO_ERROR_MESSAGE)

@@ -9,6 +9,7 @@
 #include <rt/solids/triangle.h>
 #include <rt/solids/quad.h>
 #include <rt/solids/disc.h>
+#include <rt/solids/quadric.h>
 #include <rt/solids/aabox.h>
 #include <rt/cameras/perspective.h>
 #include <rt/integrators/casting.h>
@@ -50,4 +51,15 @@ void a_solids() {
     Renderer engineb(&cam, &integratorb);
     engineb.render(img);
     img.writePNG("a2-2.png");
+
+    SimpleGroup* scene2 = new SimpleGroup();
+    scene2->add(new Quadric(Point(-3, -0.75f, 1.5f), 0.25, 1, 1, 0, 0, 0, 0, 0, 0, -5, nullptr, nullptr));
+    World world2;
+    world2.scene = scene2;
+
+    RayCastingDistIntegrator integrator2(&world2, RGBColor(1.0f, 0.2f, 0.0f), 4.0f, RGBColor(0.2f, 1.0f, 0.0f), 12.0f);
+    Renderer engine2(&cam, &integrator2);
+    engine2.render(img);
+    img.writePNG("a2-quadric.png");
+    
 }

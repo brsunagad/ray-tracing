@@ -277,6 +277,15 @@ build CMakeFiles\cgray.dir\main\main.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..
   TARGET_COMPILE_PDB = CMakeFiles\cgray.dir\
   TARGET_PDB = cgray.pdb
 
+build CMakeFiles\cgray.dir\rt\solids\quadric.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\quadric.cpp || cmake_object_order_depends_target_cgray
+  DEFINES = -DGDIPLUS_SUPPORT
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\
+  OBJECT_DIR = CMakeFiles\cgray.dir
+  OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
+  TARGET_COMPILE_PDB = CMakeFiles\cgray.dir\
+  TARGET_PDB = cgray.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cgray
@@ -285,7 +294,7 @@ build CMakeFiles\cgray.dir\main\main.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..
 #############################################
 # Link the executable cgray.exe
 
-build cgray.exe: CXX_EXECUTABLE_LINKER__cgray_Debug CMakeFiles\cgray.dir\core\image.cpp.obj CMakeFiles\cgray.dir\core\julia.cpp.obj CMakeFiles\cgray.dir\core\scalar.cpp.obj CMakeFiles\cgray.dir\core\color.cpp.obj CMakeFiles\cgray.dir\core\point.cpp.obj CMakeFiles\cgray.dir\core\vector.cpp.obj CMakeFiles\cgray.dir\rt\cameras\orthographic.cpp.obj CMakeFiles\cgray.dir\rt\cameras\perspective.cpp.obj CMakeFiles\cgray.dir\rt\ray.cpp.obj CMakeFiles\cgray.dir\rt\renderer.cpp.obj CMakeFiles\cgray.dir\main\a_julia.cpp.obj CMakeFiles\cgray.dir\main\a_cameras.cpp.obj CMakeFiles\cgray.dir\rt\groups\simplegroup.cpp.obj CMakeFiles\cgray.dir\rt\integrators\casting.cpp.obj CMakeFiles\cgray.dir\rt\integrators\castingdist.cpp.obj CMakeFiles\cgray.dir\rt\solids\solid.cpp.obj CMakeFiles\cgray.dir\rt\solids\aabox.cpp.obj CMakeFiles\cgray.dir\rt\solids\disc.cpp.obj CMakeFiles\cgray.dir\rt\solids\infiniteplane.cpp.obj CMakeFiles\cgray.dir\rt\solids\quad.cpp.obj CMakeFiles\cgray.dir\rt\solids\sphere.cpp.obj CMakeFiles\cgray.dir\rt\solids\triangle.cpp.obj CMakeFiles\cgray.dir\rt\intersection.cpp.obj CMakeFiles\cgray.dir\rt\bbox.cpp.obj CMakeFiles\cgray.dir\main\a_solids.cpp.obj CMakeFiles\cgray.dir\main\main.cpp.obj
+build cgray.exe: CXX_EXECUTABLE_LINKER__cgray_Debug CMakeFiles\cgray.dir\core\image.cpp.obj CMakeFiles\cgray.dir\core\julia.cpp.obj CMakeFiles\cgray.dir\core\scalar.cpp.obj CMakeFiles\cgray.dir\core\color.cpp.obj CMakeFiles\cgray.dir\core\point.cpp.obj CMakeFiles\cgray.dir\core\vector.cpp.obj CMakeFiles\cgray.dir\rt\cameras\orthographic.cpp.obj CMakeFiles\cgray.dir\rt\cameras\perspective.cpp.obj CMakeFiles\cgray.dir\rt\ray.cpp.obj CMakeFiles\cgray.dir\rt\renderer.cpp.obj CMakeFiles\cgray.dir\main\a_julia.cpp.obj CMakeFiles\cgray.dir\main\a_cameras.cpp.obj CMakeFiles\cgray.dir\rt\groups\simplegroup.cpp.obj CMakeFiles\cgray.dir\rt\integrators\casting.cpp.obj CMakeFiles\cgray.dir\rt\integrators\castingdist.cpp.obj CMakeFiles\cgray.dir\rt\solids\solid.cpp.obj CMakeFiles\cgray.dir\rt\solids\aabox.cpp.obj CMakeFiles\cgray.dir\rt\solids\disc.cpp.obj CMakeFiles\cgray.dir\rt\solids\infiniteplane.cpp.obj CMakeFiles\cgray.dir\rt\solids\quad.cpp.obj CMakeFiles\cgray.dir\rt\solids\sphere.cpp.obj CMakeFiles\cgray.dir\rt\solids\triangle.cpp.obj CMakeFiles\cgray.dir\rt\intersection.cpp.obj CMakeFiles\cgray.dir\rt\bbox.cpp.obj CMakeFiles\cgray.dir\main\a_solids.cpp.obj CMakeFiles\cgray.dir\main\main.cpp.obj CMakeFiles\cgray.dir\rt\solids\quadric.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = gdiplus.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

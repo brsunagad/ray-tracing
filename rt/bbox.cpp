@@ -1,6 +1,8 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <rt/bbox.h>
+#include <rt/solids/aabox.h>
+#include <tuple>
 
 namespace rt {
 
@@ -50,6 +52,18 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
         return std::make_pair(-INFINITY, INFINITY);
     else if (isEmpty)
         return std::make_pair(INFINITY, -INFINITY);
+    else {
+        AABox aabox(min, max, nullptr, nullptr);
+        Intersection intersect = aabox.intersect(ray, INFINITY);
+        if (intersect) {
+            float t1, t2;
+            Vector normal;
+            std::tie(t1, t2, normal) = aabox.getIntersectionValues();
+            return std::make_pair(t1, t2);
+        }
+        else
+            return std::make_pair(INFINITY, -INFINITY); // t2>t1 is checked in finding AABox intersection
+    }
 }
 
 bool BBox::isUnbound() const {

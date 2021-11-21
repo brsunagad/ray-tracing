@@ -1,4 +1,5 @@
 #include <rt/solids/aabox.h>
+#include <tuple>
 
 namespace rt {
 
@@ -87,10 +88,21 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	        else 
 	            normal = Vector(0.f, 0.f, -1.0f);
 	    } 
-
+		
+		setIntersectionValues(maxNear, minfar, normal);
     	return Intersection(maxNear,ray, this, normal, ray.getPoint(maxNear));
     } else
     	return Intersection::failure();
+}
+void AABox::setIntersectionValues(float t1, float t2, Vector& normal) const{
+	this->t1 = t1;
+	this->t2 = t2;
+	this->_normal = normal;
+
+}
+
+std::tuple<float, float, Vector> AABox::getIntersectionValues() const {
+	return std::make_tuple(t1, t2, _normal);
 }
 
 }

@@ -6,6 +6,8 @@
 #include <utility>
 #include <core/point.h>
 #include <core/vector.h>
+#include <tuple>
+
 
 namespace rt {
 

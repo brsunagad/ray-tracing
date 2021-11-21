@@ -35,21 +35,21 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	float invdz = 1.0f/ray.d.z;
 
 	// if the ray goes in negative direction, far and near are changed
-    if (ray.d.x > 0){
+    if (invdx > 0){
     	xnear = (minCorner.x - ray.o.x)*invdx;
 	    xfar = (maxCorner.x - ray.o.x)*invdx;
     } else {
     	xfar = (minCorner.x - ray.o.x)*invdx;
 	    xnear = (maxCorner.x - ray.o.x)*invdx;
     }
-    if (ray.d.y >= 0){
+    if (invdy >= 0){
 	    ynear = (minCorner.y - ray.o.y)*invdy;
 	    yfar = (maxCorner.y - ray.o.y)*invdy;
     } else {
 	    yfar = (minCorner.y - ray.o.y)*invdy;
 	    ynear = (maxCorner.y - ray.o.y)*invdy;
     }
-    if (ray.d.z >= 0){
+    if (invdz >= 0){
  	    znear = (minCorner.z - ray.o.z)*invdz;
 	    zfar = (maxCorner.z - ray.o.z)*invdz;
     } else {

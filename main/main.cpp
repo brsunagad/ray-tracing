@@ -13,6 +13,7 @@ void a_smooth();
 void a_bumpmappers();
 
 int main(int argc, char* argv[]) {
-    a_indexing();
+    a_solids();
+    //a_indexing();
     return 0;
 }

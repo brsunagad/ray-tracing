@@ -10,13 +10,23 @@ namespace rt {
 class Ray;
 
 class BBox {
+private:
+    bool isEmpty, isFull;
+
 public:
     Point min, max;
 
     BBox() {}
-    BBox(const Point& min, const Point& max)
-    {
-        /* TODO */
+    BBox(const Point& min, const Point& max): min(min), max(max), isEmpty(false), isFull(false) {}
+    BBox(bool isEmpty, bool isFull): isEmpty(isEmpty), isFull(isFull){
+        if (isFull) {
+            min.x = -INFINITY;
+            min.y = -INFINITY;
+            min.z = -INFINITY;
+            max.x = INFINITY;
+            max.y = INFINITY;
+            max.z = INFINITY;
+        }
     }
 
     static BBox empty();
@@ -26,11 +36,15 @@ public:
     void extend(const BBox& bbox);
 
     Vector diagonal() const {
-        /* TODO */ NOT_IMPLEMENTED;
+        return max - min;
     }
 
     float area() const {
-        /* TODO */ NOT_IMPLEMENTED;
+        float l = max.x - min.x;
+        float b = max.y - min.y;
+        float h = max.z - min.z;
+
+        return 2 * (l * b + b * h + h * l); 
     }
 
     std::pair<float, float> intersect(const Ray& ray) const;

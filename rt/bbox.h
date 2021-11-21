@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #ifndef CG1RAYTRACER_BBOX_HEADER
 #define CG1RAYTRACER_BBOX_HEADER
 

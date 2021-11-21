@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <rt/bbox.h>
 
 namespace rt {
@@ -53,7 +55,8 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
 bool BBox::isUnbound() const {
     if ((min.x == -INFINITY && max.x == INFINITY) || (min.y == -INFINITY && max.y == INFINITY) || (min.z == -INFINITY && max.z == INFINITY))
         return true;
-    else return false;
+    else
+        return false;
 }
 
 }

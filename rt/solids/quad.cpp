@@ -12,7 +12,16 @@ Quad::Quad(const Point& origin, const Vector& span1, const Vector& span2, CoordM
 }
 
 BBox Quad::getBounds() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    Point min, max;
+    min.x = rt::min(rt::min(p1.x, p2.x, p3.x), p4.x);
+    min.y = rt::min(rt::min(p1.y, p2.y, p3.y), p4.y);
+    min.z = rt::min(rt::min(p1.z, p2.z, p3.z), p4.z);
+
+    max.x = rt::max(rt::max(p1.x, p2.x, p3.x), p4.x);
+    max.y = rt::max(rt::max(p1.y, p2.y, p3.y), p4.y);
+    max.z = rt::max(rt::max(p1.z, p2.z, p3.z), p4.z);
+
+    return BBox(min, max);
 }
 
 Intersection Quad::intersect(const Ray& ray, float previousBestDistance) const {

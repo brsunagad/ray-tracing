@@ -5,14 +5,14 @@ namespace rt {
 
 AABox::AABox(const Point& corner1, const Point& corner2, CoordMapper* texMapper, Material* material)
 {
-    this->maxCorner = max(corner1,corner2);
-    this->minCorner = min(corner1,corner2);
+    this->maxCorner = max(corner1, corner2);
+    this->minCorner = min(corner1, corner2);
     this->material = material;
     this->texMapper = texMapper;
 }
 
 BBox AABox::getBounds() const {
-    /* TODO */ NOT_IMPLEMENTED;
+	return BBox(minCorner, maxCorner);
 }
 
 Solid::Sample AABox::sample() const {

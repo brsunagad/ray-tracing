@@ -16,7 +16,16 @@ Triangle::Triangle(const Point& v1, const Point& v2, const Point& v3, CoordMappe
 }
 
 BBox Triangle::getBounds() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    Point min, max;
+    min.x = rt::min(v1.x, v2.x, v3.x);
+    min.y = rt::min(v1.y, v2.y, v3.y);
+    min.z = rt::min(v1.z, v2.z, v3.z);
+
+    max.x = rt::max(v1.x, v2.x, v3.x);
+    max.y = rt::max(v1.y, v2.y, v3.y);
+    max.z = rt::max(v1.z, v2.z, v3.z);
+
+    return BBox(min, max);
 }
 
 Intersection Triangle::intersect(const Ray& ray, float previousBestDistance) const {

@@ -11,7 +11,7 @@ InfinitePlane::InfinitePlane(const Point& origin, const Vector& normal, CoordMap
 }
 
 BBox InfinitePlane::getBounds() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return BBox::full();
 }
 
 Intersection InfinitePlane::intersect(const Ray& ray, float previousBestDistance) const {

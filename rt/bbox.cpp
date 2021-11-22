@@ -54,7 +54,7 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
         return std::make_pair(INFINITY, -INFINITY);
     else {
         AABox aabox(min, max, nullptr, nullptr);
-        Intersection intersect = aabox.intersect(ray, INFINITY);
+        Intersection intersect = aabox.intersect(ray, INFINITY);//passing infinity as previousbest distance 
         if (intersect) {
             float t1, t2;
             Vector normal;

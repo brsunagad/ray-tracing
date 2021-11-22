@@ -1,3 +1,5 @@
+#ifndef CG1RAYTRACER_QUADRIC_HEADER
+#define CG1RAYTRACER_QUADRIC_HEADER
 #include <rt/solids/solid.h>
 
 namespace rt {
@@ -20,3 +22,5 @@ namespace rt {
     };
 
 }
+
+#endif

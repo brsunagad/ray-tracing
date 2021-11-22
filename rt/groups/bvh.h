@@ -3,16 +3,40 @@
 
 #include <rt/groups/group.h>
 #include <rt/bbox.h>
-
+#include <rt/primitive.h>
 namespace rt {
 
+class  Node
+{
+public:
+    Node() {}
+
+    BBox bbox;
+    bool isLeaf;
+    Node* leftChild;
+    Node* rightChild;
+
+    void extend(const BBox& newBox) {
+        bbox.extend(newBox);
+    }
+
+    typedef std::vector<Primitive*> Primitives;
+    Primitives primitives;
+
+};
+
 class BVH : public Group {
+private:
+    Node* root = new Node();
 public:
     BVH();
 
     virtual BBox getBounds() const;
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;
     virtual void rebuildIndex();
+    void buildIndexStructure(Node* root);
+    float findSplitLength(int axis, BBox bbox);
+    int findSplitAxis(Vector vec);
     virtual void add(Primitive* p);
     virtual void setMaterial(Material* m);
     virtual void setCoordMapper(CoordMapper* cm);

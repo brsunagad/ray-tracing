@@ -15,8 +15,8 @@ void BVH::rebuildIndex() {
 void BVH::buildIndexStructure(Node* node)
 {
     int numPrimitives = node->primitives.size();
-    //if (numPrimitives <= 0)
-    //    return;
+    if (numPrimitives <= 0)
+       return;
 
     for (int i = 0; i < numPrimitives; i++)
         node->extend(node->primitives[i]->getBounds());//extend bbox to include primitives
@@ -76,15 +76,70 @@ int BVH::findSplitAxis(Vector vec) {
 }
 
 BBox BVH::getBounds() const {
-    return this->root->bbox;
+    return root->bbox;
 }
 
 Intersection BVH::intersect(const Ray& ray, float previousBestDistance) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    Intersection result = Intersection::failure();
+
+    // Does the ray intersect with the world?
+    std::pair<float,float> dists = root->bbox.intersect(ray);
+    float t1 = dists.first;
+    float t2 = dists.second;
+    if(t1 > t2){
+        // nope
+        return result;
+    } 
+    
+    // create the stack with the root inside to begin
+    std::vector<Node*> remainingNodes;
+    remainingNodes.push_back(root);
+    Node *currentNode;
+    Intersection temp;
+
+    while(!remainingNodes.empty()){
+        // Intersec with last node from stack, delete it from stack
+        currentNode = remainingNodes.back();
+        remainingNodes.pop_back();
+        // If current node does not have any childs, we intersec with its primitives
+        if (currentNode->isLeaf){
+            // std::cout << "->Leaf found" << std::endl;
+            for(auto p : currentNode->primitives) {
+                temp = p->intersect(ray, previousBestDistance);
+                if (temp){
+                    previousBestDistance = temp.distance;
+                    result = temp;
+                }
+            }
+        } else {
+            //We intersec with its childs and add them to the stack if they succed
+
+            // Intersec with left child
+            dists = currentNode->leftChild->bbox.intersect(ray);
+            t1 = dists.first;
+            t2 = dists.second;
+            if (t1 <= t2) {
+                // std::cout << "-->leftChild added to stack" << std::endl;
+                remainingNodes.push_back(currentNode->leftChild);
+            }
+
+            // Intersec with right child
+            dists = currentNode->rightChild->bbox.intersect(ray);
+            t1 = dists.first;
+            t2 = dists.second;
+            if (t1 <= t2) {
+                // std::cout << "-->rightChild added to stack" << std::endl;
+                remainingNodes.push_back(currentNode->rightChild);
+            }
+        }
+    } 
+    
+
+    return result;
 }
 
 void BVH::add(Primitive* p) {
-    /* TODO */ NOT_IMPLEMENTED;
+    primitives.push_back(p);
 }
 
 void BVH::setMaterial(Material* m) {

@@ -36,6 +36,15 @@ foreach(f ${ASSIGNMENT_FILES})
 endforeach()
 
 add_executable(cgray ${ALL_ASSIGNMENT_SOURCES} main/main.cpp "rt/solids/quadric.cpp"  )
+
+
+# OpenMP support
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(cgray OpenMP::OpenMP_CXX)
+endif()
+
+
 # Compile with IPO in Release mode
 include(CheckIPOSupported)
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT IPO_ERROR_MESSAGE)

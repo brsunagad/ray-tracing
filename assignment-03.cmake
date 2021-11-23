@@ -17,5 +17,9 @@ set(ASSIGNMENT_SOURCES
 file(COPY
     models/cow.obj
     models/cow.mtl
+    models/Mario.obj
+    models/Mario.mtl
+    models/Toad.obj
+    models/Toad.mtl
     DESTINATION ${CMAKE_BINARY_DIR}/models
 )

@@ -14,6 +14,7 @@ set(MY_ADDITIONAL_SOURCES
     rt/solids/triangle.cpp
     rt/intersection.cpp
     rt/bbox.cpp
+    rt/solids/quadric.cpp
 )
 
 set(ASSIGNMENT_SOURCES
@@ -33,6 +34,7 @@ set(ASSIGNMENT_SOURCES
     rt/intersection.h
     rt/primitive.h
     rt/world.h
+    rt/solids/quadric.h
     ${MY_ADDITIONAL_SOURCES}
     main/a_solids.cpp
 )

@@ -2,10 +2,6 @@
 
 namespace rt {
 
-Solid::Solid(CoordMapper* texMapper, Material* material)
-{
-    this->texMapper = texMapper;
-    this->material = material;
-}
+Solid::Solid(CoordMapper* texMapper, Material* material): texMapper(texMapper), material(material){}
 
 }

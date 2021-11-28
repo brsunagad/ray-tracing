@@ -3,13 +3,11 @@
 
 namespace rt {
 
-AABox::AABox(const Point& corner1, const Point& corner2, CoordMapper* texMapper, Material* material)
-{
-    this->maxCorner = max(corner1, corner2);
-    this->minCorner = min(corner1, corner2);
-    this->material = material;
-    this->texMapper = texMapper;
-}
+AABox::AABox(const Point& corner1, const Point& corner2, CoordMapper* texMapper, Material* material): 
+	maxCorner(max(corner1, corner2)),
+	minCorner(min(corner1, corner2)),
+	Solid(texMapper, material){}
+
 
 BBox AABox::getBounds() const {
 	return BBox(minCorner, maxCorner);

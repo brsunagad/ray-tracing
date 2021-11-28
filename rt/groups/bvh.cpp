@@ -43,6 +43,8 @@ void BVH::buildIndexStructure(Node* node)
                 node->rightChild->primitives.push_back(node->primitives[i]);
         }
 
+        node->primitives.clear();//clear parents primitives as only leaf nodes store primitives
+
         if (node->leftChild->primitives.size() == 0)//to make sure child nodes have atleast one primitive
         {
             node->leftChild->primitives.push_back(node->rightChild->primitives[0]);

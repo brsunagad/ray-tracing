@@ -20,15 +20,15 @@ void a_indexing() {
     scene->add(new Sphere(Point(2.5f,  -1.f,  -1), 0.5, nullptr, nullptr));
     scene->add(new Sphere(Point(4.5f,  .5f,  -1), 0.5 , nullptr, nullptr));
 
-    // loadOBJ(scene, "models/", "cow.obj");
-    loadOBJ(scene, "models/", "Toad.obj");
+    loadOBJ(scene, "models/", "cow.obj");
+    //loadOBJ(scene, "models/", "Toad.obj");
   
 	scene->rebuildIndex();
     World world;
     world.scene = scene;
 
-    // PerspectiveCamera cam1(Point(-8.85f, -7.85f, 7.0f), Vector(1.0f,1.0f,-0.6f), Vector(0, 0, 1), pi/8, pi/6);
-    PerspectiveCamera cam1(Point(-0.85f, 70.85f, 700.0f), Vector(0.0f,0.0f,-1.0f), Vector(0, 1, 0), pi/8, pi/6);
+    PerspectiveCamera cam1(Point(-8.85f, -7.85f, 7.0f), Vector(1.0f,1.0f,-0.6f), Vector(0, 0, 1), pi/8, pi/6);
+    //PerspectiveCamera cam1(Point(-0.85f, 70.85f, 700.0f), Vector(0.0f,0.0f,-1.0f), Vector(0, 1, 0), pi/8, pi/6);
     PerspectiveCamera cam2(Point(16.065f, -12.506f, 1.771f), Point(-0.286f, -0.107f, 1.35f)-Point(16.065f, -12.506f, 1.771f), Vector(0, 0, 1), pi/8, pi/6);
     RayCastingIntegrator integrator(&world);
 

@@ -17,6 +17,7 @@ void BVH::buildIndexStructure(Node* node)
     int numPrimitives = node->primitives.size();
     if (numPrimitives <= 0)
        return;
+    node->bbox = BBox::empty();
 
     for (int i = 0; i < numPrimitives; i++)
         node->extend(node->primitives[i]->getBounds());//extend bbox to include primitives

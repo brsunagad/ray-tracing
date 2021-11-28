@@ -45,7 +45,7 @@ build cmake_object_order_depends_target_cgray: phony || CMakeFiles\cgray.dir
 
 build CMakeFiles\cgray.dir\core\image.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\core\image.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\core
@@ -54,7 +54,7 @@ build CMakeFiles\cgray.dir\core\image.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\.
 
 build CMakeFiles\cgray.dir\core\julia.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\core\julia.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\core
@@ -63,7 +63,7 @@ build CMakeFiles\cgray.dir\core\julia.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\.
 
 build CMakeFiles\cgray.dir\core\scalar.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\core\scalar.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\core
@@ -72,7 +72,7 @@ build CMakeFiles\cgray.dir\core\scalar.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\
 
 build CMakeFiles\cgray.dir\core\color.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\core\color.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\core
@@ -81,7 +81,7 @@ build CMakeFiles\cgray.dir\core\color.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\.
 
 build CMakeFiles\cgray.dir\core\point.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\core\point.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\core
@@ -90,7 +90,7 @@ build CMakeFiles\cgray.dir\core\point.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\.
 
 build CMakeFiles\cgray.dir\core\vector.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\core\vector.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\core
@@ -99,7 +99,7 @@ build CMakeFiles\cgray.dir\core\vector.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\
 
 build CMakeFiles\cgray.dir\rt\cameras\orthographic.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\cameras\orthographic.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\cameras
@@ -108,7 +108,7 @@ build CMakeFiles\cgray.dir\rt\cameras\orthographic.cpp.obj: CXX_COMPILER__cgray_
 
 build CMakeFiles\cgray.dir\rt\cameras\perspective.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\cameras\perspective.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\cameras
@@ -117,7 +117,7 @@ build CMakeFiles\cgray.dir\rt\cameras\perspective.cpp.obj: CXX_COMPILER__cgray_D
 
 build CMakeFiles\cgray.dir\rt\ray.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\ray.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt
@@ -126,7 +126,7 @@ build CMakeFiles\cgray.dir\rt\ray.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt
 
 build CMakeFiles\cgray.dir\rt\renderer.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\renderer.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt
@@ -135,7 +135,7 @@ build CMakeFiles\cgray.dir\rt\renderer.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\
 
 build CMakeFiles\cgray.dir\main\a_julia.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\main\a_julia.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\main
@@ -144,7 +144,7 @@ build CMakeFiles\cgray.dir\main\a_julia.cpp.obj: CXX_COMPILER__cgray_Debug ..\..
 
 build CMakeFiles\cgray.dir\main\a_cameras.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\main\a_cameras.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\main
@@ -153,7 +153,7 @@ build CMakeFiles\cgray.dir\main\a_cameras.cpp.obj: CXX_COMPILER__cgray_Debug ..\
 
 build CMakeFiles\cgray.dir\rt\groups\simplegroup.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\groups\simplegroup.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\groups
@@ -162,7 +162,7 @@ build CMakeFiles\cgray.dir\rt\groups\simplegroup.cpp.obj: CXX_COMPILER__cgray_De
 
 build CMakeFiles\cgray.dir\rt\integrators\casting.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\integrators\casting.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\integrators
@@ -171,7 +171,7 @@ build CMakeFiles\cgray.dir\rt\integrators\casting.cpp.obj: CXX_COMPILER__cgray_D
 
 build CMakeFiles\cgray.dir\rt\integrators\castingdist.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\integrators\castingdist.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\integrators
@@ -180,7 +180,7 @@ build CMakeFiles\cgray.dir\rt\integrators\castingdist.cpp.obj: CXX_COMPILER__cgr
 
 build CMakeFiles\cgray.dir\rt\solids\solid.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\solid.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -189,7 +189,7 @@ build CMakeFiles\cgray.dir\rt\solids\solid.cpp.obj: CXX_COMPILER__cgray_Debug ..
 
 build CMakeFiles\cgray.dir\rt\solids\aabox.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\aabox.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -198,7 +198,7 @@ build CMakeFiles\cgray.dir\rt\solids\aabox.cpp.obj: CXX_COMPILER__cgray_Debug ..
 
 build CMakeFiles\cgray.dir\rt\solids\disc.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\disc.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -207,7 +207,7 @@ build CMakeFiles\cgray.dir\rt\solids\disc.cpp.obj: CXX_COMPILER__cgray_Debug ..\
 
 build CMakeFiles\cgray.dir\rt\solids\infiniteplane.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\infiniteplane.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -216,7 +216,7 @@ build CMakeFiles\cgray.dir\rt\solids\infiniteplane.cpp.obj: CXX_COMPILER__cgray_
 
 build CMakeFiles\cgray.dir\rt\solids\quad.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\quad.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -225,7 +225,7 @@ build CMakeFiles\cgray.dir\rt\solids\quad.cpp.obj: CXX_COMPILER__cgray_Debug ..\
 
 build CMakeFiles\cgray.dir\rt\solids\sphere.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\sphere.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -234,7 +234,7 @@ build CMakeFiles\cgray.dir\rt\solids\sphere.cpp.obj: CXX_COMPILER__cgray_Debug .
 
 build CMakeFiles\cgray.dir\rt\solids\triangle.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\triangle.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -243,7 +243,7 @@ build CMakeFiles\cgray.dir\rt\solids\triangle.cpp.obj: CXX_COMPILER__cgray_Debug
 
 build CMakeFiles\cgray.dir\rt\intersection.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\intersection.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt
@@ -252,7 +252,7 @@ build CMakeFiles\cgray.dir\rt\intersection.cpp.obj: CXX_COMPILER__cgray_Debug ..
 
 build CMakeFiles\cgray.dir\rt\bbox.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\bbox.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt
@@ -261,7 +261,7 @@ build CMakeFiles\cgray.dir\rt\bbox.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\r
 
 build CMakeFiles\cgray.dir\main\a_solids.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\main\a_solids.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\main
@@ -270,7 +270,7 @@ build CMakeFiles\cgray.dir\main\a_solids.cpp.obj: CXX_COMPILER__cgray_Debug ..\.
 
 build CMakeFiles\cgray.dir\rt\loaders\obj.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\loaders\obj.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\loaders
@@ -279,7 +279,7 @@ build CMakeFiles\cgray.dir\rt\loaders\obj.cpp.obj: CXX_COMPILER__cgray_Debug ..\
 
 build CMakeFiles\cgray.dir\rt\groups\bvh.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\groups\bvh.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\groups
@@ -288,7 +288,7 @@ build CMakeFiles\cgray.dir\rt\groups\bvh.cpp.obj: CXX_COMPILER__cgray_Debug ..\.
 
 build CMakeFiles\cgray.dir\main\a_indexing.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\main\a_indexing.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\main
@@ -297,7 +297,7 @@ build CMakeFiles\cgray.dir\main\a_indexing.cpp.obj: CXX_COMPILER__cgray_Debug ..
 
 build CMakeFiles\cgray.dir\main\main.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\main\main.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\main
@@ -306,7 +306,7 @@ build CMakeFiles\cgray.dir\main\main.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..
 
 build CMakeFiles\cgray.dir\rt\solids\quadric.cpp.obj: CXX_COMPILER__cgray_Debug ..\..\..\rt\solids\quadric.cpp || cmake_object_order_depends_target_cgray
   DEFINES = -DGDIPLUS_SUPPORT
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -openmp
   INCLUDES = -I..\..\..\
   OBJECT_DIR = CMakeFiles\cgray.dir
   OBJECT_FILE_DIR = CMakeFiles\cgray.dir\rt\solids
@@ -378,14 +378,14 @@ build all: phony cgray.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\assignment-01.cmake ..\..\..\assignment-02.cmake ..\..\..\assignment-03.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-C.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPNG.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindZLIB.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\SelectLibraryConfigurations.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ..\..\..\CMakeLists.txt ..\..\..\assignment-01.cmake ..\..\..\assignment-02.cmake ..\..\..\assignment-03.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-C.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindOpenMP.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPNG.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindZLIB.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\SelectLibraryConfigurations.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake CMakeFiles\FindOpenMP\OpenMPCheckVersion.c CMakeFiles\FindOpenMP\OpenMPCheckVersion.cpp CMakeFiles\FindOpenMP\OpenMPTryFlag.c CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ..\..\..\CMakeLists.txt ..\..\..\assignment-01.cmake ..\..\..\assignment-02.cmake ..\..\..\assignment-03.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-C.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPNG.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindZLIB.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\SelectLibraryConfigurations.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake: phony
+build ..\..\..\CMakeLists.txt ..\..\..\assignment-01.cmake ..\..\..\assignment-02.cmake ..\..\..\assignment-03.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeGenericSystem.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeRCInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-C.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\CMakeLists-CXX.txt.in C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\foo.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.c C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CheckIPOSupported\main.cpp C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindOpenMP.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPNG.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindPackageMessage.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\FindZLIB.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\Windows.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files$ (x86)\Microsoft$ Visual$ Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\SelectLibraryConfigurations.cmake CMakeCache.txt CMakeFiles\3.20.21032501-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.20.21032501-MSVC_2\CMakeSystem.cmake CMakeFiles\FindOpenMP\OpenMPCheckVersion.c CMakeFiles\FindOpenMP\OpenMPCheckVersion.cpp CMakeFiles\FindOpenMP\OpenMPTryFlag.c CMakeFiles\FindOpenMP\OpenMPTryFlag.cpp: phony
 
 
 #############################################

@@ -1,6 +1,7 @@
 #ifndef CG1RAYTRACER_BBOX_HEADER
 #define CG1RAYTRACER_BBOX_HEADER
 
+#include <cfloat>
 #include <utility>
 #include <core/point.h>
 #include <core/vector.h>

@@ -1,3 +1,4 @@
+#include <cfloat>
 #include <rt/bbox.h>
 #include <rt/solids/aabox.h>
 #include <tuple>

@@ -9,6 +9,7 @@
 #include <rt/solids/sphere.h>
 #include <rt/cameras/perspective.h>
 #include <rt/integrators/casting.h>
+#include <chrono>
 
 using namespace rt;
 
@@ -20,23 +21,30 @@ void a_indexing() {
     scene->add(new Sphere(Point(2.5f,  -1.f,  -1), 0.5, nullptr, nullptr));
     scene->add(new Sphere(Point(4.5f,  .5f,  -1), 0.5 , nullptr, nullptr));
 
-    loadOBJ(scene, "models/", "cow.obj");
     //loadOBJ(scene, "models/", "Toad.obj");
-  
+    loadOBJ(scene, "models/", "dragon.obj");
+
 	scene->rebuildIndex();
     World world;
     world.scene = scene;
 
-    PerspectiveCamera cam1(Point(-8.85f, -7.85f, 7.0f), Vector(1.0f,1.0f,-0.6f), Vector(0, 0, 1), pi/8, pi/6);
-    //PerspectiveCamera cam1(Point(-0.85f, 70.85f, 700.0f), Vector(0.0f,0.0f,-1.0f), Vector(0, 1, 0), pi/8, pi/6);
+    //PerspectiveCamera cam1(Point(-8.85f, -7.85f, 7.0f), Vector(1.0f,1.0f,-0.6f), Vector(0, 0, 1), pi/8, pi/6);
+    PerspectiveCamera cam1(Point(-2.0f, 0.05f, -0.0f), Point(0.0f, 0.0f, 0.0f) - Point(-2.0f, 0.05f, -0.0f), Vector(0, 1, 0), pi/8, pi/6);//this is for dragon.obj, do not change
     PerspectiveCamera cam2(Point(16.065f, -12.506f, 1.771f), Point(-0.286f, -0.107f, 1.35f)-Point(16.065f, -12.506f, 1.771f), Vector(0, 0, 1), pi/8, pi/6);
     RayCastingIntegrator integrator(&world);
+    
 
     Renderer engine1(&cam1, &integrator);
     engine1.render(img);
     img.writePNG("a3-1.png");
 
+    auto t_start = std::chrono::high_resolution_clock::now();
+
     Renderer engine2(&cam2, &integrator);
     engine2.render(img);
     img.writePNG("a3-2.png");
+
+    auto t_end = std::chrono::high_resolution_clock::now();
+    double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
+    std::cout << "Time taken to render a3-2.png: " << elapsed_time_ms << std::endl;
 }

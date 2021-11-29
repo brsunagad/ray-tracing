@@ -78,7 +78,9 @@ void BVH::buildIndexStructure(Node* node)
             }
 
         }
-#endif  // end SAH
+#endif  // end SAH 
+        //Time taken to render a3-2.png: 3086.39ms without SAH
+        //Time taken to render a3-2.png: 3059.73ms with SAH
 
         for (int i = 0; i < numPrimitives; i++) {
             float primitiveSplitMidPoint = findMidPoint(axisToSplit, node->primitives[i]->getBounds());

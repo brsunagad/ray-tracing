@@ -64,7 +64,7 @@ enum Instruction {
 };
 
 struct Int3 {
-    size_t vidx, tidx, nidx;
+    int64_t vidx, tidx, nidx;
 };
 struct Float2 {
     float x, y;
@@ -101,7 +101,6 @@ struct FileLine {
     Instruction fetchInstruction();
     float fetchFloat();
     float fetchFloat(float defaultv);
-    std::string fetchString();
     Int3 fetchVertex();
 };
 
@@ -151,7 +150,6 @@ bool FileLine::match(const char* reference) {
 }
 
 Instruction FileLine::fetchInstruction() {
-    Instruction i=Obj_None;
     skipWhitespace();
 
     if (match("")) return Obj_None;
@@ -191,7 +189,7 @@ Instruction FileLine::fetchInstruction() {
     if (match("end")) return Obj_CurveEnd;
     if (match("d_interp")) return Obj_DissolveInterpolation;
     return Obj_Invalid;
-};
+}
 
 float FileLine::fetchFloat() {
     skipWhitespace();
@@ -213,13 +211,6 @@ float FileLine::fetchFloat(float defaultv) {
     else
         pos+=dest-src;
     return f;
-}
-
-std::string FileLine::fetchString() {
-    skipWhitespace();
-    size_t start = pos;
-    while (str.c_str()[pos]!=' ' && str.c_str()[pos]!='\t' && str.c_str()[pos]!='\n')   ++pos;
-    return str.substr(start, pos-start);
 }
 
 Int3 FileLine::fetchVertex() {
@@ -274,7 +265,6 @@ void loadOBJ(Group* dest, const std::string& path, const std::string& filename, 
     fileline.open(path + filename);
 
     size_t numfaces = 0;
-    size_t lineIdx = 0;
     while (!fileline.eof()) {
         fileline.nextLine();
         fileline.removeComments();
@@ -404,3 +394,4 @@ void loadOBJ(Group* dest, const std::string& path, const std::string& filename, 
 }
 
 }
+

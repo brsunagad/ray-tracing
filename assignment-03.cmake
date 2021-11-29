@@ -21,5 +21,6 @@ file(COPY
     models/Mario.mtl
     models/Toad.obj
     models/Toad.mtl
+    models/dragon.obj
     DESTINATION ${CMAKE_BINARY_DIR}/models
 )

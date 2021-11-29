@@ -37,7 +37,7 @@ public:
     void buildIndexStructure(Node* root);
     float findMidPoint(int axis, BBox bbox);
     int findSplitAxis(Vector vec);
-    float BVH::getCoordOnAxis(int axis, Point point);
+    float getCoordOnAxis(int axis, Point point);
     virtual void add(Primitive* p);
     virtual void setMaterial(Material* m);
     virtual void setCoordMapper(CoordMapper* cm);

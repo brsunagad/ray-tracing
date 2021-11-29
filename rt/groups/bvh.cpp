@@ -1,3 +1,4 @@
+#define SAH
 #include <rt/groups/bvh.h>
 
 namespace rt {
@@ -17,7 +18,6 @@ void BVH::buildIndexStructure(Node* node)
     int numPrimitives = node->primitives.size();
     if (numPrimitives <= 0)
        return;
-    node->bbox = BBox::empty();
 
     for (int i = 0; i < numPrimitives; i++)
         node->extend(node->primitives[i]->getBounds());//extend bbox to include primitives
@@ -33,11 +33,56 @@ void BVH::buildIndexStructure(Node* node)
         node->rightChild = new Node();
 
         int axisToSplit = findSplitAxis(node->bbox.diagonal());
-        float splitLength = findSplitLength(axisToSplit, node->bbox);
+        float splitPoint = findMidPoint(axisToSplit, node->bbox);
+
+#ifdef SAH //SAH
+        int numbins = 10;
+        
+        float totalCost, lcCost=0, rcCost=0, bestCost = FLT_MAX;
+        for (int j = 1; j < numbins; j++) {
+            /*Node* tempLChild = new Node();
+            Node* tempRChild = new Node();*/
+            float splitLen = getCoordOnAxis(axisToSplit,node->bbox.min) + j * (getCoordOnAxis(axisToSplit, node->bbox.max)- getCoordOnAxis(axisToSplit, node->bbox.min))/numbins;
+            int countL = 0, countR = 0;
+            BBox areaL, areaR;
+            for (int i = 0; i < numPrimitives; i++) {
+
+                float primitiveSplitMidPoint = findMidPoint(axisToSplit, node->primitives[i]->getBounds());
+
+                if (primitiveSplitMidPoint <= splitLen) {
+                    //tempLChild->primitives.push_back(node->primitives[i]);
+                    //tempLChild->extend(node->primitives[i]->getBounds());
+                    countL++;
+                    areaL.extend(node->primitives[i]->getBounds());
+
+                }
+                else {
+                    //tempRChild->primitives.push_back(node->primitives[i]);
+                    //tempRChild->extend(node->primitives[i]->getBounds());
+                    countR++;
+                    areaR.extend(node->primitives[i]->getBounds());
+                }
+            }
+            /*if(tempLChild->primitives.size() != 0)
+                lcCost = tempLChild->primitives.size() * tempLChild->bbox.area()/node->bbox.area() ;
+            if (tempRChild->primitives.size() != 0)
+                rcCost = tempRChild->primitives.size() * tempRChild->bbox.area() / node->bbox.area();*/
+            if (countL > 0)
+                lcCost = countL * areaL.area();
+            if (countR > 0)
+                rcCost = countR * areaR.area();
+            totalCost = lcCost + rcCost;
+            if (totalCost <= bestCost) {
+                bestCost = totalCost;
+                splitPoint = splitLen;
+            }
+
+        }
+#endif  // end SAH
 
         for (int i = 0; i < numPrimitives; i++) {
-            float primitiveSplitLength = findSplitLength(axisToSplit, node->primitives[i]->getBounds());
-            if (primitiveSplitLength <= splitLength) 
+            float primitiveSplitMidPoint = findMidPoint(axisToSplit, node->primitives[i]->getBounds());
+            if (primitiveSplitMidPoint <= splitPoint)
                 node->leftChild->primitives.push_back(node->primitives[i]);
             else
                 node->rightChild->primitives.push_back(node->primitives[i]);
@@ -63,13 +108,22 @@ void BVH::buildIndexStructure(Node* node)
 
 }
 
-float BVH::findSplitLength(int axis, BBox bbox) {
+float BVH::findMidPoint(int axis, BBox bbox) {
     if (axis == 0)
         return (bbox.min.x + bbox.max.x) / 2;
     else if (axis == 1)
         return (bbox.min.y + bbox.max.y) / 2;
     else 
         return (bbox.min.z + bbox.max.z) / 2;
+}
+
+float BVH::getCoordOnAxis(int axis, Point point) {
+    if (axis == 0)
+        return point.x;
+    else if (axis == 1)
+        return point.y;
+    else
+        return point.z;
 }
 
 int BVH::findSplitAxis(Vector vec) {

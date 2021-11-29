@@ -4,13 +4,11 @@
 
 namespace rt {
 
-Sphere::Sphere(const Point& center, float radius, CoordMapper* texMapper, Material* material)
-{
-    this->center = center;
-    this->radius = radius;
-    this->material = material;
-    this->texMapper = texMapper;
-}
+Sphere::Sphere(const Point& center, float radius, CoordMapper* texMapper, Material* material): 
+    center(center), 
+    radius(radius), 
+    Solid(texMapper, material) {}
+
 
 BBox Sphere::getBounds() const {
     Point min(center.x - radius, center.y - radius, center.z - radius);

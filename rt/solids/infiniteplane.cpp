@@ -2,13 +2,10 @@
 
 namespace rt {
 
-InfinitePlane::InfinitePlane(const Point& origin, const Vector& normal, CoordMapper* texMapper, Material* material)
-{
-    this->origin = origin;
-    this->normal = normal;
-    this->material = material;
-    this->texMapper = texMapper;
-}
+InfinitePlane::InfinitePlane(const Point& origin, const Vector& normal, CoordMapper* texMapper, Material* material):
+    origin(origin), 
+    normal(normal), 
+    Solid(texMapper, material) {}
 
 BBox InfinitePlane::getBounds() const {
     return BBox::full();

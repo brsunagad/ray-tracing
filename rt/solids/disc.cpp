@@ -4,12 +4,11 @@
 
 namespace rt {
 
-Disc::Disc(const Point& center, const Vector& normal, float radius, CoordMapper* texMapper, Material* material)
-{
-    this->center = center;
-    this->normal = normal;
-    this->radius = radius;
-}
+Disc::Disc(const Point& center, const Vector& normal, float radius, CoordMapper* texMapper, Material* material): 
+    center ( center),
+    normal ( normal),
+    radius  (radius),
+    Solid(texMapper, material){}
 
 BBox Disc::getBounds() const {
     //reference https://iquilezles.org/www/articles/diskbbox/diskbbox.htm

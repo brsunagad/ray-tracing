@@ -8,12 +8,8 @@ Triangle::Triangle(Point vertices[3], CoordMapper* texMapper, Material* material
 }
 
 Triangle::Triangle(const Point& v1, const Point& v2, const Point& v3, CoordMapper* texMapper, Material* material):
-    v1(v1), v2(v2), v3(v3),v1v2(v2-v1), v1v3(v3-v1), normal(cross(v1v2, v1v3).normalize())
-{
-    this->material = material;
-    this->texMapper = texMapper;
-   
-}
+    v1(v1), v2(v2), v3(v3),v1v2(v2-v1), v1v3(v3-v1), normal(cross(v1v2, v1v3).normalize()), Solid(texMapper, material) {}
+
 
 BBox Triangle::getBounds() const {
     Point min, max;

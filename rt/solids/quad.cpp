@@ -3,10 +3,9 @@
 namespace rt {
 
 Quad::Quad(const Point& origin, const Vector& span1, const Vector& span2, CoordMapper* texMapper, Material* material):
-    p1(origin),p2(origin+span1),p3(origin+span2),p4(origin+span1+span2),span1(span1),span2(span2)
+    p1(origin),p2(origin+span1),p3(origin+span2),p4(origin+span1+span2),span1(span1),span2(span2), Solid(texMapper, material) 
 {
-    this->texMapper = texMapper;
-    this->material = material;
+
     tri1 = new Triangle(p1, p2, p3, nullptr, nullptr);//quad can be split into two triangles
     tri2 = new Triangle(p3, p2, p4, nullptr, nullptr);
 }

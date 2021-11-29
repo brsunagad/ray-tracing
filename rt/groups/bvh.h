@@ -11,7 +11,7 @@ class  Node
 public:
     Node() {}
 
-    BBox bbox;
+    BBox bbox = BBox::empty();
     bool isLeaf;
     Node* leftChild;
     Node* rightChild;
@@ -35,8 +35,9 @@ public:
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;
     virtual void rebuildIndex();
     void buildIndexStructure(Node* root);
-    float findSplitLength(int axis, BBox bbox);
+    float findMidPoint(int axis, BBox bbox);
     int findSplitAxis(Vector vec);
+    float BVH::getCoordOnAxis(int axis, Point point);
     virtual void add(Primitive* p);
     virtual void setMaterial(Material* m);
     virtual void setCoordMapper(CoordMapper* cm);

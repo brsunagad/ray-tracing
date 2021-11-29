@@ -5,12 +5,8 @@ namespace rt {
   
     Quadric::Quadric(const Point& center, const float& A, const float& B, const float& C, const float& D, const float& E, const float& F, const float& G,
         const float& H, const float& I, const float& J, CoordMapper* texMapper, Material* material): A(A), B(B), C(C), D(D), E(E), F(F), G(G), H(H),
-        I(I), J(J),center(center)
-    {
-        this->material = material;
-        this->texMapper = texMapper;
-
-    }
+        I(I), J(J),center(center), Solid(texMapper, material) {}
+    
 
     BBox Quadric::getBounds() const {
         /* TODO */ NOT_IMPLEMENTED;

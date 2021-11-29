@@ -1,5 +1,3 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
 #ifndef CG1RAYTRACER_BBOX_HEADER
 #define CG1RAYTRACER_BBOX_HEADER
 
@@ -24,12 +22,12 @@ public:
     BBox(const Point& min, const Point& max): min(min), max(max), isEmpty(false), isFull(false) {}
     BBox(bool isEmpty, bool isFull): isEmpty(isEmpty), isFull(isFull){
         if (isFull) {
-            min.x = -INFINITY;
-            min.y = -INFINITY;
-            min.z = -INFINITY;
-            max.x = INFINITY;
-            max.y = INFINITY;
-            max.z = INFINITY;
+            min.x = -FLT_MAX;
+            min.y = -FLT_MAX;
+            min.z = -FLT_MAX;
+            max.x = FLT_MAX;
+            max.y = FLT_MAX;
+            max.z = FLT_MAX;
         }
     }
 

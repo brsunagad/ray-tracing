@@ -1,5 +1,3 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include <rt/bbox.h>
 #include <rt/solids/aabox.h>
 #include <tuple>
@@ -49,12 +47,12 @@ void BBox::extend(const BBox& bbox) {
 
 std::pair<float, float> BBox::intersect(const Ray& ray) const {
     if (isFull)
-        return std::make_pair(-INFINITY, INFINITY);
+        return std::make_pair(-FLT_MAX, FLT_MAX);
     else if (isEmpty)
-        return std::make_pair(INFINITY, -INFINITY);
+        return std::make_pair(FLT_MAX, -FLT_MAX);
     else {
         AABox aabox(min, max, nullptr, nullptr);
-        Intersection intersect = aabox.intersect(ray, INFINITY);//passing infinity as previousbest distance 
+        Intersection intersect = aabox.intersect(ray, FLT_MAX);//passing infinity as previousbest distance 
         if (intersect) {
             float t1, t2;
             Vector normal;
@@ -62,12 +60,12 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
             return std::make_pair(t1, t2);
         }
         else
-            return std::make_pair(INFINITY, -INFINITY); // t2>t1 is checked in finding AABox intersection
+            return std::make_pair(FLT_MAX, -FLT_MAX); // t2>t1 is checked in finding AABox intersection
     }
 }
 
 bool BBox::isUnbound() const {
-    if ((min.x == -INFINITY && max.x == INFINITY) || (min.y == -INFINITY && max.y == INFINITY) || (min.z == -INFINITY && max.z == INFINITY))
+    if ((min.x == -FLT_MAX && max.x == FLT_MAX) || (min.y == -FLT_MAX && max.y == FLT_MAX) || (min.z == -FLT_MAX && max.z == FLT_MAX))
         return true;
     else
         return false;

@@ -38,13 +38,13 @@ void BVH::buildIndexStructure(Node* node)
 #ifdef SAH //SAH
         int numbins = 10;
         
-        float totalCost, lcCost=0, rcCost=0, bestCost = FLT_MAX;
+        float totalCost=0, lcCost=0, rcCost=0, bestCost = FLT_MAX;
         for (int j = 1; j < numbins; j++) {
             /*Node* tempLChild = new Node();
             Node* tempRChild = new Node();*/
             float splitLen = getCoordOnAxis(axisToSplit,node->bbox.min) + j * (getCoordOnAxis(axisToSplit, node->bbox.max)- getCoordOnAxis(axisToSplit, node->bbox.min))/numbins;
             int countL = 0, countR = 0;
-            BBox areaL, areaR;
+            BBox areaL = BBox::empty(), areaR = BBox::empty();
             for (int i = 0; i < numPrimitives; i++) {
 
                 float primitiveSplitMidPoint = findMidPoint(axisToSplit, node->primitives[i]->getBounds());
@@ -68,9 +68,9 @@ void BVH::buildIndexStructure(Node* node)
             if (tempRChild->primitives.size() != 0)
                 rcCost = tempRChild->primitives.size() * tempRChild->bbox.area() / node->bbox.area();*/
             if (countL > 0)
-                lcCost = countL * areaL.area();
+                lcCost = countL * areaL.area() / node->bbox.area();
             if (countR > 0)
-                rcCost = countR * areaR.area();
+                rcCost = countR * areaR.area() / node->bbox.area();
             totalCost = lcCost + rcCost;
             if (totalCost <= bestCost) {
                 bestCost = totalCost;

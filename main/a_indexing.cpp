@@ -9,7 +9,7 @@
 #include <rt/solids/sphere.h>
 #include <rt/cameras/perspective.h>
 #include <rt/integrators/casting.h>
-
+#include <chrono>
 using namespace rt;
 
 void a_indexing() {

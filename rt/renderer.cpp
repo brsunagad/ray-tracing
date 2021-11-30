@@ -17,7 +17,7 @@ void Renderer::render(Image& img) {
     // #pragma omp parallel for
     for (uint i = 0; i < img.width(); i++) {
         for (uint j = 0; j < img.height(); j++) {
-            if (i%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
+            // if (i%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
 
             // Normalized device coordinates [0, 1]
             float ndcx = (i + 0.5) / img.width();

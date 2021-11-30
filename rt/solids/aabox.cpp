@@ -56,25 +56,42 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	    znear = (maxCorner.z - ray.o.z)*invdz;
     }
 
-    float maxNear = max(xnear,ynear,znear);
-    float minfar = min(xfar,yfar,zfar);
+	float tmaxNear = xnear;
+	float tminFar = xfar;
+
+	if ((xnear > yfar) || (ynear > xfar))
+		return Intersection::failure();
+	if (ynear > xnear)
+		tmaxNear = ynear;
+	if (yfar < tminFar)
+		tminFar = yfar;
+
+	if ((tmaxNear > zfar) || (znear > tminFar))
+		return Intersection::failure();
+	if (znear > tmaxNear)
+		tmaxNear = znear;
+	if (zfar < tminFar)
+		tminFar = zfar;
+
+    //float maxNear = max(xnear,ynear,znear);
+    //float minfar = min(xfar,yfar,zfar);
 
  //    std::cout << "Nears: (" << xnear << ", " << ynear << ", " << znear << ")" << std::endl;
 	// std::cout << "Fars: (" << xfar << ", " << yfar << ", " << zfar << ")" << std::endl;
 	// std::cout << "Maxmins: (" << maxNear << ", " << minfar << std::endl;
 
 
-    if (maxNear <= minfar && maxNear >= 0 && maxNear<previousBestDistance)
+    if (tmaxNear > 0 && tmaxNear < previousBestDistance)
     {
     	// Decide which face of the BBox is intersecting
     	Vector normal;
-	    if(maxNear == xnear){
+	    if(tmaxNear == xnear){
 	        if (xnear < xfar)
 	           normal = Vector(-1.0f, 0.f, 0.f);
 	        else 
 	           normal = Vector(1.0f, 0.f, 0.f);
 	    }
-	    else if(maxNear == ynear){
+	    else if(tmaxNear == ynear){
 	        if (ynear < yfar)
 	            normal = Vector(0.f, -1.0f, 0.f);
 	        else 
@@ -87,8 +104,8 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	            normal = Vector(0.f, 0.f, -1.0f);
 	    } 
 		
-		setIntersectionValues(maxNear, minfar, normal);
-    	return Intersection(maxNear,ray, this, normal, ray.getPoint(maxNear));
+		setIntersectionValues(tmaxNear, tminFar, normal);
+    	return Intersection(tmaxNear,ray, this, normal, ray.getPoint(tmaxNear));
     } else
     	return Intersection::failure();
 }

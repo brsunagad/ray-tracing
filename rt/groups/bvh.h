@@ -28,6 +28,7 @@ public:
 class BVH : public Group {
 private:
     Node* root = new Node();
+    int count;
 public:
     BVH();
 

@@ -28,8 +28,8 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	std::cout << "--> Ray Origin = (" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")" << std::endl;
 	std::cout << "--> Prev distance = " << previousBestDistance << std::endl << std::endl;
 
-	std::cout << "--> minCorner = (" << minCorner.x << ", " << minCorner.y << ")" << minCorner.z << ")" << std::endl;
-	std::cout << "--> maxCorner = (" << maxCorner.x << ", " << maxCorner.y << ")" << maxCorner.z << ")" << std::endl << std::endl;
+	std::cout << "--> minCorner = (" << minCorner.x << ", " << minCorner.y << ", " << minCorner.z << ")" << std::endl;
+	std::cout << "--> maxCorner = (" << maxCorner.x << ", " << maxCorner.y << ", " << maxCorner.z << ")" << std::endl << std::endl;
 
 	float xnear, xfar, ynear, yfar, znear, zfar;
 	float invdx = 1.0f/ray.d.x;
@@ -82,26 +82,35 @@ Intersection AABox::intersect(const Ray& ray, float previousBestDistance) const 
 	// Decide which face of the aaBox is intersecting
 	Vector normal;
     if(maxNear == xnear){
-        if (xnear < xfar)
-           normal = Vector(1.0f, 0.f, 0.f);
-        else 
-           normal = Vector(-1.0f, 0.f, 0.f);
+    	normal = Vector(-1.0f, 0.f, 0.f);
+        // if (xnear < xfar)
+        //    normal = Vector(-1.0f, 0.f, 0.f);
+        // else 
+        //    normal = Vector(1.0f, 0.f, 0.f);
     }
     else if(maxNear == ynear){
-        if (ynear < yfar)
-            normal = Vector(0.f, 1.0f, 0.f);
-        else 
-            normal = Vector(0.f, -1.0f, 0.f);
+    	normal = Vector(0.f, -1.0f, 0.f);
+        // if (ynear < yfar)
+        //     normal = Vector(0.f, -1.0f, 0.f);
+        // else 
+        //     normal = Vector(0.f, 1.0f, 0.f);
     }      
     else{
-        if (znear < zfar)
-            normal = Vector(0.f, 0.f, -1.0f);
-        else 
-            normal = Vector(0.f, 0.f, 1.0f);
+    	normal = Vector(0.f, 0.f, -1.0f);
+        // if (znear < zfar)
+        //     normal = Vector(0.f, 0.f, 1.0f);
+        // else 
+        //     normal = Vector(0.f, 0.f, -1.0f);
     } 
+
+	std::cout << "-->Normal: (" << normal.x << ", " << normal.y << ", " << normal.z << ")" << std::endl;
+
+	if(maxNear <= minfar && maxNear >= 0 && maxNear < previousBestDistance){
+		setIntersectionValues(maxNear, minfar, normal);
+		return Intersection(maxNear,ray, this, normal, ray.getPoint(maxNear));
+	} else
+		return Intersection::failure(); //Not best distance
 	
-	setIntersectionValues(maxNear, minfar, normal);
-	return Intersection(maxNear,ray, this, normal, ray.getPoint(maxNear));
 }
 void AABox::setIntersectionValues(float t1, float t2, Vector& normal) const{
 	this->t1 = t1;

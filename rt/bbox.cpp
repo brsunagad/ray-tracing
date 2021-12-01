@@ -53,15 +53,53 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
         return std::make_pair(FLT_MAX, -FLT_MAX);
     else {
         AABox aabox(min, max, nullptr, nullptr);
-        Intersection intersect = aabox.intersect(ray, FLT_MAX);//passing infinity as previousbest distance 
-        if (intersect) {
-            float t1, t2;
-            Vector normal;
-            std::tie(t1, t2, normal) = aabox.getIntersectionValues();
-            return std::make_pair(t1, t2);
+
+        //Compute intersection
+        float xnear, xfar, ynear, yfar, znear, zfar;
+        float invdx = 1.0f/ray.d.x;
+        float invdy = 1.0f/ray.d.y;
+        float invdz = 1.0f/ray.d.z;
+
+        // if the ray goes in negative direction, far and near are changed
+        if (invdx >= 0){
+            xnear = (min.x - ray.o.x)*invdx;
+            xfar = (max.x - ray.o.x)*invdx;
+        } else {
+            xfar = (min.x - ray.o.x)*invdx;
+            xnear = (max.x - ray.o.x)*invdx;
         }
-        else
-            return std::make_pair(FLT_MAX, -FLT_MAX); // t2>t1 is checked in finding AABox intersection
+        if (invdy >= 0){
+            ynear = (min.y - ray.o.y)*invdy;
+            yfar = (max.y - ray.o.y)*invdy;
+        } else {
+            yfar = (min.y - ray.o.y)*invdy;
+            ynear = (max.y - ray.o.y)*invdy;
+        }
+        if (invdz >= 0){
+            znear = (min.z - ray.o.z)*invdz;
+            zfar = (max.z - ray.o.z)*invdz;
+        } else {
+            zfar = (min.z - ray.o.z)*invdz;
+            znear = (max.z - ray.o.z)*invdz;
+        }
+
+        float maxNear;
+        float minfar;
+
+        // Try intersection on xy plane
+        if ((xnear > yfar) || (ynear > xfar)) 
+            return std::make_pair(FLT_MAX, -FLT_MAX); //miss
+        maxNear = std::max(xnear, ynear);
+        minfar = std::min(xfar, yfar);
+
+        // Try intersection on prev and z plane
+        if ((maxNear > zfar) || (znear > minfar)) 
+            return std::make_pair(FLT_MAX, -FLT_MAX); //miss
+        maxNear = std::max(maxNear, znear);
+        minfar = std::min(minfar, zfar);
+
+        // Hit
+        return std::make_pair(maxNear, minfar);
     }
 }
 

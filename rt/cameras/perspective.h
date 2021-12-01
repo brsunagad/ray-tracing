@@ -10,7 +10,7 @@ namespace rt {
 class PerspectiveCamera : public Camera {
 public:
     Point center;
-    Vector u, v, w, up, forward;
+    Vector u, v, up, forward;
     float verticalOpeningAngle, sy;
     float horizontalOpeningAngle, sx;
 

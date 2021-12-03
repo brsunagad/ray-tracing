@@ -38,75 +38,51 @@ void a_indexing() {
     img.writePNG("a3-1.png");
 
     Renderer engine2(&cam2, &integrator);
-    // engine2.render(img);
-    // img.writePNG("a3-2.png");
-
-
-
-    // Basic test - use the basic group to render, that should give us the best resut possible (this takes A LOT of time)
-    // SimpleGroup* sceneGround = new SimpleGroup();
-
-    // loadOBJ(sceneGround, "models/", "cow.obj");
-
-    // world.scene = sceneGround;
-
-    // PerspectiveCamera camG(Point(-8.85f, -7.85f, 7.0f), Vector(1.0f,1.0f,-0.6f), Vector(0, 0, 1), pi/8, pi/6);
-    // RayCastingIntegrator integratorG(&world);
-
-    // auto start = std::chrono::high_resolution_clock::now();
-    // ///////////////
-    // Renderer engine4(&camG, &integratorG);
-    // engine4.render(img);
-    // ///////////////
-    // auto end = std::chrono::high_resolution_clock::now();
-
-    // img.writePNG("a3-GroundTruth.png");
-
-    // float elapsed_time = std::chrono::duration<double, std::milli>(end - start).count();
-    // std::cout << "Time taken to render a3-GroundTruth.png: " << elapsed_time << " ms" << std::endl;
-
+    engine2.render(img);
+    img.writePNG("a3-2.png");
 
 
     // Rendering speed test
- //    BVH* sceneTest1 = new BVH();
+    // right now we are using a counter to switch between SAH and splitInMiddle heuristic, this is just for comparision and will be deleted later
+    BVH* sceneTest1 = new BVH();
 
- //    loadOBJ(sceneTest1, "models/", "dragon.obj");
+    loadOBJ(sceneTest1, "models/", "dragon.obj");
 
- //    PerspectiveCamera cam3(Point(-2.0f, 0.05f, -0.0f), Point(0.0f, 0.0f, 0.0f) - Point(-2.0f, 0.05f, -0.0f), Vector(0, 1, 0), pi/8, pi/6);//this is for dragon.obj, do not change
+     PerspectiveCamera cam3(Point(-2.0f, 0.05f, -0.0f), Point(0.0f, 0.0f, 0.0f) - Point(-2.0f, 0.05f, -0.0f), Vector(0, 1, 0), pi/8, pi/6);//this is for dragon.obj, do not change
     
 
- //    // Not using SAH
-	// sceneTest1->rebuildIndex();
- //    world.scene = sceneTest1;
- //    RayCastingIntegrator integratorTest1(&world);
+    // Not using SAH
+	 sceneTest1->rebuildIndex();
+     world.scene = sceneTest1;
+     RayCastingIntegrator integratorTest1(&world);
 
- //    auto t_start = std::chrono::high_resolution_clock::now();
+    auto t_start = std::chrono::high_resolution_clock::now();
+    ///////////////
+    Renderer engine3(&cam3, &integratorTest1);
+    engine3.render(img);
+    ///////////////
+    auto t_end = std::chrono::high_resolution_clock::now();
+
+    img.writePNG("a3-dragon-noSAH.png");
+
+    double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
+    std::cout << "Time taken to render a3-dragon-noSAH.png: " << elapsed_time_ms << " ms" << std::endl;
+
+
+    // Using SAH
+   
+    sceneTest1->rebuildIndex();
+    world.scene = sceneTest1;
+    RayCastingIntegrator integratorTest2(&world);
+    t_start = std::chrono::high_resolution_clock::now();
  //    ///////////////
- //    Renderer engine3(&cam3, &integratorTest1);
- //    engine3.render(img);
- //    ///////////////
- //    auto t_end = std::chrono::high_resolution_clock::now();
+     Renderer engine4(&cam3, &integratorTest2);
+    engine4.render(img);
+    ///////////////
+    t_end = std::chrono::high_resolution_clock::now();
 
- //    img.writePNG("a3-Test1.png");
+    img.writePNG("a3-dragon-SAH.png");
 
- //    double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
- //    std::cout << "Time taken to render a3-Test1.png: " << elapsed_time_ms << " ms" << std::endl;
-
-
- //    // Using SAH
- //    sceneTest1->rebuildIndex();
- //    world.scene = sceneTest1;
- //    RayCastingIntegrator integratorTest2(&world);
-
- //    t_start = std::chrono::high_resolution_clock::now();
- //    ///////////////
- //    Renderer engine4(&cam3, &integratorTest2);
- //    engine4.render(img);
- //    ///////////////
- //    t_end = std::chrono::high_resolution_clock::now();
-
- //    img.writePNG("a3-Test2.png");
-
- //    elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
- //    std::cout << "Time taken to render a3-Test2.png: " << elapsed_time_ms << " ms" << std::endl;
+    elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
+    std::cout << "Time taken to render a3-dragon-SAH.png: " << elapsed_time_ms << " ms" << std::endl;
 }

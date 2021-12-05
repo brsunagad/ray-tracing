@@ -6,18 +6,11 @@
 
 namespace rt {
 
-Point::Point(float x, float y, float z)
-{
-    this->x = x;
-    this->y = y;
-    this->z = z;
+Point::Point(float x, float y, float z):
+    x(x), y(y), z(z) {}
 
-}
-
-Point::Point(const Float4& f4)
-{
-    /* TODO */ NOT_IMPLEMENTED;
-}
+Point::Point(const Float4& f4):
+    x(f4.x / f4.w), y(f4.y / f4.w), z(f4.z / f4.w) {}
 
 Vector Point::operator - (const Point& b) const {
     return Vector(x - b.x, y - b.y, z - b.z);

@@ -50,16 +50,16 @@ The CXX compiler identification is MSVC, found in "D:/GitRepositories/cg-ray-tra
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_2dd9c && [1/2] Building C object CMakeFiles\cmTC_2dd9c.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_2dd9c.exe
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_51e15 && [1/2] Building C object CMakeFiles\cmTC_51e15.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_51e15.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_15e99 && [1/2] Building CXX object CMakeFiles\cmTC_15e99.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_15e99.exe
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f839b && [1/2] Building CXX object CMakeFiles\cmTC_f839b.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_f839b.exe
 
 
 

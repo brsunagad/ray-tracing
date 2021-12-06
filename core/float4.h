@@ -18,7 +18,7 @@ public:
     explicit Float4(const Vector& v);
 
     static Float4 rep(float v) {
-        /* TODO */ NOT_IMPLEMENTED;
+        return Float4(v, v, v, v);
     }
 
     float& operator [] (int idx);

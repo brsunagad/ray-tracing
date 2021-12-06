@@ -3,11 +3,14 @@
 
 #include <core/vector.h>
 #include <rt/primitive.h>
+#include <core/matrix.h>
 
 namespace rt {
 
 class Instance : public Primitive {
 public:
+    Matrix T, Tinv;
+    Primitive* archetype;
     Instance(Primitive* content);
     Primitive* content();
 

@@ -129,7 +129,8 @@ Point Matrix::operator*(const Point& b) const {
     float p1 = r1[0] * b.x + r1[1] * b.y + r1[2] * b.z + r1[3];
     float p2 = r2[0] * b.x + r2[1] * b.y + r2[2] * b.z + r2[3];
     float p3 = r3[0] * b.x + r3[1] * b.y + r3[2] * b.z + r3[3];
-    return (Point(p1 ,p2 ,p3));
+    float p4 = r4[0] * b.x + r4[1] * b.y + r4[2] * b.z + r4[3];
+    return (Point(Float4(p1 ,p2 ,p3 ,p4)));
 }
 
 float Matrix::det() const {

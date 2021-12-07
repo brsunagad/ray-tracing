@@ -28,11 +28,11 @@ void Instance::rotate(const Vector& nnaxis, float angle) {
     Vector r = nnaxis.normalize();
 
     Vector s;
-    if (r.x = min(r.x, r.y, r.z))
+    if (r.x == min(r.x, r.y, r.z))
         s = Vector(0.f, -r.z, r.y);
-    else if(r.y = min(r.x, r.y, r.z))
+    else if(r.y == min(r.x, r.y, r.z))
         s = Vector(-r.z, 0.f, r.x);
-    else if (r.z = min(r.x, r.y, r.z))
+    else if (r.z == min(r.x, r.y, r.z))
         s = Vector(-r.y, r.x, 0.f);
     s = s.normalize();
 
@@ -72,6 +72,7 @@ void Instance::setCoordMapper(CoordMapper* cm) {
 }
 
 Intersection Instance::intersect(const Ray& ray, float previousBestDistance) const {
+    assert(Tinv != Matrix::zero());
     Ray rayInv = Ray(Tinv * ray.o, Tinv * ray.d);
     Intersection intersectArchetype = archetype->intersect(rayInv, previousBestDistance);
 

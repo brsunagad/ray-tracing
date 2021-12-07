@@ -75,7 +75,8 @@ Intersection Instance::intersect(const Ray& ray, float previousBestDistance) con
     assert(Tinv != Matrix::zero());
     Ray rayInv = Ray(Tinv * ray.o, Tinv * ray.d);
     Intersection intersectArchetype = archetype->intersect(rayInv, previousBestDistance);
-
+    //since we are not normalizing ray.d, we dont need to change previous best distance
+    //ref: Fundamentals of CG 4th edition, Section 13.2 Instancing 
     if (intersectArchetype) {
         Vector normal = Tinv.transpose() * intersectArchetype.normal();
         Intersection intersection(intersectArchetype.distance , ray, intersectArchetype.solid, normal.normalize(), intersectArchetype.local());

@@ -87,7 +87,51 @@ Intersection Instance::intersect(const Ray& ray, float previousBestDistance) con
 }
 
 BBox Instance::getBounds() const {
-    return BBox(T * archetype->getBounds().min, T * archetype->getBounds().max);
+    BBox archBBox = archetype->getBounds();
+    Point p1(archBBox.min.x, archBBox.min.y, archBBox.min.z);
+    Point p2(archBBox.max.x, archBBox.min.y, archBBox.min.z);
+    Point p3(archBBox.min.x, archBBox.max.y, archBBox.min.z);
+    Point p4(archBBox.min.x, archBBox.min.y, archBBox.max.z);
+    Point p5(archBBox.min.x, archBBox.max.y, archBBox.max.z);
+    Point p6(archBBox.max.x, archBBox.max.y, archBBox.min.z);
+    Point p7(archBBox.max.x, archBBox.min.y, archBBox.max.z);
+    Point p8(archBBox.max.x, archBBox.max.y, archBBox.max.z);
+    Point p1T = T * p1;
+    Point p2T = T * p2;
+    Point p3T = T * p3;
+    Point p4T = T * p4;
+    Point p5T = T * p5;
+    Point p6T = T * p6;
+    Point p7T = T * p7;
+    Point p8T = T * p8;
+    float minx = min(
+        min(p1T.x, p2T.x, p3T.x),
+        min(p4T.x, p5T.x, p6T.x),
+        min(p7T.x, p8T.x));
+    float miny = min(
+        min(p1T.y, p2T.y, p3T.y),
+        min(p4T.y, p5T.y, p6T.y),
+        min(p7T.y, p8T.y));
+    float minz = min(
+        min(p1T.z, p2T.z, p3T.z),
+        min(p4T.z, p5T.z, p6T.z),
+        min(p7T.z, p8T.z));
+    float maxx = max(
+        max(p1T.x, p2T.x, p3T.x),
+        max(p4T.x, p5T.x, p6T.x),
+        max(p7T.x, p8T.x));
+    float maxy = max(
+        max(p1T.y, p2T.y, p3T.y),
+        max(p4T.y, p5T.y, p6T.y),
+        max(p7T.y, p8T.y));
+    float maxz = max(
+        max(p1T.z, p2T.z, p3T.z),
+        max(p4T.z, p5T.z, p6T.z),
+        max(p7T.z, p8T.z));
+
+    Point min(minx, miny, minz);
+    Point max(maxx, maxy, maxz);
+    return BBox(min, max);
 }
 
 }

@@ -9,17 +9,19 @@ namespace rt {
 Matrix::Matrix(const Float4& r1, const Float4& r2, const Float4& r3, const Float4& r4): r1(r1), r2(r2), r3(r3), r4(r4) {}
 
 Float4& Matrix::operator[](int idx) {
+    assert(idx >= 0 && idx <= 3);
     if (idx == 0) return r1;
     else if (idx == 1) return r2;
     else if (idx == 2) return r3;
-    else if (idx == 3) return r4;
+    else return r4;
 }
 
 Float4 Matrix::operator[](int idx) const {
+    assert(idx >= 0 && idx <= 3);
     if (idx == 0) return r1;
     else if (idx == 1) return r2;
     else if (idx == 2) return r3;
-    else if (idx == 3) return r4;
+    else return r4;
 }
 
 Matrix Matrix::operator+(const Matrix& b) const {

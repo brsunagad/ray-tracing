@@ -9,6 +9,10 @@ BVH::BVH()
     count = 0;
 }
 
+BVH::~BVH()
+{
+}
+
 void BVH::rebuildIndex() {
     root->primitives = primitives;
     count++;

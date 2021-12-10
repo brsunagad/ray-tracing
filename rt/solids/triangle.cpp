@@ -30,7 +30,8 @@ Intersection Triangle::intersect(const Ray& ray, float previousBestDistance) con
     Vector pvec = cross(ray.d, v1v3);
     float det = dot(v1v2, pvec);
 
-    if (det > -epsilon && det < epsilon)
+    //if (det > -epsilon && det < epsilon)
+    if (det == 0.f)
         return Intersection::failure();   // This ray is parallel to this triangle.
 
     float invDet = 1.0 / det;

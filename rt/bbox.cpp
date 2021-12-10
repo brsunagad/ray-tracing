@@ -104,7 +104,7 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
 }
 
 bool BBox::isUnbound() const {
-    if ((min.x == -FLT_MAX && max.x == FLT_MAX) || (min.y == -FLT_MAX && max.y == FLT_MAX) || (min.z == -FLT_MAX && max.z == FLT_MAX))
+    if ((min.x == -FLT_MAX || max.x == FLT_MAX) || (min.y == -FLT_MAX || max.y == FLT_MAX) || (min.z == -FLT_MAX || max.z == FLT_MAX))
         return true;
     else
         return false;

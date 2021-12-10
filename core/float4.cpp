@@ -13,17 +13,19 @@ Float4::Float4(const Point& p): x(p.x), y(p.y), z(p.z), w(1.0f) {}
 Float4::Float4(const Vector& vec): x(vec.x), y(vec.y), z(vec.z), w(0.0f) {}
 
 float& Float4::operator [] (int idx) {
+    assert(idx >= 0 && idx <= 3);
     if (idx == 0) return x;
     else if (idx == 1) return y;
     else if (idx == 2) return z;
-    else if (idx == 3) return w;
+    else return w;
 }
 
 float Float4::operator [] (int idx) const {
+    assert(idx >= 0 && idx <= 3);
     if (idx == 0) return x;
     else if (idx == 1) return y;
     else if (idx == 2) return z;
-    else if (idx == 3) return w;
+    else return w;
 }
 
 Float4 Float4::operator + (const Float4& b) const {

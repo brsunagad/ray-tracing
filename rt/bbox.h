@@ -22,13 +22,13 @@ public:
     BBox() {}
     BBox(const Point& min, const Point& max): min(min), max(max), isEmpty(false), isFull(false) {}
     BBox(bool isEmpty, bool isFull): isEmpty(isEmpty), isFull(isFull){
+        if (isEmpty) {
+            min = Point::rep(FLT_MAX);
+            max = Point::rep(-FLT_MAX);
+        }
         if (isFull) {
-            min.x = -FLT_MAX;
-            min.y = -FLT_MAX;
-            min.z = -FLT_MAX;
-            max.x = FLT_MAX;
-            max.y = FLT_MAX;
-            max.z = FLT_MAX;
+            min = Point::rep(-FLT_MAX);
+            max = Point::rep(FLT_MAX);
         }
     }
 

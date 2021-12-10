@@ -10,7 +10,7 @@ class  Node
 {
 public:
     Node() {}
-
+    ~Node() {}
     BBox bbox = BBox::empty();
     bool isLeaf;
     Node* leftChild;
@@ -31,7 +31,7 @@ private:
     int count;
 public:
     BVH();
-
+    ~BVH();
     virtual BBox getBounds() const;
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;
     virtual void rebuildIndex();

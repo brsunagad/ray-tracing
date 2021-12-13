@@ -8,6 +8,11 @@
 namespace rt {
 
 class SpotLight : public PointLight {
+private:
+    Point position;
+    Vector direction;
+    float angle, power;
+    RGBColor intensity;
 public:
 	SpotLight() {}
 	SpotLight(const Point& position, const Vector& direction, float angle, float exp, const RGBColor& intensity);

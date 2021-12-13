@@ -8,6 +8,9 @@
 namespace rt {
 
 class PointLight : public Light {
+private: 
+	Point positio;
+	RGBColor intensity;
 public:
 	PointLight() {}
 	PointLight(const Point& position, const RGBColor& intensity);

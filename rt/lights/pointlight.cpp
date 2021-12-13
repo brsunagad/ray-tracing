@@ -4,12 +4,12 @@
 
 namespace rt {
 
-PointLight::PointLight(const Point& position, const RGBColor& intensity): potition(position), intensity(intensity){}
+PointLight::PointLight(const Point& position, const RGBColor& intensity): position(position), intensity(intensity){}
 
 LightHit PointLight::getLightHit(const Point& p) const {
     Vector dir = position - p;
-    LightHit lighthit = { dir.normalize(), dir.length(), -dir.normalize() };
-    return LightHit
+    LightHit lightHit = { dir.normalize(), dir.length(), -dir.normalize() };
+    return lightHit;
 }
 
 RGBColor PointLight::getIntensity(const LightHit& irr) const {

@@ -9,7 +9,7 @@ namespace rt {
 
 class PointLight : public Light {
 private: 
-	Point positio;
+	Point position;
 	RGBColor intensity;
 public:
 	PointLight() {}

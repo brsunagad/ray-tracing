@@ -3,20 +3,24 @@
 
 namespace rt {
 
-DummyMaterial::DummyMaterial() {
+DummyMaterial::DummyMaterial():fr(1.0f) {
     /* TODO */
 }
 
 RGBColor DummyMaterial::getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor::rep(abs(fr*dot(normal, inDir)));
 }
 
 RGBColor DummyMaterial::getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
-    /* TODO */ NOT_IMPLEMENTED;
+	// no emission
+    return RGBColor::rep(0.0f);
 }
 
 Material::SampleReflectance DummyMaterial::getSampleReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    SampleReflectance sreflectance;
+    sreflectance.direction = outDir;
+    sreflectance.reflectance = RGBColor::rep(abs(fr*dot(normal, outDir)));
+    return sreflectance;
 }
 
 }

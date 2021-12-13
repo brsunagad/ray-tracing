@@ -210,7 +210,8 @@ void BVH::add(Primitive* p) {
 }
 
 void BVH::setMaterial(Material* m) {
-    /* TODO */ NOT_IMPLEMENTED;
+    for (auto p : primitives) 
+        p->setMaterial(m);
 }
 
 void BVH::setCoordMapper(CoordMapper* cm) {

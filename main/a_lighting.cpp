@@ -4,18 +4,22 @@
 #include <core/image.h>
 #include <rt/world.h>
 #include <rt/renderer.h>
-
+#include <rt/loaders/obj.h>
+#include <rt/primmod/instance.h>
 
 #include <rt/cameras/perspective.h>
 #include <rt/solids/quad.h>
 #include <rt/groups/simplegroup.h>
+#include <rt/groups/bvh.h>
 #include <rt/materials/dummy.h>
 
 #include <rt/lights/pointlight.h>
 #include <rt/lights/spotlight.h>
 #include <rt/lights/directional.h>
+#include <rt/lights/projective.h>
 
 #include <rt/integrators/raytrace.h>
+#include <rt/integrators/casting.h>
 
 using namespace rt;
 
@@ -106,11 +110,86 @@ void renderCornellboxB(float scale, const char* filename) {
     engine.render(img);
     img.writePNG(filename);
 }
+
+void renderCornellboxC(float scale, const char* filename) {
+    Image img(400, 400);
+    World world;
+    Group* scene = new SimpleGroup();
+    world.scene = scene;
+
+    PerspectiveCamera cam(Point(278*scale, 273*scale, -800*scale), Vector(0, 0, 1), Vector(0, 1, 0), 0.686f, 0.686f);
+
+    DummyMaterial* mat = new DummyMaterial();
+
+    // walls
+    makeWalls(scene, scale, nullptr, mat);
+
+    //short box
+    makeBox(scene, Point(082.f, 000.1f, 225.f)*scale, Vector(158.f, 000.f, 047.f)*scale, Vector(048.f, 000.f, -160.f)*scale, Vector(000.f, 165.f, 000.f)*scale, nullptr, mat);
+
+    //tall box
+    makeBox(scene, Point(265.f, 000.1f, 296.f)*scale, Vector(049.f, 000.f, 160.f)*scale, Vector(158.f, 000.f, -049.f)*scale, Vector(000.f, 330.f, 000.f)*scale, nullptr, mat);
+
+    //Projective light
+    world.light.push_back(new ProjectiveLight(Point(288*scale,529.99f*scale,279.5f*scale), RGBColor::rep(0.1f)));
+
+    RayTracingIntegrator integrator(&world);
+
+    Renderer engine(&cam, &integrator);
+    engine.render(img);
+    img.writePNG(filename);
 }
 
+void renderModel(const char* filename) {
+    Image img(400, 400);
+    World world;
+    Group* scene = new BVH();
+    // Instance* ins = new Instance(scene);
+    // ins->scale(Vector(0.001f, 0.001f, 0.001f));
+
+    PerspectiveCamera cam(Point(-0.0f, 300.05f, 550.0f), Point(0.0f, 100.0f, 0.0f) - Point(-0.0f, 300.05f, 550.0f), Vector(0, 1, 0), pi/8, pi/6);
+
+    DummyMaterial* mat = new DummyMaterial();
+
+    //BVH stuff
+    loadOBJ(scene, "models/", "Toad.obj");
+    scene->rebuildIndex();
+    scene->setMaterial(mat);
+
+    world.scene = scene;
+
+    //point light
+    world.light.push_back(new PointLight(Point(0,300.99f,500.5f),RGBColor::rep(1.0f)));
+
+    //spot light
+    world.light.push_back(new SpotLight(Point(70.f, 400.f, 230.f), Point(0.0f, 100.0f, 0.0f)-Point(70.f, 400.f, 230.f),  pi/4, 8.0f, RGBColor(0,0,1.0f)));
+    world.light.push_back(new SpotLight(Point(520.f, 300.f, 230.f), Point(0.0f, 100.0f, 0.0f)-Point(70.f, 400.f, 230.f),  pi/3, 3.0f, RGBColor(1.0f,0,0)));
+
+    //directional light
+    DirectionalLight dirl((Point(0.0f, 100.0f, 0.0f) - Point(-0.0f, 300.05f, 550.0f)).normalize(), RGBColor(0.25f,0.25f,0.5f));
+    world.light.push_back(&dirl);
+
+    //projective light
+    world.light.push_back(new ProjectiveLight(Point(-0.0f, 100.05f, 300.0f), RGBColor::rep(1.0f)));
+
+    RayTracingIntegrator integrator(&world);
+    // RayCastingIntegrator integrator(&world);
+
+    Renderer engine(&cam, &integrator);
+    engine.render(img);
+    img.writePNG(filename);
+}
+}
+
+
 void a_lighting() {
-    renderCornellboxA(0.001f, "a5-1.png");
-    renderCornellboxA(0.01f, "a5-2.png");
-    renderCornellboxB(0.001f, "a5-3.png");
-    renderCornellboxB(0.01f, "a5-4.png");
+    // renderCornellboxA(0.001f, "a5-1.png");
+    // renderCornellboxA(0.01f, "a5-2.png");
+    // renderCornellboxB(0.001f, "a5-3.png");
+    // renderCornellboxB(0.01f, "a5-4.png");
+
+    // extra tests:
+    renderCornellboxC(0.001f, "a5-extra1.png");
+    renderCornellboxC(0.01f, "a5-extra2.png");
+    renderModel("a5-Toad.png");
 }

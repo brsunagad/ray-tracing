@@ -13,10 +13,10 @@ RGBColor RayTracingIntegrator::getRadiance(const Ray& ray) const {
 
     	//emission
 		Point texPoint = i.local(); //This will change when implementing textures
-    	radiance = radiance + i.solid->material->getEmission(texPoint, i.normal().normalize(), -ray.d); //Dummy returns 0, but future materials wont
+    	radiance = radiance + i.solid->material->getEmission(texPoint, i.normal(), -ray.d); //Dummy returns 0, but future materials wont
 
  		//iterate over every lightsource
-        for( auto light : world->light){
+        for( auto light : world->light ){
         	//get the light hit from the lightsource
             LightHit lh = light->getLightHit(i.hitPoint());
 
@@ -31,7 +31,7 @@ RGBColor RayTracingIntegrator::getRadiance(const Ray& ray) const {
                 
                 // If there was no intersection, we compute the intensity and reflectance of the material
                 if(!shadowI){
-                    RGBColor intensity = world->light[i]->getIntensity(lh);
+                    RGBColor intensity = light->getIntensity(lh);
                     RGBColor reflectance = i.solid->material->getReflectance(texPoint, i.normal(), -ray.d, -shadowray.d);
                     radiance = radiance + intensity * reflectance;
                 }

@@ -13,7 +13,7 @@ private:
 	Point position;
 	RGBColor intensity;
 
-	int computeWeight(float fx, float fy, const Point& c, float div) const;
+	float computeWeight(const Vector& v, const Point& c, float div) const;
 public:
 	ProjectiveLight() {}
 	ProjectiveLight(const Point& position, const RGBColor& intensity);

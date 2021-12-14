@@ -8,7 +8,7 @@ DummyMaterial::DummyMaterial():fr(1.0f) {
 }
 
 RGBColor DummyMaterial::getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const {
-    return RGBColor::rep(abs(fr*dot(normal, inDir)));
+    return RGBColor::rep(fabsf(fr*dot(normal, inDir)));
 }
 
 RGBColor DummyMaterial::getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
@@ -19,7 +19,7 @@ RGBColor DummyMaterial::getEmission(const Point& texPoint, const Vector& normal,
 Material::SampleReflectance DummyMaterial::getSampleReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
     SampleReflectance sreflectance;
     sreflectance.direction = outDir;
-    sreflectance.reflectance = RGBColor::rep(abs(fr*dot(normal, outDir)));
+    sreflectance.reflectance = RGBColor::rep(fabsf(fr*dot(normal, outDir)));
     return sreflectance;
 }
 

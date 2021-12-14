@@ -2,6 +2,9 @@
 #define CG1RAYTRACER_INTEGRATORS_RAYTRACING_HEADER
 
 #include <rt/integrators/integrator.h>
+#include <rt/solids/solid.h>
+#include <rt/materials/material.h>
+#include <rt/lights/light.h>
 
 namespace rt {
 class World;

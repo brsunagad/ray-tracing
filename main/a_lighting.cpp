@@ -168,8 +168,8 @@ void renderModel(float scale, const char* filename) {
 
     //projective light
     // world.light.push_back(new ProjectiveLight(Point(288*scale,529.99f*scale,279.5f*scale), RGBColor::rep(0.5f)));
-    // world.light.push_back(new ProjectiveLight(Point(490*scale,329.99f*scale,279.5f*scale), RGBColor::rep(0.5f)));
-    world.light.push_back(new ProjectiveLight(Point( 40*scale,329.99f*scale,279.5f*scale), RGBColor::rep(1.0f)));
+    world.light.push_back(new ProjectiveLight(Point(490*scale,329.99f*scale,279.5f*scale), RGBColor::rep(1.0f)));
+    // world.light.push_back(new ProjectiveLight(Point( 40*scale,329.99f*scale,279.5f*scale), RGBColor::rep(1.0f)));
 
     RayTracingIntegrator integrator(&world);
 
@@ -181,10 +181,10 @@ void renderModel(float scale, const char* filename) {
 
 
 void a_lighting() {
-    // renderCornellboxA(0.001f, "a5-1.png");
-    // renderCornellboxA(0.01f, "a5-2.png");
-    // renderCornellboxB(0.001f, "a5-3.png");
-    // renderCornellboxB(0.01f, "a5-4.png");
+    renderCornellboxA(0.001f, "a5-1.png");
+    renderCornellboxA(0.01f, "a5-2.png");
+    renderCornellboxB(0.001f, "a5-3.png");
+    renderCornellboxB(0.01f, "a5-4.png");
 
     // extra tests:
     renderCornellboxC(0.001f, "a5-extra1.png");

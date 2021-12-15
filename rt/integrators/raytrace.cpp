@@ -21,8 +21,8 @@ RGBColor RayTracingIntegrator::getRadiance(const Ray& ray) const {
             LightHit lh = light->getLightHit(i.hitPoint());
 
             //Compute shadow ray
-            //we add an offset to the origin not to get self intersections
-            Ray shadowray(i.hitPoint() + i.normal()*FLT_MIN, lh.direction);
+            //we add an offset to the origin not to get self intersections (FLT_MIN)
+            Ray shadowray(i.hitPoint() + i.normal()*0.0001f, lh.direction);
 
             // If shadow ray and primary ray are on the same side
             if(dot(i.normal(), shadowray.d) > 0.0f){

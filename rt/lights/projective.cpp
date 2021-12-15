@@ -23,9 +23,7 @@ RGBColor ProjectiveLight::getIntensity(const LightHit& irr) const {
 }
 
 float ProjectiveLight::computeWeight(const Vector& vec, const Point& c, float div) const{
-	Point v(vec.x, vec.y, 0.5f);
-    v = v - Vector::rep(0.5f);
-    v = v * 2.0f;
+	Point v(vec.x, vec.y, vec.z);
     int numIter = julia(v, c);
     return numIter/(numIter+div);
 }

@@ -6,6 +6,8 @@
 namespace rt {
 
 class MirrorMaterial : public Material {
+private:
+    float eta, kappa;
 public:
     MirrorMaterial(float eta, float kappa);
     virtual RGBColor getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const;

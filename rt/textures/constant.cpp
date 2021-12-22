@@ -4,24 +4,23 @@ namespace rt {
 
 ConstantTexture::ConstantTexture()
 {
-    /* TODO */
+    color = RGBColor::rep(0.0f);
 }
 
-ConstantTexture::ConstantTexture(const RGBColor& color)
-{
-    /* TODO */
+ConstantTexture::ConstantTexture(const RGBColor& color){
+    this->color = color;
 }
 
 RGBColor ConstantTexture::getColor(const Point& coord) {
-    /* TODO */ NOT_IMPLEMENTED;
+    return color;
 }
 
 RGBColor ConstantTexture::getColorDX(const Point& coord) {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor::rep(0.0f);
 }
 
 RGBColor ConstantTexture::getColorDY(const Point& coord) {
-    /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor::rep(0.0f);
 }
 
 }

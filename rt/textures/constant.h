@@ -6,6 +6,8 @@
 namespace rt {
 
 class ConstantTexture : public Texture {
+private:
+    RGBColor color;
 public:
     ConstantTexture();
     ConstantTexture(const RGBColor& color);

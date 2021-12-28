@@ -2,6 +2,7 @@
 #define CG1RAYTRACER_TEXTURES_TEXTURE_HEADER
 
 #include <core/color.h>
+#include <core/point.h>
 
 namespace rt {
 

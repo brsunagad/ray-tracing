@@ -3,6 +3,7 @@
 
 #include <core/vector.h>
 #include <core/color.h>
+#include <rt/textures/texture.h>
 
 namespace rt {
 

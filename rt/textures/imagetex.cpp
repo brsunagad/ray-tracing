@@ -18,15 +18,19 @@ ImageTexture::ImageTexture(const Image& image, BorderHandlingType bh, Interpolat
 }
 
 RGBColor ImageTexture::getColor(const Point& coord) {
-    /* TODO */ NOT_IMPLEMENTED;
+    // /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor::rep(0.0f);
+
 }
 
 RGBColor ImageTexture::getColorDX(const Point& coord) {
-    /* TODO */ NOT_IMPLEMENTED;
+    // /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor::rep(0.0f);
 }
 
 RGBColor ImageTexture::getColorDY(const Point& coord) {
-    /* TODO */ NOT_IMPLEMENTED;
+    // /* TODO */ NOT_IMPLEMENTED;
+    return RGBColor::rep(0.0f);
 }
 
 }

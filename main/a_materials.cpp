@@ -23,6 +23,7 @@
 #include <rt/materials/combine.h>
 
 #include <rt/integrators/recraytrace.h>
+#include <rt/integrators/raytrace.h>
 
 using namespace rt;
 
@@ -129,7 +130,8 @@ void a7renderCornellbox(float scale, const char* filename, Material** materials)
     world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
     world.light.push_back(new PointLight(Point(40*scale,159.99f*scale,249.5f*scale),RGBColor(5000.0f*scale*scale,30000.0f*scale*scale,5000.0f*scale*scale)));
 
-    RecursiveRayTracingIntegrator integrator(&world);
+    // RecursiveRayTracingIntegrator integrator(&world);
+    RayTracingIntegrator integrator(&world);
 
     Renderer engine(&cam, &integrator);
     engine.render(img);
@@ -140,11 +142,18 @@ void a7renderCornellbox(float scale, const char* filename, Material** materials)
 void a_materials() {
     Material** materials = new Material*[5];
     initTextures();
+    std::cout << "textures initialized" << std::endl;
     a7prepMaterials1(materials);
+    std::cout << "Materials prepared 1" << std::endl;
     a7renderCornellbox(0.001f, "a6-1a.png", materials);
+    std::cout << "a6-1a.png rendered" << std::endl;
     a7prepMaterials2(materials);
+    std::cout << "Materials prepared 2" << std::endl;
     a7renderCornellbox(0.001f, "a6-1b.png", materials);
+    std::cout << "a6-1c.png rendered" << std::endl;
     a7prepMaterials3(materials);
+    std::cout << "Materials prepared 3" << std::endl;
     a7renderCornellbox(0.001f, "a6-1c.png", materials);
+    std::cout << "a6-1c.png rendered" << std::endl;
     delete [] materials;
 }

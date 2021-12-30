@@ -3,6 +3,7 @@
 
 #include <rt/textures/texture.h>
 #include <vector>
+#include <cmath>
 
 namespace rt {
 

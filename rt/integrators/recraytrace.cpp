@@ -23,7 +23,7 @@ RGBColor RecursiveRayTracingIntegrator::recurse(const Ray& ray, int& depth) cons
     Intersection intersection = world->scene->intersect(ray);
 
     if (intersection) {
-        texPoint = intersection.local();//intersection.solid->texMapper->getCoords(intersection);
+        texPoint = intersection.solid->texMapper->getCoords(intersection);
         Material::Sampling sampling = intersection.solid->material->useSampling();
 
         if (sampling == Material::SAMPLING_NOT_NEEDED || sampling == Material::SAMPLING_SECONDARY) {

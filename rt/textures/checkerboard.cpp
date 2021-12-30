@@ -1,13 +1,13 @@
 #include <rt/textures/checkerboard.h>
-
+#include <cmath>
 namespace rt {
 
 CheckerboardTexture::CheckerboardTexture(const RGBColor& white, const RGBColor& black): white(white), black(black)
 {}
 
 RGBColor CheckerboardTexture::getColor(const Point& coord) {
-	float parity = (int(2*coord.x)+int(2*coord.y)+int(2*coord.z)) % 1;
-	if (parity == 1)
+	int parity = int(floor(2.0f*coord.x)+ floor(2.0f *coord.y)+ floor(2.0f *coord.z)) % 2;
+	if (parity == 0)
     	return white;
     else
     	return black;

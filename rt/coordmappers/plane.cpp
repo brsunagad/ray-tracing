@@ -3,11 +3,12 @@
 namespace rt {
 
 PlaneCoordMapper::PlaneCoordMapper(const Vector& e1, const Vector& e2) {
-    /* TODO */
+    Vector normal = cross(e1, e2);
+    projectionMatrix = Matrix::system(e1, e2, normal).invert();
 }
 
 Point PlaneCoordMapper::getCoords(const Intersection& hit) const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return projectionMatrix * hit.local();
 }
 
 }

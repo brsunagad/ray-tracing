@@ -6,7 +6,21 @@ namespace rt {
 MirrorMaterial::MirrorMaterial(float eta, float kappa):eta(eta), kappa(kappa){}
 
 RGBColor MirrorMaterial::getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const {
-    return RGBColor::rep(0.f);
+    float cosIn = dot(-inDir, normal);
+    float cosOut = dot(outDir, normal);
+    float delta = fabs(cosIn - cosOut) == 0.f ? 1.f : 0.f;
+
+
+
+    float denom = 1.f / (kappa * cosIn + eta * cosOut);
+    float r1 = (kappa * cosIn - eta * cosOut) * denom;
+    float r2 = (eta * cosIn - kappa * cosOut) * denom;
+    float Fr = 0.5f * (r1 + r2);
+    float brdf = Fr * delta / fabs(cosIn);
+
+
+
+    return RGBColor::rep(0.0f);
 }
 
 RGBColor MirrorMaterial::getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
@@ -27,6 +41,7 @@ Material::SampleReflectance MirrorMaterial::getSampleReflectance(const Point& te
     float r_para = ((ek_sqr * cos_i_sq) - two_eta_cos_i + 1) / ((ek_sqr * cos_i_sq) + two_eta_cos_i + 1);
 
     return SampleReflectance(ref_dir, RGBColor::rep(0.5f * (r_para + r_perp)));
+    
 }
 
 Material::Sampling MirrorMaterial::useSampling() const {

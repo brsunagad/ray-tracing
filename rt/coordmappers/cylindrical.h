@@ -2,7 +2,7 @@
 #define CG1RAYTRACER_COORDMAPPERS_CYLINDRICAL_HEADER
 
 #include <rt/coordmappers/coordmapper.h>
-#include <core/Vector.h>
+#include <core/vector.h>
 #include <rt/intersection.h>
 
 namespace rt {

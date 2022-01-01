@@ -7,6 +7,7 @@
 namespace rt {
 
 class ImageTexture : public Texture {
+
 public:
     enum BorderHandlingType {
         CLAMP,
@@ -25,6 +26,11 @@ public:
     virtual RGBColor getColor(const Point& coord);
     virtual RGBColor getColorDX(const Point& coord);
     virtual RGBColor getColorDY(const Point& coord);
+
+private:
+    Image img;
+    BorderHandlingType bh;
+    InterpolationType i;
 };
 
 }

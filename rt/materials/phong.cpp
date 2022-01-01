@@ -1,5 +1,5 @@
 #define _USE_MATH_DEFINES
-#include <cmath>
+#include <core/scalar.h>
 #include <rt/materials/phong.h>
 #include <rt/textures/texture.h>
 
@@ -12,7 +12,7 @@ RGBColor PhongMaterial::getReflectance(const Point& texPoint, const Vector& norm
     float cosTheta = dot(reflection, outDir);
     if (cosTheta < 0 || dot(-inDir, normal) < 0)
         return RGBColor(0, 0, 0);
-    return specular->getColor(texPoint) * (powf(cosTheta, exponent) * (exponent + 2) * dot(normal, -inDir)) / (2 * M_PI);
+    return specular->getColor(texPoint) * (powf(cosTheta, exponent) * (exponent + 2) * dot(normal, -inDir)) / (2 * pi);
 }
 
 RGBColor PhongMaterial::getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
@@ -20,7 +20,7 @@ RGBColor PhongMaterial::getEmission(const Point& texPoint, const Vector& normal,
 }
 
 Material::SampleReflectance PhongMaterial::getSampleReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
-	UNREACHABLE;
+    return Material::SampleReflectance();
 }
 
 Material::Sampling PhongMaterial::useSampling() const {

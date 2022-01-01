@@ -27,11 +27,11 @@ Intersection Quad::intersect(const Ray& ray, float previousBestDistance) const {
     //quad intersection can be determined by intersection with above two triangles
    Intersection quadIntersect = tri1->intersect(ray, previousBestDistance);
    if (quadIntersect)
-       return Intersection(quadIntersect.distance,quadIntersect.ray, this, quadIntersect.normal(), p1);//replace p1 with bary centric coordinates in future assignments
+       return Intersection(quadIntersect.distance,quadIntersect.ray, this, quadIntersect.normal(), getBaryCoords(quadIntersect.hitPoint()));//replace p1 with bary centric coordinates in future assignments
    
    quadIntersect = tri2->intersect(ray, previousBestDistance);
    if (quadIntersect)
-       return Intersection(quadIntersect.distance, quadIntersect.ray, this, quadIntersect.normal(), p1);
+       return Intersection(quadIntersect.distance, quadIntersect.ray, this, quadIntersect.normal(), getBaryCoords(quadIntersect.hitPoint()));
 
    return Intersection::failure();
 }
@@ -44,4 +44,24 @@ float Quad::getArea() const {
     return tri1->getArea()+tri2->getArea();
 }
 
+Point Quad::getBaryCoords(const Point& p) const {
+
+    Vector op = p - p1;
+    float u =  0.f, v = 0.f;
+    if (span1.z * span2.y != 0.0f || span2.z * span1.y != 0.0f) {
+        u = (op.z * span2.y - op.y * span2.z) / (span1.z * span2.y - span1.y * span2.z);
+        v = (op.z * span1.y - op.y * span1.z) / (span2.z * span1.y - span2.y * span1.z);
+    }
+    else if (span1.x * span2.y != 0.0f || span1.y * span2.x != 0.0f) {
+        u = (op.x * span2.y - op.y * span2.x) / (span1.x * span2.y - span1.y * span2.x);
+        v = (op.x * span1.y - op.y * span1.x) / (span2.x * span1.y - span2.y * span1.x);
+    }
+    else if (span1.z * span2.x != 0.0f || span1.x * span2.z != 0.0f) {
+        u = (op.z * span2.x - op.x * span2.z) / (span1.z * span2.x - span1.x * span2.z);
+        v = (op.z * span1.x - op.x * span1.z) / (span2.z * span1.x - span2.x * span1.z);
+
+    }
+    Point bary(u, v, 0.0f);
+    return bary;
+}
 }

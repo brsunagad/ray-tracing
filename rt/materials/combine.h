@@ -2,10 +2,13 @@
 #define CG1RAYTRACER_MATERIALS_COMBINE_HEADER
 
 #include <rt/materials/material.h>
+#include <vector>
 
 namespace rt {
 
 class CombineMaterial : public Material {
+private:
+    std::vector<std::pair<Material*, float>> materials;
 public:
     CombineMaterial();
     void add(Material* material, float weight);

@@ -10,7 +10,7 @@ Point CylindricalCoordMapper::getCoords(const Intersection& hit) const {
     float v = dot(longitudinalAxis.normalize(), hitVector) / longitudinalAxis.length();
 
     //calculate perpendicular polar axis
-    Vector newPolar = (polarAxis - dot(longitudinalAxis.normalize(), polarAxis) * longitudinalAxis.normalize());
+    Vector newPolar = (polarAxis - dot(longitudinalAxis.normalize(), polarAxis) * longitudinalAxis);
 
     //Project hitVector 
     Vector projHit = (hitVector - v * longitudinalAxis).normalize();

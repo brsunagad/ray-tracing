@@ -20,6 +20,7 @@ RGBColor ImageTexture::getColor(const Point& coord) {
     float tu, tv;
     switch (bh) {
     case ImageTexture::CLAMP:
+    	//we multiply by a value slightly less than 1 to prevent out of bounds index when calculating floor
         tu = coord.x < 0 ? 0.0f : coord.x;
         tu = coord.x > 1 ? 1.0f : tu;
         tv = coord.y < 0 ? 0.0f : coord.y;
@@ -33,7 +34,7 @@ RGBColor ImageTexture::getColor(const Point& coord) {
         if (abs(floorY) % 2 == 1) { tv = 1 - tv; }
         break;
 
-    default:
+    default: //repeat
         tu = coord.x - floorX;
         tv = coord.y - floorY;
         break;
@@ -54,15 +55,15 @@ RGBColor ImageTexture::getColor(const Point& coord) {
 
         return img(lu, lv);
     }
-    else {
-        u = tu * (resU - 1.0f);
-        v = tv * (resV - 1.0f);
-
-        lu = u - floor(u);
-        lv = v - floor(v);
+    else { //bilinear
+        u = tu * (1-epsilon) * (resU - 1.0f);
+        v = tv * (1-epsilon) * (resV - 1.0f);
 
         int flru = floor(u);
         int flrv = floor(v);
+
+        lu = u - flru;
+        lv = v - flrv;
 
         return (
             (1 - lu) * (1 - lv) * img(flru, flrv) +
@@ -75,13 +76,17 @@ RGBColor ImageTexture::getColor(const Point& coord) {
 }
 
 RGBColor ImageTexture::getColorDX(const Point& coord) {
-    // /* TODO */ NOT_IMPLEMENTED;
-    return RGBColor::rep(0.0f);
+    //Find the color for x slightly bigger and smaller and calculate the difference:
+    RGBColor ColorPos = getColor(Point(coord.x+0.001, coord.y, coord.z));
+    RGBColor ColorNeg = getColor(Point(coord.x-0.001, coord.y, coord.z));
+    return (ColorPos-ColorNeg)/0.002;
 }
 
 RGBColor ImageTexture::getColorDY(const Point& coord) {
-    // /* TODO */ NOT_IMPLEMENTED;
-    return RGBColor::rep(0.0f);
+    //Find the color for y slightly bigger and smaller and calculate the difference:
+    RGBColor ColorPos = getColor(Point(coord.x, coord.y+0.001, coord.z));
+    RGBColor ColorNeg = getColor(Point(coord.x, coord.y-0.001, coord.z));
+    return (ColorPos-ColorNeg)/0.002;
 }
 
 }

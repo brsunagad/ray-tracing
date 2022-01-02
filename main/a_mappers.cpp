@@ -40,7 +40,7 @@ void trynomapper(const char* filename) {
 
     PerspectiveCamera cam(Point(278*scale, 273*scale, -800*scale), Vector(0, 0, 1), Vector(0, 1, 0), 0.686f, 0.686f);
 
-    ImageTexture* whitetex = new ImageTexture("models/stones_diffuse.png");
+    ImageTexture* whitetex = new ImageTexture("models/stones_diffuse.png",ImageTexture::REPEAT, ImageTexture::BILINEAR);
     ConstantTexture* redtex = new ConstantTexture(RGBColor(.7f,0.f,0.f));
     ConstantTexture* greentex = new ConstantTexture(RGBColor(0.f,.7f,0.f));
     ConstantTexture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
@@ -61,19 +61,19 @@ void trynomapper(const char* filename) {
     scene.add(new Triangle(Point(000.f,000.f,000.f)*scale, Point(000.f,000.f,560.f)*scale, Point(550.f,000.f,000.f)*scale, nullptr, &white));
     scene.add(new Triangle(Point(550.f,000.f,560.f)*scale, Point(550.f,000.f,000.f)*scale, Point(000.f,000.f,560.f)*scale, nullptr, &white));
 
-    //ceiling
+    // //ceiling
     scene.add(new Triangle(Point(550.f,550.f,000.f)*scale, Point(550.f,550.f,560.f)*scale, Point(000.f,550.f,000.f)*scale, nullptr, &white));
     scene.add(new Triangle(Point(000.f,550.f,560.f)*scale, Point(000.f,550.f,000.f)*scale, Point(550.f,550.f,560.f)*scale, nullptr, &white));
 
-    //back wall
+    // //back wall
     scene.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, nullptr, &white));
     scene.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, nullptr, &white));
 
-    //right wall
+    // //right wall
     scene.add(new Triangle(Point(000.f,000.f,000.f)*scale, Point(000.f,550.f,000.f)*scale, Point(000.f,000.f,560.f)*scale, nullptr, &green));
     scene.add(new Triangle(Point(000.f,550.f,560.f)*scale, Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,000.f)*scale, nullptr, &green));
 
-    //left wall
+    // //left wall
     scene.add(new Triangle(Point(550.f,000.f,000.f)*scale, Point(550.f,000.f,560.f)*scale, Point(550.f,550.f,000.f)*scale, nullptr, &red));
     scene.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,550.f,000.f)*scale, Point(550.f,000.f,560.f)*scale, nullptr, &red));
 

@@ -130,8 +130,8 @@ void a7renderCornellbox(float scale, const char* filename, Material** materials)
     world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
     world.light.push_back(new PointLight(Point(40*scale,159.99f*scale,249.5f*scale),RGBColor(5000.0f*scale*scale,30000.0f*scale*scale,5000.0f*scale*scale)));
 
-    // RecursiveRayTracingIntegrator integrator(&world);
-    RayTracingIntegrator integrator(&world);
+    RecursiveRayTracingIntegrator integrator(&world);
+    // RayTracingIntegrator integrator(&world);
 
     Renderer engine(&cam, &integrator);
     engine.render(img);

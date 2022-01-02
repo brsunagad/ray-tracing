@@ -13,8 +13,8 @@ RGBColor RayTracingIntegrator::getRadiance(const Ray& ray) const {
     	// Hit was successfull, now we calculate radiance
 
     	//emission
-        Point texPoint = i.solid->texMapper->getCoords(i); //This will change when implementing textures
-    	radiance = radiance + i.solid->material->getEmission(texPoint, i.normal(), -ray.d); //Dummy returns 0, but future materials wont
+        Point texPoint = i.solid->texMapper->getCoords(i); 
+    	radiance = radiance + i.solid->material->getEmission(texPoint, i.normal(), -ray.d);
 
  		//iterate over every lightsource
         for( auto light : world->light ){

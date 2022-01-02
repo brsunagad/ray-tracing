@@ -12,12 +12,13 @@ Intersection::Intersection(float distance, const Ray& ray, const Solid* solid, c
 {}
 
 Intersection::operator bool() const {
-    return success;
+    return success || this->solid != nullptr;
 }
 
 Intersection Intersection::failure() {
     Intersection fail = Intersection();
     fail.success = false;
+    fail.solid = nullptr;
     return fail;
 
 }

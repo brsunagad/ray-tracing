@@ -9,6 +9,7 @@
 #include <rt/cameras/perspective.h>
 
 #include <rt/materials/lambertian.h>
+#include <rt/materials/flatmaterial.h>
 
 #include <rt/textures/constant.h>
 #include <rt/textures/imagetex.h>
@@ -20,13 +21,17 @@
 #include <rt/solids/quad.h>
 #include <rt/solids/triangle.h>
 #include <rt/solids/sphere.h>
+#include <rt/solids/enviromentMap.h>
+
 #include <rt/integrators/raytrace.h>
+#include <rt/integrators/recraytrace.h>
 
 #include <rt/groups/simplegroup.h>
 #include <rt/coordmappers/plane.h>
 #include <rt/coordmappers/cylindrical.h>
 #include <rt/coordmappers/spherical.h>
 #include <rt/coordmappers/tmapper.h>
+#include <rt/coordmappers/enviromentMapper.h>
 
 
 using namespace rt;
@@ -157,6 +162,74 @@ void trymapper(const char* filename, CoordMapper* spheremapper1, CoordMapper* sp
     img.writePNG(filename);
 }
 
+
+void extraTestEnviromentMap(const char* filename1, const char* filename2) {
+    static const float scale = 0.001f;
+    Image img(400, 400);
+    World world;
+    SimpleGroup scene;
+    world.scene = &scene;
+
+    PerspectiveCamera cam(Point(278*scale, 273*scale, -800*scale), Vector(0, 0, 1), Vector(0, 1, 0), 0.686f, 0.686f);
+
+    
+    CheckerboardTexture* checkerboardTex = new CheckerboardTexture(RGBColor(1.0f,0.9f,0.7f), RGBColor(0.2f,0.2f,0.0f));
+    FlatMaterial checkerboard = FlatMaterial(checkerboardTex);
+
+    PerlinTexture* perlinTex = new PerlinTexture(RGBColor(1.0f,1.0f,0.9f), RGBColor(0.5f,0.5f,1.0f));
+    perlinTex->addOctave(0.5f, 5.0f);
+    perlinTex->addOctave(0.25f, 10.0f);
+    perlinTex->addOctave(0.125f, 20.0f);
+    perlinTex->addOctave(0.125f, 40.0f);
+    FlatMaterial perlin = FlatMaterial(perlinTex);
+
+    ImageTexture* imatex = new ImageTexture("models/stones_diffuse.png",ImageTexture::REPEAT, ImageTexture::BILINEAR);
+    FlatMaterial image = FlatMaterial(imatex);
+
+    // //back wall
+    scene.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, nullptr, &image));
+    scene.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, nullptr, &image));
+
+    //sphere
+    scene.add(new Sphere(Point(200.f,100.f,300.f)*scale, 150.f*scale, nullptr, &checkerboard));
+
+    //EnviromentMap
+    EnviromentMapper* coordmapEnviroment = new EnviromentMapper();
+    scene.add(new EnviromentMap(coordmapEnviroment, &perlin));
+
+
+    // RecursiveRayTracingIntegrator integrator(&world);
+    RayTracingIntegrator integrator(&world);
+
+    Renderer engine(&cam, &integrator);
+    engine.render(img);
+    img.writePNG(filename1);
+
+
+    //test 2
+    SimpleGroup scene2;
+    world.scene = &scene2;
+
+        // //back wall
+    scene2.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, nullptr, &checkerboard));
+    scene2.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, nullptr, &checkerboard));
+
+    //sphere
+    scene2.add(new Sphere(Point(200.f,100.f,300.f)*scale, 150.f*scale, nullptr, &perlin));
+
+    //EnviromentMap
+    scene2.add(new EnviromentMap(coordmapEnviroment, &image));
+
+
+    // RecursiveRayTracingIntegrator integrator(&world);
+    RayTracingIntegrator integrator2(&world);
+
+    Renderer engine2(&cam, &integrator2);
+    engine.render(img);
+    img.writePNG(filename2);
+
+}
+
 void a_mappers() {
     trynomapper("a6-4a.png");
     trymapper("a6-4b.png", nullptr, nullptr);
@@ -173,4 +246,7 @@ void a_mappers() {
         new SphericalCoordMapper(Point(.4f,.45f,.3f),Vector(0.0f,hsq2,hsq2),Vector(0.5f,0.0f,0.0f)),
         new SphericalCoordMapper(Point(.3f,.1f,.3f),Vector(0.0f,hsq2,-hsq2),Vector(0.5f,0.0f,0.0f))
     );
+
+    //extra test
+    extraTestEnviromentMap("a6-Extra-EnviromentMap-1.png", "a6-Extra-EnviromentMap-2.png");
 }

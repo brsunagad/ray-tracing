@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.0)
 
 set(MY_ADDITIONAL_SOURCES
     # Please add your source files here
+    rt/solids/enviromentMap.cpp
+    rt/solids/enviromentMap.h
+    rt/coordmappers/enviromentMapper.cpp
+    rt/coordmappers/enviromentMapper.h
 )
 
 set(ASSIGNMENT_SOURCES

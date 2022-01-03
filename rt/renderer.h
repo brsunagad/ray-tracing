@@ -2,7 +2,9 @@
 #define CG1RAYTRACER_RENDERER_HEADER
 
 #include <core/scalar.h>
+#include <core/random.h>
 #include <rt/integrators/integrator.h>
+
 
 namespace rt {
 

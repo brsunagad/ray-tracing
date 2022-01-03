@@ -73,6 +73,12 @@ void a_local() {
 	engine.render(img);
 	img.writePNG("a6-3a.png");
 
+	// /////////////////////
+	// engine.setSamples(30);
+	// /////////////////////
+	// engine.render(img);
+	// img.writePNG("a6-3a-EXTRA.png");
+	
 	DummyIntegrator integratorB(&world, true);
 
 	Renderer engineB(&cam, &integratorB);

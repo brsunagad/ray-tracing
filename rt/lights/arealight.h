@@ -2,12 +2,14 @@
 #define CG1RAYTRACER_LIGHTS_AREALIGHT_HEADER
 
 #include <rt/lights/light.h>
-
+#include <rt/solids/solid.h>
 namespace rt {
 
 class Solid;
 
 class AreaLight : public Light {
+private:
+    Solid *source;
 public:
     AreaLight() {}
     AreaLight(Solid* source);

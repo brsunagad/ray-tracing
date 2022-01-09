@@ -9,6 +9,10 @@ class Point;
 class Vector;
 
 class DOFPerspectiveCamera : public Camera {
+private:
+    Point center;
+    Vector forward, up, spanX, spanY;
+    float focalDistance, apertureRadius, scaleX, scaleY;
 public:
     DOFPerspectiveCamera(
         const Point& center,

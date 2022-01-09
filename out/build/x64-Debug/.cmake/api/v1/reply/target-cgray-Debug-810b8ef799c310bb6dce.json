@@ -161,12 +161,14 @@
 				128,
 				130,
 				132,
-				133,
 				134,
-				135,
 				136,
 				137,
-				138
+				138,
+				139,
+				140,
+				141,
+				142
 			]
 		}
 	],
@@ -276,7 +278,9 @@
 				125,
 				127,
 				129,
-				131
+				131,
+				133,
+				135
 			]
 		},
 		{
@@ -347,12 +351,14 @@
 				128,
 				130,
 				132,
-				133,
 				134,
-				135,
 				136,
 				137,
-				138
+				138,
+				139,
+				140,
+				141,
+				142
 			]
 		}
 	],
@@ -1079,6 +1085,28 @@
 		{
 			"backtrace" : 1,
 			"path" : "rt/textures/perlin.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "rt/solids/enviromentMap.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "rt/solids/enviromentMap.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "rt/coordmappers/enviromentMapper.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "rt/coordmappers/enviromentMapper.h",
 			"sourceGroupIndex" : 0
 		},
 		{

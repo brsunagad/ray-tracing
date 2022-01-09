@@ -6,6 +6,9 @@
 namespace rt {
 
 class FuzzyMirrorMaterial : public Material {
+private:
+    float eta, kappa, fuzzyangle;
+
 public:
     FuzzyMirrorMaterial(float eta, float kappa, float fuzzyangle);
     virtual RGBColor getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const;

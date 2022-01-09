@@ -32,6 +32,10 @@ Point operator * (const Point& a, float scalar) {
     return Point(scalar * a.x, scalar * a.y, scalar * a.z);
 }
 
+Point operator + (const Point& a, const Point& b) {
+    return Point(a.x + b.x, a.y + b.y, a.z + b.z);
+}
+
 Point min(const Point& a, const Point& b) {
     return Point(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z));
 }

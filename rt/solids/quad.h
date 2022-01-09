@@ -9,7 +9,7 @@ namespace rt {
 class Quad : public Solid {
 private: 
     Point p1, p2, p3, p4;
-    Vector span1, span2;
+    Vector span1, span2, normal;
     Triangle *tri1, *tri2;
 public:
     Quad() {}

@@ -7,6 +7,9 @@
 namespace rt {
 
 class SmoothTriangle : public Triangle {
+private:
+    Point v1, v2, v3;
+    Vector n1, n2, n3, v1v2, v1v3;
 public:
     SmoothTriangle() {}
     SmoothTriangle(Point vertices[3], Vector normals[3], CoordMapper* texMapper, Material* material);

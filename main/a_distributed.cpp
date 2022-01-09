@@ -104,5 +104,5 @@ void a_distributed() {
     renderCornellbox(0.001f, "a6-5.png", cam, sphereMaterial1, floorMaterial1, 30);
     renderCornellbox(0.001f, "a6-6.png", cam, sphereMaterial2, floorMaterial2, 30);
     renderCornellbox(0.001f, "a6-7a.png", dofcam, sphereMaterial2, floorMaterial2, 30);
-    renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
+    //renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
 }

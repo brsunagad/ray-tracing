@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <rt/solids/disc.h>
+#include <core/random.h>
 
 namespace rt {
 
@@ -37,7 +38,16 @@ Intersection Disc::intersect(const Ray& ray, float previousBestDistance) const {
 }
 
 Solid::Sample Disc::sample() const {
-    NOT_IMPLEMENTED;
+    float theta = random();
+    float v = radius * sqrt(random());
+    float r1 = v * cos(2 * pi * theta);
+    float r2 = v * sin(2 * pi * theta);
+    float r3 = v * sin(2 * pi * theta);
+
+    Sample sample;
+    sample.point = Point(r1 + center.x , r2 + center.y, r3 + center.z);
+    sample.normal = normal;
+    return sample;
 }
 
 float Disc::getArea() const {

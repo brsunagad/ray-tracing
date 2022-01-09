@@ -1,6 +1,7 @@
 #include <rt/cameras/dofperspective.h>
 #include <rt/ray.h>
 #include <core/random.h>
+#include <cmath>
 
 namespace rt {
 

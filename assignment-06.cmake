@@ -6,6 +6,8 @@ set(MY_ADDITIONAL_SOURCES
     rt/solids/enviromentMap.h
     rt/coordmappers/enviromentMapper.cpp
     rt/coordmappers/enviromentMapper.h
+    rt/materials/cooktorrance.cpp
+    rt/materials/cooktorrance.h
 )
 
 set(ASSIGNMENT_SOURCES

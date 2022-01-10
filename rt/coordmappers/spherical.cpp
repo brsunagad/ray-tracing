@@ -38,6 +38,19 @@ Point SphericalCoordMapper::getCoords(const Intersection& hit) const {
 
     float u = phi / (2 * pi * azimuthRef.length());
     float v = theta / (zenith.length() * pi);
+
+
+    std::cout << std::endl;
+    std::cout << "origin: (" << origin.x << ", " << origin.y << ", " << origin.z << ")." << std::endl;
+    std::cout << "zenith: (" << zenith.x << ", " << zenith.y << ", " << zenith.z << ")." << std::endl;
+    std::cout << "azimuthRef: (" << azimuthRef.x << ", " << azimuthRef.y << ", " << azimuthRef.z << ")." << std::endl;
+
+    std::cout << std::endl << "transformed: (" << transformed.x << ", " << transformed.y << ", " << transformed.z << ")." << std::endl;
+    std::cout << "-> phi: " << phi << ", theta: " << theta << std::endl;
+
+    std::cout << std::endl << "result: (" << u << ", " << v << ")." << std::endl;
+    std::cout << std::endl;
+
     return Point(u, v, 0);
 }
 

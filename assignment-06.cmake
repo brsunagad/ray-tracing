@@ -8,6 +8,8 @@ set(MY_ADDITIONAL_SOURCES
     rt/coordmappers/enviromentMapper.h
     rt/materials/cooktorrance.cpp
     rt/materials/cooktorrance.h
+    rt/primmod/animatedprimitive.cpp
+    rt/primmod/animatedprimitive.h
 )
 
 set(ASSIGNMENT_SOURCES

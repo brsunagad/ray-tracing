@@ -16,6 +16,8 @@
 #include <rt/lights/arealight.h>
 #include <rt/lights/pointlight.h>
 
+#include <rt/primmod/animatedprimitive.h>
+
 using namespace rt;
 
 namespace {
@@ -87,6 +89,72 @@ void renderCornellbox(float scale, const char* filename, Camera* cam, Material* 
     img.writePNG(filename);
 }
 
+
+void renderMotionBlurr(float scale, const char* filename, Camera* cam, Material* sphereMaterial, Material* floorMaterial, int numSamples=1) {
+    Image img(400, 400);
+    World world;
+    SimpleGroup* scene = new SimpleGroup();
+    world.scene = scene;
+
+    Texture* redtex = new ConstantTexture(RGBColor(.7f,0.f,0.f));
+    Texture* greentex = new ConstantTexture(RGBColor(0.f,.7f,0.f));
+    Texture* yellowtex = new ConstantTexture(RGBColor(0.7f,.7f,0.f));
+    Texture* bluetex = new ConstantTexture(RGBColor(0.f,0.f,0.7f));
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    Texture* whitetex = new ConstantTexture(RGBColor::rep(1.0f));
+
+    Material* grey = new LambertianMaterial(blacktex, whitetex);
+    Material* yellowmat = new LambertianMaterial(blacktex, yellowtex);
+    Material* leftWallMaterial = new LambertianMaterial(blacktex, redtex);
+    Material* rightWallMaterial = new LambertianMaterial(blacktex, greentex);
+    
+    //walls
+    scene->add(new Quad(Point(000.f, 000.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, Vector(550.f, 000.f, 000.f)*scale, nullptr, floorMaterial)); //floor
+    scene->add(new Quad(Point(550.f, 550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, Vector(-550.f, 000.f, 000.f)*scale, nullptr, grey)); //ceiling
+    scene->add(new Quad(Point(000.f, 000.f, 560.f)*scale, Vector(000.f, 550.f, 000.f)*scale, Vector(550.f, 000.f, 000.f)*scale, nullptr, grey)); //back wall
+    scene->add(new Quad(Point(000.f, 000.f, 000.f)*scale, Vector(000.f, 550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, nullptr, rightWallMaterial)); //right wall
+    scene->add(new Quad(Point(550.f, 550.f, 000.f)*scale, Vector(000.f, -550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, nullptr, leftWallMaterial)); //left wall
+
+
+    //Animated Objects:
+    SimpleGroup* moving = new SimpleGroup();
+    moving->add(new Sphere(Point(150.0f, 100.0f, 240.0f)*scale, 99.0f*scale, nullptr, sphereMaterial));
+    moving->add(new Sphere(Point(450.0f, 50.0f, 50.0f)*scale, 49.0f*scale, nullptr, yellowmat));
+    AnimatedPrimitive* verticalMov = new AnimatedPrimitive(moving,Vector(0,30*scale,0));
+    scene->add(verticalMov);
+
+
+    //tall box
+    makeBox(scene, Point(265.f, 000.1f, 296.f)*scale, Vector(049.f, 000.f, 160.f)*scale, Vector(158.f, 000.f, -049.f)*scale, Vector(000.f, 330.f, 000.f)*scale, nullptr, grey);
+
+    //Lights
+    ConstantTexture* lightsrctex = new ConstantTexture(RGBColor::rep(35.0f));
+    Material* lightsource = new LambertianMaterial(lightsrctex, blacktex);
+
+    Quad* light = new Quad(Point(213*scale,549.99f*scale,227*scale), Vector(130*scale,0,0), Vector(0,0,105*scale), nullptr, lightsource);
+    AreaLight als(light);
+    world.light.push_back(&als);
+    scene->add(light);
+
+    //point light
+    world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
+    world.light.push_back(new PointLight(Point(40*scale,159.99f*scale,249.5f*scale),RGBColor(5000.0f*scale*scale,30000.0f*scale*scale,5000.0f*scale*scale)));
+    
+    // world.light.push_back(new PointLight(Point((278)*scale,429.99f*scale,(279.5f)*scale),RGBColor::rep(100000.0f*scale*scale)));
+    // world.light.push_back(new PointLight(Point(478*scale,229.99f*scale,(-59.5f)*scale),RGBColor::rep(150000.0f*scale*scale)));
+
+
+
+    RecursiveRayTracingIntegrator integrator(&world);
+
+    Renderer engine(cam, &integrator);
+    if (numSamples>1)
+        engine.setSamples(numSamples);
+    engine.render(img);
+    img.writePNG(filename);
+
+}
+
 }
 
 void a_distributed() {
@@ -104,5 +172,14 @@ void a_distributed() {
     renderCornellbox(0.001f, "a6-5.png", cam, sphereMaterial1, floorMaterial1, 30);
     renderCornellbox(0.001f, "a6-6.png", cam, sphereMaterial2, floorMaterial2, 30);
     renderCornellbox(0.001f, "a6-7a.png", dofcam, sphereMaterial2, floorMaterial2, 30);
-    //renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
+    // renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
+
+
+    //EXTRA
+    renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-10.png", cam, sphereMaterial1, floorMaterial1, 10);
+    renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-30.png", cam, sphereMaterial1, floorMaterial1, 30);
+    // renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-1000.png", cam, sphereMaterial1, floorMaterial1, 1000);
+
 }
+
+

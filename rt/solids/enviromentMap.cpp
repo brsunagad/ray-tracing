@@ -11,8 +11,10 @@ BBox EnviromentMap::getBounds() const {
 
 Intersection EnviromentMap::intersect(const Ray& ray, float previousBestDistance) const {
     //always return infinity
-    if (previousBestDistance == FLT_MAX)
-        return Intersection(FLT_MAX, ray, this, -ray.d, Point(FLT_MAX,FLT_MAX,FLT_MAX));
+    if (previousBestDistance == FLT_MAX){
+        Ray newr(Point(FLT_MAX,FLT_MAX,FLT_MAX), Vector(-1,-1,-1));
+        return Intersection(FLT_MAX, newr, this, -ray.d, Point(FLT_MAX,FLT_MAX,FLT_MAX));
+    }
     else 
         return Intersection::failure();
 

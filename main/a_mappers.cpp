@@ -186,12 +186,26 @@ void extraTestEnviromentMap(const char* filename1, const char* filename2) {
     ImageTexture* imatex = new ImageTexture("models/stones_diffuse.png",ImageTexture::REPEAT, ImageTexture::BILINEAR);
     FlatMaterial image = FlatMaterial(imatex);
 
+
+
+    //Lights
+    world.light.push_back(new PointLight(Point((178)*scale,429.99f*scale,(279.5f)*scale),RGBColor::rep(100000.0f*scale*scale)));
+    world.light.push_back(new PointLight(Point(478*scale,229.99f*scale,(-59.5f)*scale),RGBColor::rep(150000.0f*scale*scale)));
+
+    world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
+
+
+    TriangleMapper* bottomleft = new TriangleMapper(Point(0,0,0), Point(0,4,0), Point(4,0,0));
+    TriangleMapper* topright = new TriangleMapper(Point(4,4,0), Point(4,0,0), Point(0,4,0));
+    float hsq2 = 0.5f / std::sqrt(2.0f);
+    SphericalCoordMapper* bawl= new SphericalCoordMapper(Point(.3f,.1f,.3f),Vector(0.0f,hsq2,-hsq2),Vector(0.5f,0.0f,0.0f));
+
     // //back wall
-    scene.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, nullptr, &image));
-    scene.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, nullptr, &image));
+    scene.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, bottomleft, &image));
+    scene.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, topright, &image));
 
     //sphere
-    scene.add(new Sphere(Point(200.f,100.f,300.f)*scale, 150.f*scale, nullptr, &checkerboard));
+    scene.add(new Sphere(Point(200.f,100.f,300.f)*scale, 150.f*scale, bawl, &checkerboard));
 
     //EnviromentMap
     EnviromentMapper* coordmapEnviroment = new EnviromentMapper();
@@ -211,11 +225,11 @@ void extraTestEnviromentMap(const char* filename1, const char* filename2) {
     world.scene = &scene2;
 
         // //back wall
-    scene2.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, nullptr, &checkerboard));
-    scene2.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, nullptr, &checkerboard));
+    scene2.add(new Triangle(Point(000.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, bottomleft, &checkerboard));
+    scene2.add(new Triangle(Point(550.f,550.f,560.f)*scale, Point(550.f,000.f,560.f)*scale, Point(000.f,550.f,560.f)*scale, topright, &checkerboard));
 
     //sphere
-    scene2.add(new Sphere(Point(200.f,100.f,300.f)*scale, 150.f*scale, nullptr, &perlin));
+    scene2.add(new Sphere(Point(200.f,100.f,300.f)*scale, 150.f*scale, bawl, &perlin));
 
     //EnviromentMap
     scene2.add(new EnviromentMap(coordmapEnviroment, &image));

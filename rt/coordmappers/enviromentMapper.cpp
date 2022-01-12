@@ -5,7 +5,7 @@ namespace rt {
 EnviromentMapper::EnviromentMapper(){}
 
 Point EnviromentMapper::getCoords(const Intersection& hit) const {
-   return Point(hit.ray.d.x, hit.ray.d.y, hit.ray.d.z);
+   return Point(hit.normal().x, hit.normal().y, hit.normal().z);
 }
 
 }

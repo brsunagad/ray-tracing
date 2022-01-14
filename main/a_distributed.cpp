@@ -172,7 +172,20 @@ void a_distributed() {
     renderCornellbox(0.001f, "a6-5.png", cam, sphereMaterial1, floorMaterial1, 30);
     renderCornellbox(0.001f, "a6-6.png", cam, sphereMaterial2, floorMaterial2, 30);
     renderCornellbox(0.001f, "a6-7a.png", dofcam, sphereMaterial2, floorMaterial2, 30);
+
+    
+    // auto t_start = std::chrono::steady_clock::now();
+    // ///////////////
     // renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
+    // /////////////// yes 1.76478e+06 ms, no 
+    // auto t_end = std::chrono::steady_clock::now();
+
+    // double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
+    // std::cout << "Time taken to render: " << elapsed_time_ms << " ms" << std::endl;
+    // std::cout << "Time taken to render: " << elapsed_time_ms/1000 << " secs" << std::endl;
+    // std::cout << "Time taken to render: " << elapsed_time_ms/60000 << " min" << std::endl;
+    // std::cout << "Time taken to render: " << elapsed_time_ms/3600000 << " hours" << std::endl;
+    
 
 
     //EXTRA

@@ -17,10 +17,11 @@ void Renderer::render(Image& img) {
     float ndcx, ndcy, sscx, sscy;
     uint k;
 
-//#pragma omp parallel for
+
+// #pragma omp parallel for collapse(2) schedule(dynamic)  
     for (uint i = 0; i < img.width(); i++) {
         for (uint j = 0; j < img.height(); j++) {
-            // if (i%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
+            // if (j%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
 
             if (samples > 1) { //Super sampling
                 k = samples;

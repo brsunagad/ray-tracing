@@ -176,7 +176,7 @@ void a_distributed() {
     
     // auto t_start = std::chrono::steady_clock::now();
     // ///////////////
-    // renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
+    renderCornellbox(0.001f, "a6-7b.png", dofcam, sphereMaterial2, floorMaterial2, 1000);
     // /////////////// yes 1.76478e+06 ms, no 
     // auto t_end = std::chrono::steady_clock::now();
 
@@ -191,7 +191,7 @@ void a_distributed() {
     //EXTRA
     renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-10.png", cam, sphereMaterial1, floorMaterial1, 10);
     renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-30.png", cam, sphereMaterial1, floorMaterial1, 30);
-    // renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-1000.png", cam, sphereMaterial1, floorMaterial1, 1000);
+    renderMotionBlurr(0.001f, "a6-Extra-MotionBlurr-1000.png", cam, sphereMaterial1, floorMaterial1, 1000);
 
 }
 

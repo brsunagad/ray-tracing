@@ -51,7 +51,7 @@ RGBColor RGBColor::gamma(float gam) const {
 }
 
 float RGBColor::luminance() const {
-    /* TODO */ NOT_IMPLEMENTED;
+    return 0.2126*r + 0.7152*g + 0.0722*b;
 }
 
 RGBColor operator * (float scalar, const RGBColor& c) {

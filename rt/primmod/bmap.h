@@ -2,6 +2,9 @@
 #define CG1RAYTRACER_PRIMMOD_BMAP_HEADER
 
 #include <rt/primitive.h>
+#include <rt/solids/triangle.h>
+#include <rt/textures/texture.h>
+#include <rt/intersection.h>
 
 namespace rt {
 
@@ -15,6 +18,12 @@ public:
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;
     virtual void setMaterial(Material* m);
     virtual void setCoordMapper(CoordMapper* cm);
+private:
+	Triangle* base;
+	Texture* bumpmap;
+	Point bv1, bv2, bv3;
+	float vscale;
+	Vector Ou, Ov; //vectors living in triangle plane
 };
 
 }

@@ -18,7 +18,7 @@ using namespace rt;
 
 void bump(Camera* cam, Texture* bumptex, const char* filename) {
     static const float scale = 0.001f;
-    static const float bumbscale = 0.008f;
+    static const float bumbscale = 0.8f;
     Image img(800, 800);
     World world;
     SimpleGroup* scene = new SimpleGroup();
@@ -89,8 +89,8 @@ void bump(Camera* cam, Texture* bumptex, const char* filename) {
     RayCastingIntegrator integrator(&world);
 
     Renderer engine(cam, &integrator);
-    engine.render(img);
     engine.setSamples(9);
+    engine.render(img);
     img.writePNG(filename);
 }
 

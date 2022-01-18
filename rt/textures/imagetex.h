@@ -3,6 +3,7 @@
 
 #include <core/image.h>
 #include <rt/textures/texture.h>
+#include <core/interpolate.h>
 
 namespace rt {
 

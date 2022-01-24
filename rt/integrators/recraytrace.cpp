@@ -46,6 +46,6 @@ RGBColor RecursiveRayTracingIntegrator::recurse(const Ray& ray, int& depth) cons
             radiance = radiance + sampleReflectance.reflectance * recurse(secondaryRay, depth);
         }
     }
-    return radiance;
+    return radiance.clamp();
 }
 }

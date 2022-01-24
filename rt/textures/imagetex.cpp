@@ -9,6 +9,7 @@ ImageTexture::ImageTexture(const std::string& filename, BorderHandlingType bh, I
     Image image;
     image.readPNG(filename);
     img = image;
+   // std::cout << img.width() << img.height() << std::endl;
 }
 
 ImageTexture::ImageTexture(const Image& image, BorderHandlingType bh, InterpolationType i) : bh(bh), i(i), img(image) {}
@@ -49,27 +50,28 @@ RGBColor ImageTexture::getColor(const Point& coord) {
         u = tu * resU;
         v = tv * resV;
 
-        lu = std::fmin(floor(u), resU - 1.0f);
-        lv = std::fmin(floor(v), resV - 1.0f);
+        lu = std::fmin(float(floor(u)), resU - 1.0f);
+        lv = std::fmin(float(floor(v)), resV - 1.0f);
 
         return img(lu, lv);
     }
     else { //bilinear
         u = tu * (1-epsilon) * (resU - 1.0f);
         v = tv * (1-epsilon) * (resV - 1.0f);
-
+        
         int flru = floor(u);
         int flrv = floor(v);
 
         lu = u - flru;
         lv = v - flrv;
 
-        return (
+        /*return (
             (1 - lu) * (1 - lv) * img(flru, flrv) +
             (1 - lu) * lv * img(flru, flrv + 1) +
             lu * (1 - lv) * img(flru + 1, flrv) +
             lu * lv * img(flru + 1, flrv + 1)
-            );
+            );*/
+        return lerp2d(img(flru, flrv), img(flru, flrv + 1), img(flru + 1, flrv), img(flru + 1, flrv + 1), lu, lv);
     }
 
 }

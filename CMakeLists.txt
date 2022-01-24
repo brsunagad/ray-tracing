@@ -35,7 +35,7 @@ foreach(f ${ASSIGNMENT_FILES})
     list(APPEND ALL_ASSIGNMENT_SOURCES ${ASSIGNMENT_SOURCES})
 endforeach()
 
-add_executable(cgray ${ALL_ASSIGNMENT_SOURCES} main/main.cpp "rt/solids/quadric.cpp"  )
+add_executable(cgray ${ALL_ASSIGNMENT_SOURCES} main/main.cpp "rt/solids/quadric.cpp"   "main/a_scene.cpp")
 
 
 # OpenMP support

@@ -148,6 +148,7 @@ void loadOBJMat(MatLib* dest, const std::string& path, const std::string& filena
                 cmd += 6;
                 skipWS(cmd);
                 std::string texname = endSpaceTrimmed(cmd);
+                //std::cout << path << texname << std::endl;
                 ImageTexture* tex = new ImageTexture(path + texname);
                 switch (coeffType)
                 {

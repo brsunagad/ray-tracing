@@ -6,7 +6,7 @@ namespace rt {
 BVH::BVH()
 {
     /* TODO */
-    count = 0;
+   
 }
 
 BVH::~BVH()
@@ -15,7 +15,7 @@ BVH::~BVH()
 
 void BVH::rebuildIndex() {
     root->primitives = primitives;
-    count++;
+   
     buildIndexStructure(root);
 }
 
@@ -42,7 +42,7 @@ void BVH::buildIndexStructure(Node* node)
         float splitPoint = findMidPoint(axisToSplit, node->bbox);
 
 #ifdef SAH //SAH
-        if(count == 2){
+        {
         int numbins = 10;
         
         float totalCost=0, lcCost=0, rcCost=0, bestCost = FLT_MAX;

@@ -11,8 +11,12 @@ void a_mappers();
 void a_distributed();
 void a_smooth();
 void a_bumpmappers();
+void a_scene();
+
 
 int main(int argc, char* argv[]) {
-    a_bumpmappers();
+    //a_bumpmappers();
+    a_scene();
+
     return 0;
 }

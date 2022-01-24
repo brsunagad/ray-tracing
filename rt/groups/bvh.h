@@ -32,6 +32,7 @@ private:
 public:
     BVH();
     ~BVH();
+    void BVH::deleteTree(Node* node);
     virtual BBox getBounds() const;
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;
     virtual void rebuildIndex();

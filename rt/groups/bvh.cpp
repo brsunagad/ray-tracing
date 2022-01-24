@@ -11,6 +11,24 @@ BVH::BVH()
 
 BVH::~BVH()
 {
+    std::cout << "\nDeleting BVH tree" << std::endl;
+    //deleteTree(root);
+    std::cout << "\nDeleted BVH tree successfully"<<std::endl;
+}
+
+void BVH::deleteTree(Node* node)
+{
+    if (node == NULL) return;
+
+    /* first delete both subtrees */
+    if (node->leftChild != NULL)
+        deleteTree(node->leftChild);
+    if (node->rightChild != NULL)
+        deleteTree(node->rightChild);
+
+    /* then delete the node */
+   
+    delete node;
 }
 
 void BVH::rebuildIndex() {

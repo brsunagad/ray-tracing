@@ -101,7 +101,7 @@ void a_scene() {
     auto t_start = std::chrono::high_resolution_clock::now();
     
     Renderer engine(&cam, &integrator);
-    engine.setSamples(2);
+    //engine.setSamples(2);
     engine.render(img);
     
     auto t_end = std::chrono::high_resolution_clock::now();
@@ -110,6 +110,8 @@ void a_scene() {
 
     double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
     std::cout << "Time taken to render a_scene.png: " << elapsed_time_ms << " ms" << std::endl;
+    
+    delete scene;
 
 
 }

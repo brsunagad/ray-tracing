@@ -16,9 +16,14 @@ void Renderer::render(Image& img) {
     img.clear(RGBColor(0, 0, 0));
     float ndcx, ndcy, sscx, sscy;
     uint k;
+    const uint height = img.height();
+    const uint width = img.width();
 
+    const float sx = 2.0 / width;
+    const float sy = 2.0 / height;
 
- #pragma omp parallel for collapse(2) schedule(dynamic)  
+ //#pragma omp parallel for collapse(2) schedule(dynamic)  
+#pragma omp parallel for
     for (int i = 0; i < img.width(); i++) {
         for (int j = 0; j < img.height(); j++) {
             // if (j%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
@@ -27,23 +32,25 @@ void Renderer::render(Image& img) {
                 k = samples;
                 while (k-- > 0) {
                     // Random hitpoint inside the pixel
-                    ndcx = (i + random()) / img.width();
-                    ndcy = (j + random()) / img.height();
+                    ndcx = (i + random());
+                    ndcy = (j + random());
 
                     // Screen space coordinates [-1, 1]
-                    sscx = ndcx * 2 - 1;
-                    sscy = 1- ndcy * 2;
+                    //sscx = ndcx * 2 - 1;
+                    //sscy = 1- ndcy * 2;
+                    sscx = ndcx * sx - 1.0;
+                    sscy = 1.0 - ndcy * sy;
 
                     img(i,j) = img(i,j) + integrator->getRadiance(cam->getPrimaryRay(sscx,sscy))/samples;
                 }
             } else {
                 // Normalized device coordinates [0, 1]
-                ndcx = (i + 0.5) / img.width();
-                ndcy = (j + 0.5) / img.height();
+                ndcx = (i + 0.5);
+                ndcy = (j + 0.5);
 
                 // Screen space coordinates [-1, 1]
-                sscx = ndcx * 2 - 1;
-                sscy = 1- ndcy * 2;
+                sscx = ndcx * sx - 1;
+                sscy = 1- ndcy * sy;
 
                 img(i,j) = integrator->getRadiance(cam->getPrimaryRay(sscx,sscy));
             }

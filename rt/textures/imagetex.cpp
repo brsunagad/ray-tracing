@@ -119,8 +119,8 @@ RGBColor ImageTexture::getColorDX(const Point& coord) {
         u = tu * resU;
         v = tv * resV;
 
-        int flru = std::min(floor(u), resU - 1.0f);
-        int flrv = std::min(floor(v), resV - 1.0f);
+        int flru = std::fmin(floor(u), resU - 1.0f);
+        int flrv = std::fmin(floor(v), resV - 1.0f);
 
         return img(flru, flrv)-img((flru+1)%(resU-1), flrv);
     }

@@ -1,3 +1,0 @@
-D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/cgray.dir
-D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-D:/GitRepositories/cg-ray-tracer/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

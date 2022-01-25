@@ -4,3 +4,4 @@
 *.vcxproj.filters
 *.vcxproj.user
 build_debug
+out/build/

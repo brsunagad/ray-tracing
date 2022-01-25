@@ -27,6 +27,7 @@ file(COPY
     models/rc_models/tree_trunk.obj
     models/rc_models/tree_trunk.mtl
     models/rc_models/cedar_tree_trunk.jpg
+    models/rc_models/cedar_tree_trunk.png
 
     models/rc_models/toothless.obj
     models/rc_models/toothless.mtl
@@ -45,10 +46,13 @@ file(COPY
     models/rc_models/fire_breath.obj
     models/rc_models/fire_breath.mtl
     models/rc_models/fire.jpg
+    models/rc_models/fire.png
 
     models/rc_models/purple_dragon.obj
     models/rc_models/purple_dragon.mtl
     models/rc_models/dragon_normal_4k.jpg
     models/rc_models/dragon_diffuse_4k.jpg
+    models/rc_models/dragon_normal_4k.png
+    models/rc_models/dragon_diffuse_4k.png
     DESTINATION ${CMAKE_BINARY_DIR}/models
 )

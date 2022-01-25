@@ -10,8 +10,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump D:\\GitRepositories\\cg-scene\\resources\\dragon\\source\\Dragon\\Dragon_Normal_4k.jpg
-map_Kd D:\\GitRepositories\\cg-scene\\resources\\dragon\\source\\Dragon\\Dragon_Diffuse_4k.jpg
+map_Bump D:\\GitRepositories\\cg-scene\\resources\\dragon\\source\\Dragon\\Dragon_Normal_4k.png
+map_Kd D:\\GitRepositories\\cg-scene\\resources\\dragon\\source\\Dragon\\Dragon_Diffuse_4k.png
 
 newmtl Helmet
 Ns 225.000000
@@ -23,9 +23,9 @@ Ni 1.450000
 d 1.000000
 illum 2
 map_Bump D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_normal.png
-map_Kd D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_albedo.jpeg
-map_Ns D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_roughness.jpeg
-refl D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_metallic.jpeg
+map_Kd D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_albedo.png
+map_Ns D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_roughness.png
+refl D:\\GitRepositories\\cg-scene\\resources\\casque-viking-viking-helmet\\textures\\DefaultMaterial_metallic.png
 
 newmtl Material.001
 Ns 323.999994
@@ -102,7 +102,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Kd D:\\GitRepositories\\cg-scene\\resources\\Cedar Tree Trunk\\Cedar Tree Trunk.jpg
+map_Kd D:\\GitRepositories\\cg-scene\\resources\\Cedar Tree Trunk\\Cedar Tree Trunk.png
 
 newmtl rock
 Ns 225.000000

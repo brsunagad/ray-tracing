@@ -29,8 +29,8 @@ void Renderer::render(Image& img) {
             // if (j%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
 
             if (samples > 1) { //Super sampling
-                k = samples;
-                while (k-- > 0) {
+                RGBColor pixel = RGBColor::rep(0);
+                for (int k = 0; k < samples; ++k) {
                     // Random hitpoint inside the pixel
                     ndcx = (i + random());
                     ndcy = (j + random());
@@ -41,8 +41,9 @@ void Renderer::render(Image& img) {
                     sscx = ndcx * sx - 1.0;
                     sscy = 1.0 - ndcy * sy;
 
-                    img(i,j) = img(i,j) + integrator->getRadiance(cam->getPrimaryRay(sscx,sscy))/samples;
+                    pixel = pixel + integrator->getRadiance(cam->getPrimaryRay(sscx,sscy));
                 }
+                img(i,j) = pixel / samples;
             } else {
                 // Normalized device coordinates [0, 1]
                 ndcx = (i + 0.5);

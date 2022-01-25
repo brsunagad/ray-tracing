@@ -11,6 +11,6 @@ Ni 1.450000
 d 1.000000
 illum 2
 map_Bump DefaultMaterial_normal.png
-map_Kd DefaultMaterial_albedo.jpeg
-map_Ns DefaultMaterial_roughness.jpeg
-refl DefaultMaterial_metallic.jpeg
+map_Kd DefaultMaterial_albedo.png
+map_Ns DefaultMaterial_roughness.png
+refl DefaultMaterial_metallic.png

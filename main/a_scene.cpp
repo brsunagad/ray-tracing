@@ -51,7 +51,7 @@ MatLib* lamp_matlib() {
 MatLib* purple_dragon_matlib() {
     MatLib* matlib = new MatLib;
     Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
-    ImageTexture* dragon = new ImageTexture("models/dragon_diffuse_4k.jpg");
+    ImageTexture* dragon = new ImageTexture("models/dragon_diffuse_4k.png");
 
     matlib->insert(std::pair<std::string, Material*>("purple_dragon", new LambertianMaterial(blacktex, dragon)));
     return matlib;
@@ -59,22 +59,22 @@ MatLib* purple_dragon_matlib() {
 
 MatLib* fire_breath_matlib() {
     MatLib* matlib = new MatLib;
-    ImageTexture* fire = new ImageTexture("models/fire.jpg");
+    ImageTexture* fire = new ImageTexture("models/fire.png");
 
     matlib->insert(std::pair<std::string, Material*>("fire_breath", new FlatMaterial(fire)));
     return matlib;
 }
 
 void a_scene() {
-    Image img(800, 600);
-    //Image img(2160, 1440);
-    //Image img(1080, 720);
+    // Image img(800, 600);
+    Image img(2160, 1440);
+    // Image img(1080, 720);
 
     BVH* scene = new BVH();
 
 
-    //MatLib* matlib_helmet = getHelmetMatlib();
-    //loadOBJ(scene, "models/", "helmet.obj");
+    // MatLib* matlib_helmet = getHelmetMatlib();
+    loadOBJ(scene, "models/", "helmet.obj");
     loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
     loadOBJ(scene, "models/", "tree_trunk.obj");
     loadOBJ(scene, "models/", "toothless.obj");
@@ -94,14 +94,14 @@ void a_scene() {
     //world.light.push_back(new PointLight(Point(0.416149, 1.27344, 3.46079), RGBColor(1, 1, 1)*intensity));
     world.light.push_back(new PointLight(Point(0.639251, 0.686555, 5.03832), RGBColor(1, 1, 1) * intensity));
 
-    //PerspectiveCamera cam(Point(0.367128, 0.344247, 6.795460), Point(0.255833, 0.400069, 5.803241) - Point(0.367128, 0.344247, 6.795460), Vector(0.006222, 0.998441, 0.055474), pi / 8, pi / 6);
+    // PerspectiveCamera cam(Point(0.367128, 0.344247, 6.795460), Point(0.255833, 0.400069, 5.803241) - Point(0.367128, 0.344247, 6.795460), Vector(0.006222, 0.998441, 0.055474), pi / 8, pi / 6);
     PerspectiveCamera cam(Point(1.121394, 0.425289, 8.552485), Point(0.886275, 0.439251, 7.580619) - Point(1.121394, 0.425289, 8.552485), Vector(0.003283, 0.999903, 0.013571), pi / 8, pi / 6);
     RecursiveRayTracingIntegrator integrator(&world);
 
     auto t_start = std::chrono::high_resolution_clock::now();
     
     Renderer engine(&cam, &integrator);
-    //engine.setSamples(2);
+    engine.setSamples(20);
     engine.render(img);
     
     auto t_end = std::chrono::high_resolution_clock::now();
@@ -109,7 +109,7 @@ void a_scene() {
     img.writePNG("a_scene.png");
 
     double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
-    std::cout << "Time taken to render a_scene.png: " << elapsed_time_ms << " ms" << std::endl;
+    std::cout << "Time taken to render a_scene.png: " << elapsed_time_ms/1000 << " s" << std::endl;
     
     delete scene;
 

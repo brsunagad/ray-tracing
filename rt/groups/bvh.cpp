@@ -11,9 +11,9 @@ BVH::BVH()
 
 BVH::~BVH()
 {
-    std::cout << "\nDeleting BVH tree" << std::endl;
-    //deleteTree(root);
-    std::cout << "\nDeleted BVH tree successfully"<<std::endl;
+    //std::cout << "\nDeleting BVH tree" << std::endl;
+    deleteTree(root);
+    //std::cout << "\nDeleted BVH tree successfully"<<std::endl;
 }
 
 void BVH::deleteTree(Node* node)
@@ -21,11 +21,12 @@ void BVH::deleteTree(Node* node)
     if (node == NULL) return;
 
     /* first delete both subtrees */
-    if (node->leftChild != NULL)
-        deleteTree(node->leftChild);
-    if (node->rightChild != NULL)
-        deleteTree(node->rightChild);
-
+    if (node->isLeaf == false) {
+        if (node->leftChild != NULL)
+            deleteTree(node->leftChild);
+        if (node->rightChild != NULL)
+            deleteTree(node->rightChild);
+    }
     /* then delete the node */
    
     delete node;
@@ -117,7 +118,7 @@ void BVH::buildIndexStructure(Node* node)
         }
 
         node->primitives.clear();//clear parents primitives as only leaf nodes store primitives
-
+        assert(node->primitives.size()==0);
         if (node->leftChild->primitives.size() == 0)//to make sure child nodes have atleast one primitive
         {
             node->leftChild->primitives.push_back(node->rightChild->primitives[0]);

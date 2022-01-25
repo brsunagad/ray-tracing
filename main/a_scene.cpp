@@ -66,8 +66,8 @@ MatLib* fire_breath_matlib() {
 }
 
 void a_scene() {
-    Image img(800, 600);
-    //Image img(2160, 1440);
+    //Image img(800, 600);
+    Image img(2160, 1440);
     //Image img(1080, 720);
 
     BVH* scene = new BVH();
@@ -75,12 +75,12 @@ void a_scene() {
 
     //MatLib* matlib_helmet = getHelmetMatlib();
     //loadOBJ(scene, "models/", "helmet.obj");
-    loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
+    /*loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
     loadOBJ(scene, "models/", "tree_trunk.obj");
     loadOBJ(scene, "models/", "toothless.obj");
     loadOBJ(scene, "models/", "orange_dragon.obj");
     loadOBJ(scene, "models/", "red_dragon.obj");
-    loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());
+    loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());*/
     loadOBJ(scene, "models/", "purple_dragon.obj", purple_dragon_matlib());
 
 
@@ -101,7 +101,7 @@ void a_scene() {
     auto t_start = std::chrono::high_resolution_clock::now();
     
     Renderer engine(&cam, &integrator);
-    //engine.setSamples(2);
+    engine.setSamples(10);
     engine.render(img);
     
     auto t_end = std::chrono::high_resolution_clock::now();

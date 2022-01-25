@@ -66,9 +66,9 @@ MatLib* fire_breath_matlib() {
 }
 
 void a_scene() {
-    // Image img(800, 600);
+    //Image img(800, 600);
     Image img(2160, 1440);
-    // Image img(1080, 720);
+    //Image img(1080, 720);
 
     BVH* scene = new BVH();
 
@@ -101,7 +101,7 @@ void a_scene() {
     auto t_start = std::chrono::high_resolution_clock::now();
     
     Renderer engine(&cam, &integrator);
-    engine.setSamples(20);
+    engine.setSamples(10);
     engine.render(img);
     
     auto t_end = std::chrono::high_resolution_clock::now();

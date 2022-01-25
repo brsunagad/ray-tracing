@@ -23,7 +23,7 @@ void Renderer::render(Image& img) {
     const float sy = 2.0 / height;
 
  //#pragma omp parallel for collapse(2) schedule(dynamic)  
-#pragma omp parallel for
+//#pragma omp parallel for
     for (int i = 0; i < img.width(); i++) {
         for (int j = 0; j < img.height(); j++) {
             // if (j%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;

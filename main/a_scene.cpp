@@ -42,66 +42,61 @@ MatLib* lamp_matlib() {
     Texture*  blacktex = new ConstantTexture(RGBColor::rep(0.0f));
     ImageTexture* rock_color = new ImageTexture("models/rocksColor.png");
 
-    matlib->insert(std::pair<std::string, Material*>("base", new PhongMaterial(blacktex, 10.0f)));
+    matlib->insert(std::pair<std::string, Material*>("base", new PhongMaterial(new ConstantTexture(RGBColor::rep(0.035f)), 10.0f)));
     matlib->insert(std::pair<std::string, Material*>("vetro", new GlassMaterial(1.33f)));
     matlib->insert(std::pair<std::string, Material*>("rock", new LambertianMaterial(blacktex,rock_color)));
-    return matlib;
-}
 
-MatLib* purple_dragon_matlib() {
-    MatLib* matlib = new MatLib;
-    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
-    ImageTexture* dragon = new ImageTexture("models/dragon_diffuse_4k.png");
-
-    matlib->insert(std::pair<std::string, Material*>("purple_dragon", new LambertianMaterial(blacktex, dragon)));
-    return matlib;
-}
-
-MatLib* fire_breath_matlib() {
-    MatLib* matlib = new MatLib;
     ImageTexture* fire = new ImageTexture("models/fire.png");
-
     matlib->insert(std::pair<std::string, Material*>("fire_breath", new FlatMaterial(fire)));
+
+    ImageTexture* dragon = new ImageTexture("models/dragonColor2.png");
+    //matlib->insert(std::pair<std::string, Material*>("red_dragon", new LambertianMaterial(blacktex, dragon)));
+    matlib->insert(std::pair<std::string, Material*>("red_dragon", new FlatMaterial(dragon)));
     return matlib;
 }
+
 
 void a_scene() {
-    //Image img(800, 600);
-    Image img(2160, 1440);
+    Image img(800, 600);
+    //Image img(2160, 1440);
     //Image img(1080, 720);
 
     BVH* scene = new BVH();
 
 
     // MatLib* matlib_helmet = getHelmetMatlib();
-    loadOBJ(scene, "models/", "helmet.obj");
-    loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
+    //loadOBJ(scene, "models/", "helmet.obj");
+    /*loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
     loadOBJ(scene, "models/", "tree_trunk.obj");
     loadOBJ(scene, "models/", "toothless.obj");
-    loadOBJ(scene, "models/", "orange_dragon.obj");
     loadOBJ(scene, "models/", "red_dragon.obj");
-    loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());
-    loadOBJ(scene, "models/", "purple_dragon.obj", purple_dragon_matlib());
+    loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());*/
 
-
+    loadOBJ(scene, "models/", "planes.obj");
+    loadOBJ(scene, "models/", "barrels.obj");
+    loadOBJ(scene, "models/", "sheild.obj");
+    loadOBJ(scene, "models/", "horn.obj");
+    loadOBJ(scene, "models/", "axe.obj");
+    loadOBJ(scene, "models/", "toothless.obj");
+    loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
     scene->rebuildIndex();
     World world;
     world.scene = scene;
 
     //Lighting
 
-    float intensity = 10;
+    float intensity = 10000;
     //world.light.push_back(new PointLight(Point(0.416149, 1.27344, 3.46079), RGBColor(1, 1, 1)*intensity));
-    world.light.push_back(new PointLight(Point(0.639251, 0.686555, 5.03832), RGBColor(1, 1, 1) * intensity));
+    world.light.push_back(new PointLight(Point(-14.7925, 13.9556, -14.1935), RGBColor(1, 1, 1) * intensity));
 
     // PerspectiveCamera cam(Point(0.367128, 0.344247, 6.795460), Point(0.255833, 0.400069, 5.803241) - Point(0.367128, 0.344247, 6.795460), Vector(0.006222, 0.998441, 0.055474), pi / 8, pi / 6);
-    PerspectiveCamera cam(Point(1.121394, 0.425289, 8.552485), Point(0.886275, 0.439251, 7.580619) - Point(1.121394, 0.425289, 8.552485), Vector(0.003283, 0.999903, 0.013571), pi / 8, pi / 6);
+    PerspectiveCamera cam(Point(-24.137545, 1.560391, -11.216356), Point(-23.139908, 1.623184, -11.188487) - Point(-24.137545, 1.560391, -11.216356), Vector(-0.062769, 0.998027, -0.001754), pi / 8, pi / 6);
     RecursiveRayTracingIntegrator integrator(&world);
 
     auto t_start = std::chrono::high_resolution_clock::now();
     
     Renderer engine(&cam, &integrator);
-    engine.setSamples(10);
+    //engine.setSamples(10);
     engine.render(img);
     
     auto t_end = std::chrono::high_resolution_clock::now();

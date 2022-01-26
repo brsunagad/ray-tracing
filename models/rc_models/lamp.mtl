@@ -1,5 +1,5 @@
-# Blender MTL File: 'newScene.blend'
-# Material Count: 3
+# Blender MTL File: 'finalScene.blend'
+# Material Count: 5
 
 newmtl base
 Ns 225.000000
@@ -10,6 +10,28 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
+
+newmtl fire_breath
+Ns 323.999994
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl red_dragon
+Ns 225.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd dragonColor2.png
+map_Ks dragonSpecInt.png
 
 newmtl rock
 Ns 225.000000

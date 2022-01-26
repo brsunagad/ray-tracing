@@ -1,0 +1,16 @@
+# Blender MTL File: 'finalScene.blend'
+# Material Count: 1
+
+newmtl axe
+Ns 179.999996
+Ka 0.000000 0.000000 0.000000
+Kd 0.550000 0.550000 0.550000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump HACHA_Normal.png
+map_Kd HACHA_BaseColor.png
+map_Ns HACHA_Roughness.png
+refl HACHA_Metallic.png

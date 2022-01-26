@@ -17,6 +17,6 @@ void a_scene();
 int main(int argc, char* argv[]) {
     // a_bumpmappers();
     a_scene();
-    
+    //a_distributed();
     return 0;
 }

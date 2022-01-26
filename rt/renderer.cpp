@@ -24,7 +24,7 @@ void Renderer::render(Image& img) {
 
 
 //#pragma omp parallel for
-    //#pragma omp parallel for num_threads(4) collapse(2)
+    #pragma omp parallel for collapse(2)
     for (int i = 0; i < img.width(); i++) {
        // #pragma omp parallel for schedule(dynamic)  
         for (int j = 0; j < img.height(); j++) {

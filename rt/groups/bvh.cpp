@@ -1,4 +1,4 @@
-#define SAH
+//#define SAH
 #include <rt/groups/bvh.h>
 
 namespace rt {

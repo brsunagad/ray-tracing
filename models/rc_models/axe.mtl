@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump HACHA_Normal.png
-map_Kd HACHA_BaseColor.png
-map_Ns HACHA_Roughness.png
-refl HACHA_Metallic.png
+#map_Bump HACHA_Normal.png
+#map_Kd HACHA_BaseColor.png
+#map_Ns HACHA_Roughness.png
+#refl HACHA_Metallic.png

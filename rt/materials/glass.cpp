@@ -26,8 +26,11 @@ Material::SampleReflectance GlassMaterial::getSampleReflectance(const Point& tex
     }
     else {      
         Vector refraction = refract(-outDir, normal, eta);
-           
-        return SampleReflectance(refraction.normalize(), 2 * RGBColor::rep((1.f - fr)));//multiplying 2 gave better result
+        float costheta = dot(-outDir, normal);
+        float ni = 1, nt = eta;
+        if (costheta > 0)
+            std::swap(ni, nt);
+        return SampleReflectance(refraction.normalize(), 2 *(ni / nt)* RGBColor::rep((1.f - fr)));//multiplying 2 gave better result
     }
 }
 

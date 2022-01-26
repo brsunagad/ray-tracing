@@ -55,6 +55,68 @@ MatLib* lamp_matlib() {
     return matlib;
 }
 
+MatLib* plane_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* wood_color = new ImageTexture("models/wood_tile_basecolor_1.png");
+
+    matlib->insert(std::pair<std::string, Material*>("floor", new LambertianMaterial(blacktex, wood_color)));
+   
+    return matlib;
+}
+
+MatLib* barrels_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* bottle = new ImageTexture("models/PirateProps_Bottle_Texture_Color.tga.png");
+    ImageTexture* barrel = new ImageTexture("models/PirateProps_Barrel_Texture_Color.tga.png");
+
+    matlib->insert(std::pair<std::string, Material*>("bottle", new LambertianMaterial(blacktex, bottle)));
+    matlib->insert(std::pair<std::string, Material*>("Barrel_PropMaterial", new LambertianMaterial(blacktex, barrel)));
+
+    return matlib;
+}
+
+MatLib* horn_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* horn = new ImageTexture("models/Horn_low_Horn_BaseColor.png");
+
+    matlib->insert(std::pair<std::string, Material*>("horn", new LambertianMaterial(blacktex, horn)));
+
+    return matlib;
+}
+
+MatLib* axe_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* axe = new ImageTexture("models/HACHA_BaseColor.png");
+
+    matlib->insert(std::pair<std::string, Material*>("axe", new LambertianMaterial(blacktex, axe)));
+
+    return matlib;
+}
+
+MatLib* toothless_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* tex = new ImageTexture("models/toothless_export_model_toothless_sg_BaseCo.png");
+
+    matlib->insert(std::pair<std::string, Material*>("toothless_sg", new LambertianMaterial(blacktex, tex)));
+
+    return matlib;
+}
+
+MatLib* sheild_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* tex = new ImageTexture("models/lambert1_albedo.png");
+
+    matlib->insert(std::pair<std::string, Material*>("sheild", new LambertianMaterial(blacktex, tex)));
+
+    return matlib;
+}
+
 
 void a_scene() {
     Image img(800, 600);
@@ -62,7 +124,7 @@ void a_scene() {
     //Image img(1080, 720);
 
     BVH* scene = new BVH();
-
+    //SimpleGroup* scene = new SimpleGroup();
 
     // MatLib* matlib_helmet = getHelmetMatlib();
     //loadOBJ(scene, "models/", "helmet.obj");
@@ -72,12 +134,12 @@ void a_scene() {
     loadOBJ(scene, "models/", "red_dragon.obj");
     loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());*/
 
-    loadOBJ(scene, "models/", "planes.obj");
-    loadOBJ(scene, "models/", "barrels.obj");
-    loadOBJ(scene, "models/", "sheild.obj");
-    loadOBJ(scene, "models/", "horn.obj");
-    loadOBJ(scene, "models/", "axe.obj");
-    loadOBJ(scene, "models/", "toothless.obj");
+    loadOBJ(scene, "models/", "planes.obj", plane_matlib());
+    loadOBJ(scene, "models/", "barrels.obj", barrels_matlib());
+    loadOBJ(scene, "models/", "sheild.obj", sheild_matlib());
+    loadOBJ(scene, "models/", "horn.obj", horn_matlib());
+    loadOBJ(scene, "models/", "axe.obj", axe_matlib());
+    loadOBJ(scene, "models/", "toothless.obj", toothless_matlib());
     loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
     scene->rebuildIndex();
     World world;

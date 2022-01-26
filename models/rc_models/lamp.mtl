@@ -30,8 +30,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd dragonColor2.png
-map_Ks dragonSpecInt.png
+#map_Kd dragonColor2.png
+#map_Ks dragonSpecInt.png
 
 newmtl rock
 Ns 225.000000
@@ -42,8 +42,8 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd rocksColor.png
-map_Ks rocksSpec.png
+#map_Kd rocksColor.png
+#map_Ks rocksSpec.png
 
 newmtl vetro
 Ns 225.000000

@@ -31,7 +31,6 @@ file(COPY
 
     models/rc_models/axe.obj
     models/rc_models/axe.mtl
-
     models/rc_models/HACHA_BaseColor.png
 
 
@@ -41,8 +40,14 @@ file(COPY
 
     models/rc_models/lamp.obj
     models/rc_models/lamp.mtl
-    models/rc_models/dragonColor2.png
     models/rc_models/rocksColor.png
+
+    models/rc_models/red_dragon.obj
+    models/rc_models/red_dragon.mtl
+    models/rc_models/dragonColor2.png
+
+    models/rc_models/fire.obj
+    models/rc_models/fire.mtl
     models/rc_models/fire.png
 
     DESTINATION ${CMAKE_BINARY_DIR}/models

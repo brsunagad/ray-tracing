@@ -46,12 +46,27 @@ MatLib* lamp_matlib() {
     matlib->insert(std::pair<std::string, Material*>("vetro", new GlassMaterial(1.33f)));
     matlib->insert(std::pair<std::string, Material*>("rock", new LambertianMaterial(blacktex,rock_color)));
 
+    return matlib;
+}
+
+MatLib* fire_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+
+
     ImageTexture* fire = new ImageTexture("models/fire.png");
     matlib->insert(std::pair<std::string, Material*>("fire_breath", new FlatMaterial(fire)));
 
-    ImageTexture* dragon = new ImageTexture("models/dragonColor2.png");
-    //matlib->insert(std::pair<std::string, Material*>("red_dragon", new LambertianMaterial(blacktex, dragon)));
-    matlib->insert(std::pair<std::string, Material*>("red_dragon", new FlatMaterial(dragon)));
+    return matlib;
+}
+
+MatLib* red_dragon_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+
+    ImageTexture* fire = new ImageTexture("models/dragonColor2.png");
+    matlib->insert(std::pair<std::string, Material*>("red_dragon", new FlatMaterial(fire)));
+
     return matlib;
 }
 
@@ -135,12 +150,14 @@ void a_scene() {
     loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());*/
 
     loadOBJ(scene, "models/", "planes.obj", plane_matlib());
-    loadOBJ(scene, "models/", "barrels.obj", barrels_matlib());
-    loadOBJ(scene, "models/", "sheild.obj", sheild_matlib());
-    loadOBJ(scene, "models/", "horn.obj", horn_matlib());
-    loadOBJ(scene, "models/", "axe.obj", axe_matlib());
-    loadOBJ(scene, "models/", "toothless.obj", toothless_matlib());
+    //loadOBJ(scene, "models/", "barrels.obj", barrels_matlib());
+    //loadOBJ(scene, "models/", "sheild.obj", sheild_matlib());
+    //loadOBJ(scene, "models/", "horn.obj", horn_matlib());
+    //loadOBJ(scene, "models/", "axe.obj", axe_matlib());
+    //loadOBJ(scene, "models/", "toothless.obj", toothless_matlib());
     loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
+    //loadOBJ(scene, "models/", "fire.obj", fire_matlib());
+    //loadOBJ(scene, "models/", "red_dragon.obj", red_dragon_matlib());
     scene->rebuildIndex();
     World world;
     world.scene = scene;

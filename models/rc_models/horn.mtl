@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-#map_Bump Horn_low_Horn_Normal.png
-#map_Kd Horn_low_Horn_BaseColor.png
-#map_Ns Horn_low_Horn_Roughness.png
-#refl Horn_low_Horn_Metallic.png
+#map_Bump C:\\Users\\brsun\\Downloads\\viking-horn-stylized\\textures\\Horn_low_Horn_Normal.jpg
+#map_Kd C:\\Users\\brsun\\Downloads\\viking-horn-stylized\\textures\\Horn_low_Horn_BaseColor.jpg
+#map_Ns C:\\Users\\brsun\\Downloads\\viking-horn-stylized\\textures\\Horn_low_Horn_Roughness.jpg
+#refl C:\\Users\\brsun\\Downloads\\viking-horn-stylized\\textures\\Horn_low_Horn_Metallic.jpg

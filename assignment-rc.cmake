@@ -17,6 +17,9 @@ file(COPY
     models/rc_models/barrels.obj
     models/rc_models/barrels.mtl
     models/rc_models/PirateProps_Barrel_Texture_Color.tga.png
+
+    models/rc_models/bottles.obj
+    models/rc_models/bottles.mtl
     models/rc_models/PirateProps_Bottle_Texture_Color.tga.png
 
 
@@ -50,5 +53,12 @@ file(COPY
     models/rc_models/fire.mtl
     models/rc_models/fire.png
 
+    models/rc_models/fence.obj
+    models/rc_models/fence.mtl
+    models/rc_models/Line001_Albedo.png
+
+    models/rc_models/planks.obj
+    models/rc_models/planks.mtl
+    models/rc_models/planks.png
     DESTINATION ${CMAKE_BINARY_DIR}/models
 )

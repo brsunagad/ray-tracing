@@ -25,18 +25,6 @@
 
 using namespace rt;
 
-MatLib* getHelmetMatlib() {
-    MatLib* matlib = new MatLib;
-    ImageTexture* tex1 = new ImageTexture("models/DefaultMaterial_albedo.png");
-    ImageTexture* tex2 = new ImageTexture("models/DefaultMaterial_roughness.png");
-    matlib->insert(std::pair<std::string, Material*>("bar_low", new CookTorranceMaterial(tex1, tex2, 0.8, 0.2, 0.3)));
-    matlib->insert(std::pair<std::string, Material*>("basecorne_low", new CookTorranceMaterial(tex1, tex2, 0.8, 0.2, 0.3)));
-    matlib->insert(std::pair<std::string, Material*>("casque_low", new CookTorranceMaterial(tex1, tex2, 0.8, 0.2, 0.3)));
-    matlib->insert(std::pair<std::string, Material*>("corne_low", new CookTorranceMaterial(tex1, tex2, 0.8, 0.2, 0.3)));
-
-    return matlib;
-}
-
 MatLib* lamp_matlib() {
     MatLib* matlib = new MatLib;
     Texture*  blacktex = new ConstantTexture(RGBColor::rep(0.0f));
@@ -52,7 +40,6 @@ MatLib* lamp_matlib() {
 MatLib* fire_matlib() {
     MatLib* matlib = new MatLib;
     Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
-
 
     ImageTexture* fire = new ImageTexture("models/fire.png");
     matlib->insert(std::pair<std::string, Material*>("fire_breath", new FlatMaterial(fire)));
@@ -70,25 +57,24 @@ MatLib* red_dragon_matlib() {
     return matlib;
 }
 
-MatLib* plane_matlib() {
-    MatLib* matlib = new MatLib;
-    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
-    ImageTexture* wood_color = new ImageTexture("models/wood_tile_basecolor_1.png");
-
-    matlib->insert(std::pair<std::string, Material*>("floor", new LambertianMaterial(blacktex, wood_color)));
-   
-    return matlib;
-}
 
 MatLib* barrels_matlib() {
     MatLib* matlib = new MatLib;
     Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
-    ImageTexture* bottle = new ImageTexture("models/PirateProps_Bottle_Texture_Color.tga.png");
-    ImageTexture* barrel = new ImageTexture("models/PirateProps_Barrel_Texture_Color.tga.png");
 
-    matlib->insert(std::pair<std::string, Material*>("bottle", new LambertianMaterial(blacktex, bottle)));
+    ImageTexture* barrel = new ImageTexture("models/PirateProps_Barrel_Texture_Color.tga.png");
     matlib->insert(std::pair<std::string, Material*>("Barrel_PropMaterial", new LambertianMaterial(blacktex, barrel)));
 
+    return matlib;
+}
+
+MatLib* bottles_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+ 
+    ImageTexture* bottle = new ImageTexture("models/PirateProps_Bottle_Texture_Color.tga.png");
+    matlib->insert(std::pair<std::string, Material*>("bottle", new LambertianMaterial(blacktex, bottle)));
+  
     return matlib;
 }
 
@@ -108,6 +94,26 @@ MatLib* axe_matlib() {
     ImageTexture* axe = new ImageTexture("models/HACHA_BaseColor.png");
 
     matlib->insert(std::pair<std::string, Material*>("axe", new LambertianMaterial(blacktex, axe)));
+
+    return matlib;
+}
+
+MatLib* planks_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* planks = new ImageTexture("models/planks.png");
+
+    matlib->insert(std::pair<std::string, Material*>("PlankSurface.001", new LambertianMaterial(blacktex, planks)));
+
+    return matlib;
+}
+
+MatLib* fence_matlib() {
+    MatLib* matlib = new MatLib;
+    Texture* blacktex = new ConstantTexture(RGBColor::rep(0.0f));
+    ImageTexture* fence = new ImageTexture("models/Line001_Albedo.png");
+
+    matlib->insert(std::pair<std::string, Material*>("fence", new LambertianMaterial(blacktex, fence)));
 
     return matlib;
 }
@@ -148,16 +154,20 @@ void a_scene() {
     loadOBJ(scene, "models/", "toothless.obj");
     loadOBJ(scene, "models/", "red_dragon.obj");
     loadOBJ(scene, "models/", "fire_breath.obj", fire_breath_matlib());*/
+    //loadOBJ(scene, "models/", "planes.obj", plane_matlib());
+    
 
-    loadOBJ(scene, "models/", "planes.obj", plane_matlib());
-    //loadOBJ(scene, "models/", "barrels.obj", barrels_matlib());
-    //loadOBJ(scene, "models/", "sheild.obj", sheild_matlib());
-    //loadOBJ(scene, "models/", "horn.obj", horn_matlib());
-    //loadOBJ(scene, "models/", "axe.obj", axe_matlib());
-    //loadOBJ(scene, "models/", "toothless.obj", toothless_matlib());
+    loadOBJ(scene, "models/", "planks.obj", planks_matlib());
+    loadOBJ(scene, "models/", "fence.obj", fence_matlib());
+    loadOBJ(scene, "models/", "bottles.obj", bottles_matlib());
+    loadOBJ(scene, "models/", "barrels.obj", barrels_matlib());
+    loadOBJ(scene, "models/", "sheild.obj", sheild_matlib());
+    loadOBJ(scene, "models/", "horn.obj", horn_matlib());
+    loadOBJ(scene, "models/", "axe.obj", axe_matlib());
+    loadOBJ(scene, "models/", "toothless.obj", toothless_matlib());
     loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
-    //loadOBJ(scene, "models/", "fire.obj", fire_matlib());
-    //loadOBJ(scene, "models/", "red_dragon.obj", red_dragon_matlib());
+    loadOBJ(scene, "models/", "fire.obj", fire_matlib());
+    loadOBJ(scene, "models/", "red_dragon.obj", red_dragon_matlib());
     scene->rebuildIndex();
     World world;
     world.scene = scene;
@@ -166,10 +176,10 @@ void a_scene() {
 
     float intensity = 10000;
     //world.light.push_back(new PointLight(Point(0.416149, 1.27344, 3.46079), RGBColor(1, 1, 1)*intensity));
-    world.light.push_back(new PointLight(Point(-14.7925, 13.9556, -14.1935), RGBColor(1, 1, 1) * intensity));
+    world.light.push_back(new PointLight(Point(-12.3755, 3.89785, -20.6596), RGBColor(1, 1, 1) * intensity));
 
     // PerspectiveCamera cam(Point(0.367128, 0.344247, 6.795460), Point(0.255833, 0.400069, 5.803241) - Point(0.367128, 0.344247, 6.795460), Vector(0.006222, 0.998441, 0.055474), pi / 8, pi / 6);
-    PerspectiveCamera cam(Point(-24.137545, 1.560391, -11.216356), Point(-23.139908, 1.623184, -11.188487) - Point(-24.137545, 1.560391, -11.216356), Vector(-0.062769, 0.998027, -0.001754), pi / 8, pi / 6);
+    PerspectiveCamera cam(Point(-23.766264, 2.119421, -14.954997), Point(-22.780579, 2.149030, -14.789021) - Point(-23.766264, 2.119421, -14.954997), Vector(-0.027284, 0.999495, -0.016274), pi / 8, pi / 6);
     RecursiveRayTracingIntegrator integrator(&world);
 
     auto t_start = std::chrono::high_resolution_clock::now();

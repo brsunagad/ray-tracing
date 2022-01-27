@@ -140,8 +140,8 @@ MatLib* sheild_matlib() {
 
 
 void a_scene() {
-    Image img(800, 600);
-    //Image img(2160, 1440);
+    // Image img(800, 600);
+    Image img(2160, 1440);
     //Image img(1080, 720);
 
     BVH* scene = new BVH();
@@ -168,13 +168,20 @@ void a_scene() {
     loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
     loadOBJ(scene, "models/", "fire.obj", fire_matlib());
     loadOBJ(scene, "models/", "red_dragon.obj", red_dragon_matlib());
-    scene->rebuildIndex();
+
+    try{
+        scene->rebuildIndex();
+    } catch (const std::exception& e) // reference to the base of a polymorphic object
+    {
+        std::cout << e.what(); // information from length_error printed
+    }
+    
     World world;
     world.scene = scene;
 
     //Lighting
 
-    float intensity = 10000;
+    float intensity = 1000;
     //world.light.push_back(new PointLight(Point(0.416149, 1.27344, 3.46079), RGBColor(1, 1, 1)*intensity));
     world.light.push_back(new PointLight(Point(-12.3755, 3.89785, -20.6596), RGBColor(1, 1, 1) * intensity));
 
@@ -185,8 +192,14 @@ void a_scene() {
     auto t_start = std::chrono::high_resolution_clock::now();
     
     Renderer engine(&cam, &integrator);
-    //engine.setSamples(10);
-    engine.render(img);
+    engine.setSamples(10);
+    try{
+        engine.render(img);
+    } catch (const std::exception& e) // reference to the base of a polymorphic object
+    {
+        std::cout << e.what(); // information from length_error printed
+    }
+    
     
     auto t_end = std::chrono::high_resolution_clock::now();
 

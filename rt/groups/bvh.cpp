@@ -11,9 +11,9 @@ BVH::BVH()
 
 BVH::~BVH()
 {
-    //std::cout << "\nDeleting BVH tree" << std::endl;
+    std::cout << "\nDeleting BVH tree..." << std::endl;
     deleteTree(root);
-    //std::cout << "\nDeleted BVH tree successfully"<<std::endl;
+    std::cout << "Deleted BVH tree successfully"<<std::endl;
 }
 
 void BVH::deleteTree(Node* node)
@@ -35,7 +35,11 @@ void BVH::deleteTree(Node* node)
 void BVH::rebuildIndex() {
     root->primitives = primitives;
    
+   std::cout << "\nBuilding BVH tree..." << std::endl;
+
     buildIndexStructure(root);
+
+    std::cout << "Builded BVH tree successfully" << std::endl;
 }
 
 void BVH::buildIndexStructure(Node* node)

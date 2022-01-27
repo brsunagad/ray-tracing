@@ -52,7 +52,7 @@ std::pair<float, float> BBox::intersect(const Ray& ray) const {
     else if (isEmpty)
         return std::make_pair(FLT_MAX, -FLT_MAX);
     else {
-        AABox aabox(min, max, nullptr, nullptr);
+        // AABox aabox(min, max, nullptr, nullptr);
 
         //Compute intersection
         float xnear, xfar, ynear, yfar, znear, zfar;

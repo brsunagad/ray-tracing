@@ -22,13 +22,14 @@ void Renderer::render(Image& img) {
     const float sx = 2.0 / width;
     const float sy = 2.0 / height;
 
+    std::cout << std::endl << "Rendering with " << samples << " samples..." << std::endl << std::endl;
 
-//#pragma omp parallel for
-    #pragma omp parallel for collapse(2)
+#pragma omp parallel for
+    // #pragma omp parallel for collapse(2)
     for (int i = 0; i < img.width(); i++) {
        // #pragma omp parallel for schedule(dynamic)  
         for (int j = 0; j < img.height(); j++) {
-            // if (j%100 == 0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
+            if (i%100 == 0 && j==0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
 
             if (samples > 1) { //Super sampling
                 RGBColor pixel = RGBColor::rep(0);

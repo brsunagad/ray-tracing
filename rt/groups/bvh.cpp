@@ -11,9 +11,9 @@ BVH::BVH()
 
 BVH::~BVH()
 {
-    std::cout << "\nDeleting BVH tree..." << std::endl;
-    deleteTree(root);
-    std::cout << "Deleted BVH tree successfully"<<std::endl;
+    //std::cout << "\nDeleting BVH tree..." << std::endl;
+    //deleteTree(root);
+    //std::cout << "Deleted BVH tree successfully"<<std::endl;
 }
 
 void BVH::deleteTree(Node* node)

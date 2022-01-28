@@ -34,7 +34,7 @@ void BVH::deleteTree(Node* node)
 
 void BVH::rebuildIndex() {
     root->primitives = primitives;
-    primitives.clear();
+   // primitives.clear();
    std::cout << "\nBuilding BVH tree..." << std::endl;
 
     buildIndexStructure(root);

@@ -80,7 +80,7 @@ void renderCornellbox(float scale, const char* filename, Camera* cam, Material* 
     world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
     world.light.push_back(new PointLight(Point(40*scale,159.99f*scale,249.5f*scale),RGBColor(5000.0f*scale*scale,30000.0f*scale*scale,5000.0f*scale*scale)));
 
-    RecursiveRayTracingIntegrator integrator(&world);
+    RecursiveRayTracingIntegrator integrator(&world, 6);
 
     Renderer engine(cam, &integrator);
     if (numSamples>1)
@@ -145,7 +145,7 @@ void renderMotionBlurr(float scale, const char* filename, Camera* cam, Material*
 
 
 
-    RecursiveRayTracingIntegrator integrator(&world);
+    RecursiveRayTracingIntegrator integrator(&world, 6);
 
     Renderer engine(cam, &integrator);
     if (numSamples>1)

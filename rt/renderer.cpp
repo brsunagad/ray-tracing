@@ -25,11 +25,10 @@ void Renderer::render(Image& img) {
     std::cout << std::endl << "Rendering with " << samples << " samples..." << std::endl << std::endl;
 
 #pragma omp parallel for
-    // #pragma omp parallel for collapse(2)
+//#pragma omp parallel for collapse(2) schedule(dynamic)
     for (int i = 0; i < img.width(); i++) {
-       // #pragma omp parallel for schedule(dynamic)  
         for (int j = 0; j < img.height(); j++) {
-            if (i%100 == 0 && j==0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
+            //if (i%100 == 0 && j==0) std::cout << "pixel (" << i << ", " << j << ")" <<std::endl;
 
             if (samples > 1) { //Super sampling
                 RGBColor pixel = RGBColor::rep(0);

@@ -7,7 +7,8 @@ namespace rt {
 
 class RecursiveRayTracingIntegrator : public Integrator {
 public:
-    RecursiveRayTracingIntegrator(World* world) : Integrator(world) {}
+    int depth;
+    RecursiveRayTracingIntegrator(World* world, int depth) : Integrator(world), depth(depth) {}
     virtual RGBColor getRadiance(const Ray& ray) const;
     RGBColor recurse(const Ray& ray, int& depth) const;
 };

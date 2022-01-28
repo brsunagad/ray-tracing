@@ -8,7 +8,7 @@
 namespace rt {
 
 RGBColor RecursiveRayTracingIntegrator::getRadiance(const Ray& ray) const {
-    int max_rec_depth = 6;
+    int max_rec_depth = depth;
     return recurse(ray, max_rec_depth);
 }
 RGBColor RecursiveRayTracingIntegrator::recurse(const Ray& ray, int& depth) const {

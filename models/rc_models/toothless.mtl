@@ -10,5 +10,5 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-#map_Bump C:\\Users\\brsun\\Downloads\\toothless-chibi\\textures\\toothless_export_model_toothless_sg_Normal.png
-#map_Kd C:\\Users\\brsun\\Downloads\\toothless-chibi\\textures\\toothless_export_model_toothless_sg_BaseCo.png
+map_Bump toothless_export_model_toothless_sg_Normal.png
+map_Kd toothless_export_model_toothless_sg_BaseCo.png

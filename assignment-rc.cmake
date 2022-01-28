@@ -10,22 +10,21 @@ set(ASSIGNMENT_SOURCES
 )
 
 file(COPY
-    models/rc_models/planes.obj
-    models/rc_models/planes.mtl
-    models/rc_models/wood_tile_basecolor_1.png
 
     models/rc_models/barrels.obj
     models/rc_models/barrels.mtl
     models/rc_models/PirateProps_Barrel_Texture_Color.tga.png
+    models/rc_models/PirateProps_Barrel_Texture_Metal.tga.png
 
     models/rc_models/bottles.obj
     models/rc_models/bottles.mtl
     models/rc_models/PirateProps_Bottle_Texture_Color.tga.png
-
+    models/rc_models/PirateProps_Bottle_Texture_AO.tga.png
 
     models/rc_models/sheild.obj
     models/rc_models/sheild.mtl
     models/rc_models/lambert1_albedo.png
+    models/rc_models/lambert1_metallic.png
 
     models/rc_models/horn.obj
     models/rc_models/horn.mtl

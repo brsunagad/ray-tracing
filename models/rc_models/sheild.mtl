@@ -10,5 +10,6 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-#map_Kd D:\\GitRepositories\\cg-scene\\resources\\viking-shield-practice\\textures\\lambert1_albedo.jpeg
-#refl D:\\GitRepositories\\cg-scene\\resources\\viking-shield-practice\\textures\\lambert1_metallic.jpeg
+map_Kd lambert1_albedo.jpeg
+#refl lambert1_metallic.jpeg
+map_Ns lambert1_metallic.jpeg

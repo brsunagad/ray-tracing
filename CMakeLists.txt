@@ -43,7 +43,7 @@ find_package(OpenMP)
 if(OpenMP_CXX_FOUND)
     target_link_libraries(cgray OpenMP::OpenMP_CXX)
 endif()
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1800000")
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:1800000")
 
 # Compile with IPO in Release mode
 include(CheckIPOSupported)

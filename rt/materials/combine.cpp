@@ -22,8 +22,8 @@ RGBColor CombineMaterial::getReflectance(const Point& texPoint, const Vector& no
 
 RGBColor CombineMaterial::getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
     RGBColor emissions = RGBColor::rep(0.f);
-    for (size_t i = 0; i < materials.size(); i++) {
-        emissions = emissions + materials[i].first->getEmission(texPoint, normal, outDir) * materials[i].second;
+    for (auto m : materials) {
+        emissions = emissions + m.first->getEmission(texPoint, normal, outDir) * m.second;
     }
 
     return emissions;

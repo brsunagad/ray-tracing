@@ -22,9 +22,9 @@ RGBColor AreaLight::getIntensity(const LightHit& irr) const {
 
     RGBColor temp = emission * source->getArea() * cosTheta / (irr.distance * irr.distance);
 
-    return temp;
+    return temp * scale;
 }
 
-AreaLight::AreaLight(Solid* source): source(source) {}
+AreaLight::AreaLight(Solid* source, int scale ): source(source), scale(scale) {}
 
 }

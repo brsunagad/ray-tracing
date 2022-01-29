@@ -10,9 +10,10 @@ class Solid;
 class AreaLight : public Light {
 private:
     Solid *source;
+    int scale;
 public:
     AreaLight() {}
-    AreaLight(Solid* source);
+    AreaLight(Solid* source, int scale = 1);
     virtual LightHit getLightHit(const Point& p) const;
     virtual RGBColor getIntensity(const LightHit& irr) const;
 };

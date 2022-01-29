@@ -28,10 +28,12 @@ public:
 class BVH : public Group {
 private:
     Node* root = new Node();
-    int count;
+    Primitive* envMap;
+    bool useEnv = false;
 public:
     BVH();
     ~BVH();
+    void setenv(Primitive* p);
     void deleteTree(Node* node);
     virtual BBox getBounds() const;
     virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX) const;

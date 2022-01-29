@@ -140,6 +140,11 @@ void BVH::buildIndexStructure(Node* node)
 
 
 }
+void BVH::setenv(Primitive* p) {
+    useEnv = true;
+    envMap = p;
+}
+
 
 float BVH::findMidPoint(int axis, BBox bbox) {
     if (axis == 0)
@@ -223,7 +228,9 @@ Intersection BVH::intersect(const Ray& ray, float previousBestDistance) const {
             }
         }
     } 
-    
+    if (useEnv && !result) {
+        result = envMap->intersect(ray, previousBestDistance);
+    }
 
     return result;
 }

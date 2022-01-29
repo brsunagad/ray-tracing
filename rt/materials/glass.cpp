@@ -3,7 +3,7 @@
 #include <core/random.h>
 namespace rt {
 
-    GlassMaterial::GlassMaterial(float eta) : eta(eta) {
+    GlassMaterial::GlassMaterial(float eta, Texture* texture) : eta(eta), texture(texture) {
         isGlass = true;
     }
 
@@ -12,7 +12,11 @@ RGBColor GlassMaterial::getReflectance(const Point& texPoint, const Vector& norm
 }
 
 RGBColor GlassMaterial::getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
-    return RGBColor::rep(0.0f);
+    if(texture != nullptr)
+        return texture->getColor(texPoint);
+    else
+        return RGBColor::rep(0.0f);
+
 }
 
 Material::SampleReflectance GlassMaterial::getSampleReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
@@ -22,7 +26,7 @@ Material::SampleReflectance GlassMaterial::getSampleReflectance(const Point& tex
         Vector reflection = (-outDir + (2 * dot(outDir, normal) * normal)).normalize();
         return SampleReflectance(reflection.normalize(), RGBColor::rep(1.f));
     }
-    else if (random() < 0.2f) {
+    else if (random() < 0.1f) {
         Vector reflection = (-outDir + (2 * dot(outDir, normal) * normal)).normalize();
         return SampleReflectance(reflection.normalize(), 2 * RGBColor::rep(fr));
     }

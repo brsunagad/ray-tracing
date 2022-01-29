@@ -15,12 +15,34 @@
 #include <rt/materials/fuzzymirror.h>
 #include <rt/lights/arealight.h>
 #include <rt/lights/pointlight.h>
-
+#include <rt/textures/imagetex.h>
 #include <rt/primmod/animatedprimitive.h>
+#include <rt/materials/combine.h>
+#include <rt/coordmappers/coordmapper.h>
 
+#include <rt/materials/phong.h>
+#include <rt/materials/glass.h>
+#include <rt/materials/mirror.h>
+#include <rt/materials/flatmaterial.h>
+#include <rt/materials/lambertian.h>
+#include <rt/materials/combine.h>
+#include <rt/textures/perlin.h>
 using namespace rt;
 
 namespace {
+
+    class QuadMapper : public CoordMapper {
+    public:
+        QuadMapper(const Vector& offset, const Vector& scale = Vector::rep(1.f)) : offset(offset), scale(scale) { }
+        virtual Point getCoords(const Intersection& hit) const {
+            Float4 p = Float4(scale) * Float4(hit.local()) + Float4(offset);
+            return Point(p[0], p[1], p[2]);
+        }
+
+    private:
+        Vector offset;
+        Vector scale;
+    };
 
 void makeBox(Group* scene, const Point& aaa, const Vector& forward, const Vector& left, const Vector& up, CoordMapper* texMapper, Material* material) {
     scene->add(new Quad(aaa, left, forward, texMapper, material));
@@ -56,7 +78,7 @@ void renderCornellbox(float scale, const char* filename, Camera* cam, Material* 
 
     //walls
     scene->add(new Quad(Point(000.f, 000.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, Vector(550.f, 000.f, 000.f)*scale, nullptr, floorMaterial)); //floor
-    scene->add(new Quad(Point(550.f, 550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, Vector(-550.f, 000.f, 000.f)*scale, nullptr, grey)); //ceiling
+   // scene->add(new Quad(Point(550.f, 550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, Vector(-550.f, 000.f, 000.f)*scale, nullptr, grey)); //ceiling
     scene->add(new Quad(Point(000.f, 000.f, 560.f)*scale, Vector(000.f, 550.f, 000.f)*scale, Vector(550.f, 000.f, 000.f)*scale, nullptr, grey)); //back wall
     scene->add(new Quad(Point(000.f, 000.f, 000.f)*scale, Vector(000.f, 550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, nullptr, rightWallMaterial)); //right wall
     scene->add(new Quad(Point(550.f, 550.f, 000.f)*scale, Vector(000.f, -550.f, 000.f)*scale, Vector(000.f, 000.f, 560.f)*scale, nullptr, leftWallMaterial)); //left wall
@@ -69,16 +91,17 @@ void renderCornellbox(float scale, const char* filename, Camera* cam, Material* 
 
     //Lights
     ConstantTexture* lightsrctex = new ConstantTexture(RGBColor::rep(35.0f));
-    Material* lightsource = new LambertianMaterial(lightsrctex, blacktex);
-
-    Quad* light = new Quad(Point(213*scale,549.99f*scale,227*scale), Vector(130*scale,0,0), Vector(0,0,105*scale), nullptr, lightsource);
+    ImageTexture* imgtex = new ImageTexture("models/enviromentMap.png");
+    Material* lightsource = new LambertianMaterial(imgtex, blacktex);
+    CoordMapper* mapper = new QuadMapper(Vector::rep(-1.f), Vector::rep(0.5f));
+    Quad* light = new Quad(Point(550.f, 550.f, 000.f) * scale, Vector(000.f, 000.f, 560.f) * scale, Vector(-550.f, 000.f, 000.f) * scale, mapper, lightsource);
     AreaLight als(light);
     world.light.push_back(&als);
     scene->add(light);
 
     //point light
-    world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
-    world.light.push_back(new PointLight(Point(40*scale,159.99f*scale,249.5f*scale),RGBColor(5000.0f*scale*scale,30000.0f*scale*scale,5000.0f*scale*scale)));
+   // world.light.push_back(new PointLight(Point(490*scale,159.99f*scale,279.5f*scale),RGBColor(40000.0f*scale*scale,0,0)));
+   // world.light.push_back(new PointLight(Point(40*scale,159.99f*scale,249.5f*scale),RGBColor(5000.0f*scale*scale,30000.0f*scale*scale,5000.0f*scale*scale)));
 
     RecursiveRayTracingIntegrator integrator(&world, 6);
 
@@ -167,10 +190,18 @@ void a_distributed() {
     Material* floorMaterial2 = new FuzzyMirrorMaterial(2.485f, 3.433f, 0.05f);
 
     Material* sphereMaterial1 = floorMaterial1;
-    Material* sphereMaterial2 = new GlassMaterial(2.0f);
+    ImageTexture* fire = new ImageTexture("models/fire.png");
+    ConstantTexture* light_color = new ConstantTexture(RGBColor(1, 1, 1));
+    Material* sphereMaterial2 = new GlassMaterial(2.0f, light_color);
 
-    renderCornellbox(0.001f, "a6-5.png", cam, sphereMaterial1, floorMaterial1, 30);
-    //renderCornellbox(0.001f, "a6-6.png", cam, sphereMaterial2, floorMaterial2, 30);
+    CombineMaterial* combined = new CombineMaterial();
+    //combined->add(new PhongMaterial(perlinTex, 10.0f), 0.62f);
+    combined->add(new PhongMaterial(fire, 3.0f), 0.5f);
+    //combined->add(new FlatMaterial(fire), 0.2);
+    combined->add(new  GlassMaterial(2.0f, nullptr), 0.8f);
+   // renderCornellbox(0.001f, "a6-5.png", cam, sphereMaterial1, floorMaterial1, 30);
+    //renderCornellbox(0.001f, "a6-6.png", cam, sphereMaterial2, floorMaterial2, 200);
+    renderCornellbox(0.001f, "a6-6.png", cam, combined, floorMaterial2, 200);
     //renderCornellbox(0.001f, "a6-7a.png", dofcam, sphereMaterial2, floorMaterial2, 30);
 
     

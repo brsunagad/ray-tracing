@@ -14,7 +14,8 @@ RGBColor FlatMaterial::getEmission(const Point& texPoint, const Vector& normal, 
 }
 
 Material::SampleReflectance FlatMaterial::getSampleReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir) const {
-    UNREACHABLE;
+//    UNREACHABLE;
+    return Material::SampleReflectance();
 }
 
 Material::Sampling FlatMaterial::useSampling() const {

@@ -78,5 +78,10 @@ file(COPY
     models/rc_models/planks.mtl
     models/rc_models/planks_normal.png
     models/rc_models/planks_color.png
+
+   rt/lights/environmentMap.png
+   rt/lights/environmentMap2.png
+   rt/lights/environmentMap3.png
+   rt/lights/environmentMap3.jpg
     DESTINATION ${CMAKE_BINARY_DIR}/models
 )

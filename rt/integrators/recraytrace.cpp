@@ -32,7 +32,9 @@ RGBColor RecursiveRayTracingIntegrator::recurse(const Ray& ray, int& depth) cons
                 Ray shadowRay(intersection.hitPoint() + intersection.normal() * 0.0001, lightHit.direction);
                 if (dot(intersection.normal(), shadowRay.d) > 0.0f) {
                     Intersection shadowI = world->scene->intersect(shadowRay, lightHit.distance);
-                    if (!shadowI) {
+
+                   if (!shadowI || shadowI.solid->material->isGlass) {
+                  // if (!shadowI) {
                         intensity = light->getIntensity(lightHit);
                         reflectance = intersection.solid->material->getReflectance(texPoint, intersection.normal(), -ray.d, -shadowRay.d);
                         radiance = radiance + intensity * reflectance;

@@ -2,7 +2,7 @@
 
 namespace rt {
 
-FlatMaterial::FlatMaterial(Texture* texture): texture(texture)
+FlatMaterial::FlatMaterial (Texture* texture): texture(texture)
 {}
 
 RGBColor FlatMaterial::getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const {

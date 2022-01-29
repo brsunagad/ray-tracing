@@ -2,13 +2,15 @@
 # Material Count: 1
 
 newmtl toothless_sg
-Ns 225.000000
+Ns 50.000000
 Ka 0.000000 0.000000 0.000000
 Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
+Ks 0.0800000 0.0800000 0.0800000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
 map_Bump toothless_export_model_toothless_sg_Normal.png
-map_Kd toothless_export_model_toothless_sg_BaseCo.png
+map_Kd toothless_export_model_toothless_sg_BaseColor.png
+map_Ns toothless_export_model_toothless_sg_Roughness.png
+ 

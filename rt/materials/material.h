@@ -16,7 +16,7 @@ public:
 	*/
     virtual RGBColor getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const = 0;
     virtual RGBColor getEmission(const Point& texPoint, const Vector& normal, const Vector& outDir) const = 0;
-
+    bool isGlass = false;
 
     struct SampleReflectance {
         Vector direction;

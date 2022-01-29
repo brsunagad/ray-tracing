@@ -3,7 +3,9 @@
 #include <core/random.h>
 namespace rt {
 
-GlassMaterial::GlassMaterial(float eta): eta(eta){}
+    GlassMaterial::GlassMaterial(float eta) : eta(eta) {
+        isGlass = true;
+    }
 
 RGBColor GlassMaterial::getReflectance(const Point& texPoint, const Vector& normal, const Vector& outDir, const Vector& inDir) const {
     return RGBColor::rep(0.0f);
@@ -20,7 +22,7 @@ Material::SampleReflectance GlassMaterial::getSampleReflectance(const Point& tex
         Vector reflection = (-outDir + (2 * dot(outDir, normal) * normal)).normalize();
         return SampleReflectance(reflection.normalize(), RGBColor::rep(1.f));
     }
-    else if (random() < 0.5f) {
+    else if (random() < 0.2f) {
         Vector reflection = (-outDir + (2 * dot(outDir, normal) * normal)).normalize();
         return SampleReflectance(reflection.normalize(), 2 * RGBColor::rep(fr));
     }
@@ -30,7 +32,7 @@ Material::SampleReflectance GlassMaterial::getSampleReflectance(const Point& tex
         float ni = 1, nt = eta;
         if (costheta > 0)
             std::swap(ni, nt);
-        return SampleReflectance(refraction.normalize(), 2 *(ni / nt)* RGBColor::rep((1.f - fr)));//multiplying 2 gave better result
+        return SampleReflectance(refraction.normalize(), 2 *sqr(ni / nt)* RGBColor::rep((1.f - fr)));//multiplying 2 gave better result
     }
 }
 

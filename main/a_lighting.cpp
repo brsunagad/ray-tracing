@@ -149,7 +149,7 @@ void renderModel(float scale, const char* filename) {
 
     //Add and move the model
     Group* toad = new SimpleGroup();
-    loadOBJ(toad, "models/", "Toad.obj");
+    loadOBJ(toad, "models/", "Toad.obj", nullptr);
     Instance* ins = new Instance(toad);
     ins->scale(Vector(1.5f*scale,1.5f*scale,1.5f*scale));
     ins->translate(Vector(300.0f*scale,0.0f*scale,300.0f*scale));

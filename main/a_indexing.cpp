@@ -23,7 +23,7 @@ void a_indexing() {
     scene->add(new Sphere(Point(2.5f,  -1.f,  -1), 0.5, nullptr, nullptr));
     scene->add(new Sphere(Point(4.5f,  .5f,  -1), 0.5 , nullptr, nullptr));
 
-    loadOBJ(scene, "models/", "cow.obj");
+    loadOBJ(scene, "models/", "cow.obj", nullptr);
   
     scene->rebuildIndex();
     World world;
@@ -46,7 +46,7 @@ void a_indexing() {
     // right now we are using a counter to switch between SAH and splitInMiddle heuristic, this is just for comparision and will be deleted later
     BVH* sceneTest1 = new BVH();
 
-    loadOBJ(sceneTest1, "models/", "dragon.obj");
+    loadOBJ(sceneTest1, "models/", "dragon.obj", nullptr);
 
      PerspectiveCamera cam3(Point(-2.0f, 0.05f, -0.0f), Point(0.0f, 0.0f, 0.0f) - Point(-2.0f, 0.05f, -0.0f), Vector(0, 1, 0), pi/8, pi/6);//this is for dragon.obj, do not change
     

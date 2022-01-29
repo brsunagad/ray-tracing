@@ -2,15 +2,15 @@
 # Material Count: 1
 
 newmtl horn
-Ns 225.000000
+Ns 50.000000
 Ka 0.000000 0.000000 0.000000
 Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
+Ks 0.0500000 0.0500000 0.0500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump Horn_low_Horn_Normal.jpg
-map_Kd Horn_low_Horn_BaseColor.jpg
-map_Ns Horn_low_Horn_Roughness.jpg
-refl Horn_low_Horn_Metallic.jpg
+map_Bump Horn_low_Horn_Normal.png
+map_Kd Horn_low_Horn_BaseColor.png
+map_Ns Horn_low_Horn_Roughness.png
+refl Horn_low_Horn_Metallic.png

@@ -91,11 +91,18 @@ void renderCornellbox(float scale, const char* filename, Camera* cam, Material* 
 
     //Lights
     ConstantTexture* lightsrctex = new ConstantTexture(RGBColor::rep(35.0f));
-    ImageTexture* imgtex = new ImageTexture("models/enviromentMap.png");
+    ImageTexture* imgtex = new ImageTexture("models/environmentMap2.png");
     Material* lightsource = new LambertianMaterial(imgtex, blacktex);
-    CoordMapper* mapper = new QuadMapper(Vector::rep(-1.f), Vector::rep(0.5f));
-    Quad* light = new Quad(Point(550.f, 550.f, 000.f) * scale, Vector(000.f, 000.f, 560.f) * scale, Vector(-550.f, 000.f, 000.f) * scale, mapper, lightsource);
-    AreaLight als(light);
+   // Material* lightsource = new  PhongMaterial(imgtex, 1.0f);
+    CombineMaterial* combined = new CombineMaterial();
+    //combined->add(new PhongMaterial(perlinTex, 10.0f), 0.62f);
+    combined->add(lightsource, 2.0f);
+    combined->add(new MirrorMaterial(0.0f, 0.0f), 0.50f);
+    //combined->add(new FlatMaterial(fire), 0.2);
+    //combined->add(new  GlassMaterial(1.5f, nullptr), 0.8f);
+    CoordMapper* mapper = new QuadMapper(Vector::rep(-1.f), Vector::rep(1.0f));
+    Quad* light = new Quad(Point(550.f, 550.f, 000.f) * scale, Vector(000.f, 000.f, 560.f) * scale, Vector(-550.f, 000.f, 000.f) * scale, mapper, combined);
+    AreaLight als(light, 2);
     world.light.push_back(&als);
     scene->add(light);
 

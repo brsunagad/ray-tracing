@@ -82,6 +82,6 @@ file(COPY
    rt/lights/environmentMap.png
    rt/lights/environmentMap2.png
    rt/lights/environmentMap3.png
-   rt/lights/environmentMap3.jpg
+   rt/lights/environmentMap4.png
     DESTINATION ${CMAKE_BINARY_DIR}/models
 )

@@ -26,7 +26,7 @@ Material::SampleReflectance GlassMaterial::getSampleReflectance(const Point& tex
         Vector reflection = (-outDir + (2 * dot(outDir, normal) * normal)).normalize();
         return SampleReflectance(reflection.normalize(), RGBColor::rep(1.f));
     }
-    else if (random() < 0.1f) {
+    else if (random() < 0.3f) {
         Vector reflection = (-outDir + (2 * dot(outDir, normal) * normal)).normalize();
         return SampleReflectance(reflection.normalize(), 2 * RGBColor::rep(fr));
     }

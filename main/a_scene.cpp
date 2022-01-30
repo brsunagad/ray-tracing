@@ -60,7 +60,7 @@ MatLib* lamp_matlib() {
     CombineMaterial* combined2 = new CombineMaterial();
     ImageTexture* fire = new ImageTexture("models/fire.png");
     //combined2->add(new PhongMaterial(fire, 10.0f), 0.01f);
-    combined2->add(new PhongMaterial(new ConstantTexture(RGBColor(0.6, 0.3, 0.2 )/4.5), 2.0f), 0.0015f);
+    combined2->add(new PhongMaterial(new ConstantTexture(RGBColor(0.6, 0.3, 0.2 )/5), 10.0f), 0.003f);
 
     combined->add(new FlatMaterial(fire), 0.2);
     combined2->add(new  GlassMaterial(1.5f, nullptr), 10.0f);
@@ -81,7 +81,7 @@ MatLib* fire_matlib() {
     combined->add(new PhongMaterial(fire, 10.0f), 0.5f);
     //combined->add(new PhongMaterial(new ConstantTexture(RGBColor(1, 0.7, 0.3)), 10.0f), 0.5f);
     combined->add(new PhongMaterial(new ConstantTexture(RGBColor(1.f, 0.0, 0.0)), 5.0f), 0.3f);
-    combined->add(new FlatMaterial(new ConstantTexture(RGBColor(0.f, 0.0, 1))), 0.02);
+    combined->add(new FlatMaterial(new ConstantTexture(RGBColor(0.f, 0.0, 1))), 0.09);
     combined->add(new  GlassMaterial(1.5f, nullptr), 4.0f);
     matlib->insert(std::pair<std::string, Material*>("fire_breath", combined));
 
@@ -187,9 +187,10 @@ MatLib* sheild_matlib() {
 
 
 void a_scene() {
-   Image img(800, 600);
-    //Image img(2160, 1440);
-    //Image img(1080, 720);
+    //Image img(480, 320);
+   //Image img(800, 600);
+   //Image img(1080, 720);
+   Image img(2160, 1440);
 
     BVH* scene = new BVH();
     //SimpleGroup* scene = new SimpleGroup();
@@ -235,7 +236,7 @@ void a_scene() {
     
     World world;
  
-    int samples = 7, depth = 30;
+    int samples = 100, depth = 30;
     //Lighting
 
     float intensity = 10;
@@ -243,7 +244,7 @@ void a_scene() {
     RGBColor light_color = RGBColor(1, 0.54, 0.173);
     //world.light.push_back(new PointLight(Point(0.416149, 1.27344, 3.46079), RGBColor(1, 1, 1)*intensity));
     world.light.push_back(new PointLight(Point(-12.3755, 6.89785, -20.6596), RGBColor(0.167, 0.521, 1) * intensity*50));//ambient near bottle old
-    world.light.push_back(new PointLight(Point(2.6262, 6.89785, -20.6596), RGBColor(0.167, 0.521, 1) * intensity*20));//ambient near bottle
+    world.light.push_back(new PointLight(Point(2.6262, 6.89785, -20.6596), RGBColor(0.167, 0.521, 1) * intensity*20));//ambient near shield
     //world.light.push_back(new PointLight(Point(-7.89528 , 3.1092, -12.4029), RGBColor(1, 0.7, 0.3) * intensity * 100));//in lamp
     //world.light.push_back(new PointLight(Point(-8.0487 , 3.10916, -13.1346), RGBColor(1, 0.7, 0.3) * intensity *10));
     //world.light.push_back(new PointLight(Point(-8.66465 , 3.10916 , -12.3375), RGBColor(1, 0.7, 0.3) * intensity *10));
@@ -284,7 +285,7 @@ void a_scene() {
 
     auto t_end = std::chrono::high_resolution_clock::now();
 
-    img.writePNG("a_scene.png");
+    img.writePNG("a_scene_thumbnail_100.png");
 
     double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
     std::cout << "Time taken to render a_scene.png: " << elapsed_time_ms / 1000 / 60<< " mins" << std::endl;

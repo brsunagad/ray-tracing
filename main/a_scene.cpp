@@ -187,8 +187,8 @@ MatLib* sheild_matlib() {
 
 
 void a_scene() {
-   //Image img(800, 600);
-    Image img(2160, 1440);
+   Image img(800, 600);
+    //Image img(2160, 1440);
     //Image img(1080, 720);
 
     BVH* scene = new BVH();
@@ -210,10 +210,10 @@ void a_scene() {
     loadOBJ(scene, "models/", "axe.obj", nullptr);
     loadOBJ(scene, "models/", "fence.obj", new ImageTexture("models/Line001_Normal.png"));
     loadOBJ(scene, "models/", "bottles.obj", nullptr);
-    loadOBJ(scene, "models/", "barrels.obj", new ImageTexture("models/PirateProps_Barrel_Texture_Normal.tga.png"));
-    loadOBJ(scene, "models/", "sheild.obj", new ImageTexture("models/lambert1_normal.png"));
-    loadOBJ(scene, "models/", "horn.obj", new ImageTexture("models/Horn_low_Horn_Normal.png"));
-    loadOBJ(scene, "models/", "toothless.obj", new ImageTexture("models/toothless_export_model_toothless_sg_Normal.png"));
+    loadOBJ(scene, "models/", "barrels.obj", new ImageTexture("models/PirateProps_Barrel_Texture_Normal.tga.png", ImageTexture::REPEAT, ImageTexture::NEAREST));
+    loadOBJ(scene, "models/", "sheild.obj", new ImageTexture("models/lambert1_normal.png", ImageTexture::REPEAT, ImageTexture::NEAREST));
+    loadOBJ(scene, "models/", "horn.obj", new ImageTexture("models/Horn_low_Horn_Normal.png", ImageTexture::REPEAT, ImageTexture::NEAREST));
+    loadOBJ(scene, "models/", "toothless.obj", new ImageTexture("models/toothless_export_model_toothless_sg_Normal.png", ImageTexture::REPEAT, ImageTexture::NEAREST));
     loadOBJ(scene, "models/", "lamp.obj", nullptr, lamp_matlib());
     loadOBJ(scene, "models/", "fire.obj", nullptr, fire_matlib());
     loadOBJ(scene, "models/", "red_dragon.obj", nullptr);
@@ -235,35 +235,36 @@ void a_scene() {
     
     World world;
  
-    int samples = 500, depth = 30;
+    int samples = 7, depth = 30;
     //Lighting
 
     float intensity = 10;
    // RGBColor light_color = RGBColor(1, 0.7, 0.3);
     RGBColor light_color = RGBColor(1, 0.54, 0.173);
     //world.light.push_back(new PointLight(Point(0.416149, 1.27344, 3.46079), RGBColor(1, 1, 1)*intensity));
-    world.light.push_back(new PointLight(Point(-12.3755, 3.89785, -20.6596), RGBColor(0.167, 0.521, 1) * intensity*7));//ambient near bottle
+    world.light.push_back(new PointLight(Point(-12.3755, 6.89785, -20.6596), RGBColor(0.167, 0.521, 1) * intensity*50));//ambient near bottle old
+    world.light.push_back(new PointLight(Point(2.6262, 6.89785, -20.6596), RGBColor(0.167, 0.521, 1) * intensity*20));//ambient near bottle
     //world.light.push_back(new PointLight(Point(-7.89528 , 3.1092, -12.4029), RGBColor(1, 0.7, 0.3) * intensity * 100));//in lamp
     //world.light.push_back(new PointLight(Point(-8.0487 , 3.10916, -13.1346), RGBColor(1, 0.7, 0.3) * intensity *10));
     //world.light.push_back(new PointLight(Point(-8.66465 , 3.10916 , -12.3375), RGBColor(1, 0.7, 0.3) * intensity *10));
-    //world.light.push_back(new PointLight(Point(-7.89472, 3.1092 , -11.5766 ), RGBColor(1, 0.7, 0.3) * intensity *10));
-    //world.light.push_back(new PointLight(Point(-7.27575 , 3.1092 , -12.3375 ), RGBColor(1, 0.7, 0.3) * intensity *10));
+    //world.light.push_back(new PointLight(Point(-7.89472, 3.1092 , -11.5766 ), RGBColor(1, 0.7, 0.3) * intensity *5));
+    //world.light.push_back(new PointLight(Point(-7.27575 , 3.1092 , -12.3375 ), RGBColor(1, 0.7, 0.3) * intensity *5));
     // 
     // 
-    //world.light.push_back(new PointLight(Point(-7.84322 , 9.96356 , -20.8048 ), RGBColor(0.167, 0.521, 1) * intensity * 50));//ambient night effect
-    world.light.push_back(new PointLight(Point(-7.85498, 3.03516, -12.0143), light_color * intensity *40));//top
-    world.light.push_back(new PointLight(Point(-8.0378, 2.5053 , -11.8969), light_color * intensity *5));
-    world.light.push_back(new PointLight(Point(-7.9733 , 2.5053 , -12.2115), light_color * intensity *5));
-    world.light.push_back(new PointLight(Point(-7.66991, 2.5053 , -11.9743), light_color * intensity *5));
+   // world.light.push_back(new PointLight(Point(-7.84322 , 9.96356 , -20.8048 ), RGBColor(0.167, 0.521, 1) * intensity * 10));//ambient night effect
+    world.light.push_back(new PointLight(Point(-7.85498, 3.03516, -12.0143), light_color * intensity *15));//top
+    world.light.push_back(new PointLight(Point(-8.0378, 2.5053 , -11.8969), light_color * intensity *4));
+    world.light.push_back(new PointLight(Point(-7.9733 , 2.5053 , -12.2115), light_color * intensity *4));
+    world.light.push_back(new PointLight(Point(-7.66991, 2.5053 , -11.9743), light_color * intensity *4));
     ////////////////////////////////////////////////////////
     ConstantTexture* lightsrctex = new ConstantTexture(RGBColor::rep(35.0f));
     ImageTexture* imgtex = new ImageTexture("models/environmentMap2.png");
     Material* lightsource = new LambertianMaterial(imgtex, new ConstantTexture(RGBColor::rep(0.f)));
     CombineMaterial* combined = new CombineMaterial();
-    combined->add(lightsource, 1.0f);
+    combined->add(lightsource, 1.50f);
     combined->add(new MirrorMaterial(0.0f, 0.0f), 5.f);
     CoordMapper* mapper = new QuadMapper(Vector::rep(-2.f), Vector::rep(3.0f));
-    Quad* light = new Quad(Point(60.7455, -4.52399, 64.5196) , Point(-45.3245 , 41.1383, 46.5963) - Point(60.7455, -4.52399, 64.5196), Point(80.2167 , -4.524 , -50.7106 ) - Point(60.7455, -4.52399, 64.5196), mapper, lightsource);
+    Quad* light = new Quad(Point(60.7455, -4.52399, 64.5196) , Point(-45.3245 , 41.1383, 46.5963) - Point(60.7455, -4.52399, 64.5196), Point(80.2167 , -4.524 , -50.7106 ) - Point(60.7455, -4.52399, 64.5196), mapper, combined);
     AreaLight als(light, 8);
     world.light.push_back(&als);
     scene->setenv(light);
@@ -283,13 +284,13 @@ void a_scene() {
 
     auto t_end = std::chrono::high_resolution_clock::now();
 
-    //img.writePNG("a_scene.png");
+    img.writePNG("a_scene.png");
 
     double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
     std::cout << "Time taken to render a_scene.png: " << elapsed_time_ms / 1000 / 60<< " mins" << std::endl;
 
     std::string filename = "a_scene_s" + std::to_string(samples) + "_d" + std::to_string(depth) + ".png";
-    img.writePNG(filename);
+    //img.writePNG(filename);
 
 
     delete scene;

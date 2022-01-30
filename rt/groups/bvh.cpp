@@ -66,7 +66,7 @@ void BVH::buildIndexStructure(Node* node)
 
 #ifdef SAH //SAH
         {
-        int numbins = 10;
+        int numbins = 40;
         
         float totalCost=0, lcCost=0, rcCost=0, bestCost = FLT_MAX;
         for (int j = 1; j < numbins; j++) {

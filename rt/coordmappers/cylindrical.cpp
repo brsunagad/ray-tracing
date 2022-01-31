@@ -7,16 +7,22 @@ CylindricalCoordMapper::CylindricalCoordMapper(const Point& origin, const Vector
     origin(origin), longitudinalAxis(longitudinalAxis), polarAxis(polarAxis){}
 
 Point CylindricalCoordMapper::getCoords(const Intersection& hit) const {
-    Vector hitVector = hit.local() - origin;
-    float v = dot(longitudinalAxis.normalize(), hitVector) / longitudinalAxis.length();
-    
-    //calculate perpendicular polar axis
-    Vector newPolar = (polarAxis - dot(longitudinalAxis.normalize(), polarAxis) * longitudinalAxis);
+    //corrections as per tutors instruction
+    float xScale = polarAxis.length();
+    float yScale = longitudinalAxis.length();
 
-    //Project hitVector 
-    Vector projHit = (hitVector - v * longitudinalAxis).normalize();
-    float u = acos(dot(projHit, newPolar));
-    return Point(u, v, 0);
+    Vector nPolar = polarAxis.normalize();
+    Vector nLong = longitudinalAxis.normalize();
+
+    Vector pos = hit.local() - origin;
+    Vector projection = pos - dot(pos, nLong) * nLong;
+
+    float r = sqrt(pos.x * pos.x + pos.y * pos.y + pos.z * pos.z);
+    float y = dot(pos, nLong);
+    float theta = atan2(cross(projection, nPolar).length(), dot(projection, nPolar));//atan2(y/x)
+
+    theta = dot(cross(projection, nPolar), nLong) < 0 ? -theta : theta;
+    return Point((theta / (2 * pi)) / xScale, (theta / pi) / yScale, r);
 
     /*Vector normal = -cross(polarAxis, longitudinalAxis).normalize();
     Vector azm = cross(normal, longitudinalAxis).normalize();

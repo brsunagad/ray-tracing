@@ -189,23 +189,13 @@ MatLib* sheild_matlib() {
 void a_scene() {
     //Image img(480, 320);
    //Image img(800, 600);
-   //Image img(1080, 720);
-   Image img(2160, 1440);
-
+     Image img(1080, 720);
+     //Image img(1920, 1080);
+   //Image img(2160, 1440);
+     
     BVH* scene = new BVH();
     //SimpleGroup* scene = new SimpleGroup();
 
-    /*loadOBJ(scene, "models/", "axe.obj", axe_matlib());
-    loadOBJ(scene, "models/", "planks.obj", planks_matlib());
-    loadOBJ(scene, "models/", "fence.obj", fence_matlib());
-    loadOBJ(scene, "models/", "bottles.obj", bottles_matlib());
-    loadOBJ(scene, "models/", "barrels.obj", barrels_matlib());
-    loadOBJ(scene, "models/", "sheild.obj", sheild_matlib());
-    loadOBJ(scene, "models/", "horn.obj", horn_matlib());
-    loadOBJ(scene, "models/", "toothless.obj", toothless_matlib());
-    loadOBJ(scene, "models/", "lamp.obj", lamp_matlib());
-    loadOBJ(scene, "models/", "fire.obj", fire_matlib());
-    loadOBJ(scene, "models/", "red_dragon.obj", red_dragon_matlib());*/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     loadOBJ(scene, "models/", "planks.obj", nullptr);
     loadOBJ(scene, "models/", "axe.obj", nullptr);
@@ -221,22 +211,10 @@ void a_scene() {
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
 
-    //loadOBJ(scene, "models/", "planks.obj", new ImageTexture("models/planks_normal.png"));//bump
-    //loadOBJ(scene, "models/", "red_dragon.obj", new ImageTexture("models/dragonNor.png"));
-    //loadOBJ(scene, "models/", "sheild.obj", new ImageTexture("models/lambert1_normal.png"));//bump
-    //loadOBJ(scene, "models/", "axe.obj", new ImageTexture("models/HACHA_Normal.png"));
-    //loadOBJ(scene, "models/", "fence.obj", new ImageTexture("models/Line001_Normal.png"));
-    //loadOBJ(scene, "models/", "bottles.obj", new ImageTexture("models/PirateProps_Bottle_Texture_Normal.tga.png"));
-    //loadOBJ(scene, "models/", "barrels.obj", new ImageTexture("models/PirateProps_Barrel_Texture_Normal.tga.png"));
-    //loadOBJ(scene, "models/", "horn.obj", new ImageTexture("models/Horn_low_Horn_Normal.png"));
-    //loadOBJ(scene, "models/", "toothless.obj", new ImageTexture("models/toothless_export_model_toothless_sg_Normal.png"));
-    //loadOBJ(scene, "models/", "lamp.obj", nullptr ,lamp_matlib());
-    //loadOBJ(scene, "models/", "fire.obj", nullptr);
-
     
     World world;
  
-    int samples = 100, depth = 30;
+    int samples = 10, depth = 30;
     //Lighting
 
     float intensity = 10;
@@ -272,7 +250,6 @@ void a_scene() {
     ///////////////////////////////////////////////////////
     scene->rebuildIndex();
     world.scene = scene;
-    // PerspectiveCamera cam(Point(0.367128, 0.344247, 6.795460), Point(0.255833, 0.400069, 5.803241) - Point(0.367128, 0.344247, 6.795460), Vector(0.006222, 0.998441, 0.055474), pi / 8, pi / 6);
    // PerspectiveCamera cam(Point(-23.766264, 2.119421, -14.954997), Point(-22.780579, 2.149030, -14.789021) - Point(-23.766264, 2.119421, -14.954997), Vector(-0.027284, 0.999495, -0.016274), pi / 6.5, pi / 4.5);
     DOFPerspectiveCamera cam(Point(-23.766264, 2.119421, -14.954997), Point(-22.780579, 2.149030, -14.789021) - Point(-23.766264, 2.119421, -14.954997), Vector(-0.027284, 0.999495, -0.016274), pi / 6.5, pi / 4.5, 18.025f, 0.08f);
     RecursiveRayTracingIntegrator integrator(&world, 5);
@@ -285,7 +262,7 @@ void a_scene() {
 
     auto t_end = std::chrono::high_resolution_clock::now();
 
-    img.writePNG("a_scene_thumbnail_100.png");
+    img.writePNG("a_scene.png");
 
     double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end - t_start).count();
     std::cout << "Time taken to render a_scene.png: " << elapsed_time_ms / 1000 / 60<< " mins" << std::endl;

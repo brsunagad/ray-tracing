@@ -214,7 +214,7 @@ void a_scene() {
     
     World world;
  
-    int samples = 10, depth = 30;
+    int samples = 300, depth = 30;
     //Lighting
 
     float intensity = 10;

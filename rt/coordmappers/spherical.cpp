@@ -35,7 +35,7 @@ Point SphericalCoordMapper::getCoords(const Intersection& hit) const {
     float phi = atan2(cross(projection, nAzimuth).length(), dot(projection, nAzimuth));//atan2(y/x)
 
     phi = dot(cross(projection, nAzimuth), nZenith) < 0 ? -phi : phi;
-    return Point((phi / (2 * pi)) / xScale, (theta / pi) / yScale, 0);
+    return Point((phi / (2 * pi)) / xScale, (theta / pi) / yScale, r);
 
     }
 

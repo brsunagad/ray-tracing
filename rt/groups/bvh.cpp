@@ -39,7 +39,7 @@ void BVH::rebuildIndex() {
 
     buildIndexStructure(root);
 
-    std::cout << "Builded BVH tree successfully" << std::endl;
+    std::cout << "BVH tree successfully built" << std::endl;
 }
 
 void BVH::buildIndexStructure(Node* node)

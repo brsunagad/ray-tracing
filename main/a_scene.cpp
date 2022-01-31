@@ -189,9 +189,9 @@ MatLib* sheild_matlib() {
 void a_scene() {
     //Image img(480, 320);
    //Image img(800, 600);
-     Image img(1080, 720);
+    // Image img(1080, 720);
      //Image img(1920, 1080);
-   //Image img(2160, 1440);
+   Image img(2160, 1440);
      
     BVH* scene = new BVH();
     //SimpleGroup* scene = new SimpleGroup();

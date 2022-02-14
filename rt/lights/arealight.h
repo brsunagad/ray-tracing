@@ -11,6 +11,7 @@ class AreaLight : public Light {
 private:
     Solid *source;
     int scale;
+    Point& samplePoint = Point();
 public:
     AreaLight() {}
     AreaLight(Solid* source, int scale = 1);

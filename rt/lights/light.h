@@ -3,7 +3,7 @@
 
 #include <core/assert.h>
 #include <core/vector.h>
-
+#include <core/point.h>
 namespace rt {
 
 class RGBColor;
@@ -13,6 +13,7 @@ struct LightHit {
     Vector direction;  //the direction where the light is coming FROM at the given point
     float distance;    //the distance that has to be checked, along the direction, for occlusion
     Vector normal;     //the normal at the light source
+    Point hitPoint;
 };
 
 class Light {

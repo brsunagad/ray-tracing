@@ -8,7 +8,6 @@ namespace rt {
 LightHit AreaLight::getLightHit(const Point& p) const {
     LightHit lightHit;
     Solid::Sample s = source->sample();
-    samplePoint = (s.point);
     lightHit.direction = (s.point - p).normalize();
     lightHit.normal = s.normal;
     lightHit.distance = (s.point - p).length() - 0.00015f;
